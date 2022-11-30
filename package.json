@@ -1,0 +1,11 @@
+{
+  "name": "ddb2alchemy",
+  "version": "1.0.0",
+  "description": "Convert D&D Beyond characters for use with the Alchemy VTT.",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "typescript": "^4.9.3"
+  }
+}
