@@ -16,14 +16,22 @@ export interface DdbCharacter {
   temporaryHitPoints: number
   currentXp: number
   alignment: DdbAlignment
-  stats: DdbStatArray,
-  bonusStats: DdbStatArray,
-  overrideStats: DdbStatArray,
+  stats: DdbStat[],
+  bonusStats: DdbStat[],
+  overrideStats: DdbStat[],
   // background:
   // race:
   // notes:
   // traits:
   // inventory:
+  currencies: {
+    cp: number,
+    sp: number,
+    ep: number,
+    gp: number,
+    pp: number
+  },
+  classes: DdbClass[],
 }
 
 interface DdbStat {
@@ -31,9 +39,7 @@ interface DdbStat {
   value: number,
 }
 
-type DdbStatArray = [DdbStat, DdbStat, DdbStat, DdbStat, DdbStat, DdbStat]
-
-enum DdbAlignment {
+declare enum DdbAlignment {
   LawfulGood = 1,
   NeutralGood,
   ChaoticGood,
@@ -45,11 +51,19 @@ enum DdbAlignment {
   ChaoticEvil
 }
 
-enum DdbStatType {
+declare enum DdbStatType {
   Strength = 1,
   Dexterity,
   Constitution,
   Intelligence,
   Wisdom,
   Charisma
+}
+
+interface DdbClass {
+  level: number,
+  definition: {
+    name: string,
+    description: string,
+  }
 }
