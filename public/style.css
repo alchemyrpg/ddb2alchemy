@@ -1,0 +1,12 @@
+main {
+  width: 100%;
+  max-width: 100ch;
+  margin: 0 auto;
+}
+
+output {
+  display: block;
+  border: 1px solid grey;
+  border-radius: 3px;
+  padding: .25rem;
+}

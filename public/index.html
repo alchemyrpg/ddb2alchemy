@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>D&D Beyond to Alchemy Converter</title>
+  <script src="index.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
+</head>
+
+<body>
+  <main>
+    <h1>D&D Beyond to Alchemy Converter</h1>
+    <p>Upload a D&D Beyond character sheet and click "Convert" to convert it to Alchemy format.</p>
+    <form onsubmit="convert(); return false">
+      <input type="file" id="characters" accept=".json" multiple>
+      <button type="submit">Convert</button>
+    </form>
+  </main>
+</body>
+
+</html>
