@@ -1,5 +1,5 @@
 export interface AlchemyCharacter {
-  abilityScores: AlchemyStatArray,
+  abilityScores: AlchemyStat[],
   armorClass: number,
   classes: AlchemyClass[],
   currentHp: number,
@@ -20,8 +20,6 @@ export interface AlchemyCharacter {
   spells: AlchemySpell[],
   textBlocks: AlchemyTextBlock[],
 }
-
-type AlchemyStatArray = [AlchemyStat, AlchemyStat, AlchemyStat, AlchemyStat, AlchemyStat, AlchemyStat]
 
 interface AlchemyStat {
   name: "str" | "dex" | "con" | "int" | "wis" | "cha",
