@@ -1,11 +1,17 @@
 {
   "name": "ddb2alchemy",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Convert D&D Beyond characters for use with the Alchemy VTT.",
-  "main": "index.js",
+  "main": "src/index.ts",
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "esbuild": "^0.15.16",
     "typescript": "^4.9.3"
+  },
+  "scripts": {
+    "build": "esbuild src/index.ts --outfile=public/index.js --bundle",
+    "start": "esbuild src/index.ts --outfile=public/index.js --servedir=public --bundle",
+    "lint": "tsc --noEmit"
   }
 }
