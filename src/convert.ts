@@ -1,5 +1,5 @@
 import { DdbArmorType, DdbModifier, DdbCharacter, DdbProficiencyType, DDB_SPEED_RE } from "./ddb"
-import { AlchemyCharacter, AlchemyStat, AlchemyClass, AlchemyProficiency, AlchemyMovementMode } from "./alchemy"
+import { AlchemyCharacter, AlchemyStat, AlchemyClass, AlchemyProficiency, AlchemyMovementMode, AlchemyTextBlockSection } from "./alchemy"
 
 // Shared between both platforms
 const STR = 1
@@ -69,27 +69,35 @@ const MOVEMENT_TYPES = {
 
 // Convert a D&D Beyond character to an Alchemy character
 export const convertCharacter = (ddbCharacter: DdbCharacter): AlchemyCharacter => ({
-  imageUri: convertAvatar(ddbCharacter),
-  name: ddbCharacter.name,
   abilityScores: convertStatArray(ddbCharacter),
+  age: ddbCharacter.age.toString(),
   armorClass: getArmorClass(ddbCharacter),
+  classes: convertClasses(ddbCharacter),
   currentHp: getCurrentHp(ddbCharacter),
   exp: ddbCharacter.currentXp,
-  classes: convertClasses(ddbCharacter),
+  eyes: ddbCharacter.eyes,
+  hair: ddbCharacter.hair,
+  height: ddbCharacter.height,
+  imageUri: convertAvatar(ddbCharacter),
   initiativeBonus: getInitiativeBonus(ddbCharacter),
+  isNPC: false,
   isSpellcaster: isSpellcaster(ddbCharacter),
   items: [],
   maxHp: getMaxHp(ddbCharacter),
   movementModes: getMovementModes(ddbCharacter),
+  name: ddbCharacter.name,
   proficiencies: convertProficiencies(ddbCharacter),
   proficiencyBonus: 0,
   race: "",
   skills: [],
+  skin: ddbCharacter.skin,
   speed: getSpeed(ddbCharacter),
   spellFilters: [],
-  spellSlots: [],
   spells: [],
-  textBlocks: [],
+  spellSlots: [],
+  systemKey: "5e",
+  textBlocks: getTextBlocks(ddbCharacter),
+  weight: ddbCharacter.weight.toString(),
 })
 
 // Request the D&D Beyond avatar at a higher resolution in 1:1 aspect ratio
@@ -313,4 +321,25 @@ const getSpeed = (ddbCharacter: DdbCharacter): number => {
   const movementModes = getMovementModes(ddbCharacter)
   if (!movementModes) return BASE_SPEED
   return movementModes.find(mode => mode.mode === "Walking").distance
+}
+
+// Generate all Alchemy description data from D&D Beyond character data
+const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] => {
+  const textBlocks = []
+
+  // class features
+  textBlocks.push({
+    title: "Class Features",
+    textBlocks: []
+  })
+
+  // racial traits
+  // feats
+  // background
+  // characteristics
+  // organizations
+  // backstory
+  // other
+
+  return textBlocks
 }

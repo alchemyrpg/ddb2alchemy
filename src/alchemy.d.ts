@@ -1,13 +1,18 @@
 export interface AlchemyCharacter {
   abilityScores: AlchemyStat[],
+  age?: string,
   armorClass: number,
   classes: AlchemyClass[],
   currentHp: number,
   exp: number,
+  eyes?: string,
+  hair?: string,
+  height?: string,
   imageUri: string,
   initiativeBonus: number,
-  isSpellcaster: Boolean,
   items: AlchemyItem[],
+  isNPC: boolean,
+  isSpellcaster: Boolean,
   maxHp: number,
   movementModes: AlchemyMovementMode[],
   name: string,
@@ -15,11 +20,14 @@ export interface AlchemyCharacter {
   proficiencyBonus: number,
   race: string,
   skills: AlchemySkill[],
+  skin?: string,
   speed: number,
+  systemKey: string,
   spellFilters: string[],
   spellSlots: AlchemySpellSlot[],
   spells: AlchemySpell[],
-  textBlocks: AlchemyTextBlock[],
+  textBlocks: AlchemyTextBlockSection[],
+  weight?: string,
 }
 
 interface AlchemyStat {
@@ -97,7 +105,7 @@ interface AlchemySavingThrow {
 }
 
 interface AlchemyTextBlock {
-  title: string,
+  title?: string,
   body: string,
 }
 
