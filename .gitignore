@@ -1,2 +1,4 @@
 node_modules
 public/index.js
+public/index.min.js
+*.js.map
