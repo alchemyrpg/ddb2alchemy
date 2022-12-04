@@ -24,8 +24,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Setup pages
+      - name: Configure GitHub pages
         uses: actions/configure-pages@v2
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+
+      - name: Install
+        run: yarn install
+
+      - name: Bundle assets
+        run: yarn build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
