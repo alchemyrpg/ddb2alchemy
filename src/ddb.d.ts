@@ -32,6 +32,12 @@ export interface DdbCharacter {
     pp: number
   },
   classes: DdbClass[],
+  // choices: (race, class, background)
+
+  spells: {
+    race: DdbSpell[],
+    class: DdbSpell[],
+  }
 }
 
 interface DdbStat {
@@ -62,6 +68,13 @@ declare enum DdbStatType {
 
 interface DdbClass {
   level: number,
+  definition: {
+    name: string,
+    description: string,
+  }
+}
+
+interface DdbSpell {
   definition: {
     name: string,
     description: string,
