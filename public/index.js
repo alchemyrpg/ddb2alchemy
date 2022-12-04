@@ -1,1 +1,0 @@
-(()=>{function a(){let r=document.getElementById("characters");for(let t of r.files){let e=new FileReader;e.onload=()=>{let o=JSON.parse(e.result);console.log(o)},e.readAsText(t)}}window.convert=a;})();
