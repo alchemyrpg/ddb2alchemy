@@ -33,6 +33,13 @@ export interface DdbCharacter {
   },
   classes: DdbClass[],
   // choices: (race, class, background)
+  modifiers: {
+    race: DdbModifier[],
+    class: DdbModifier[],
+    item: DdbModifier[],
+    feat: DdbModifier[],
+    condition: DdbModifier[],
+  },
   spells: {
     race: DdbSpell[],
     class: DdbSpell[],
@@ -92,7 +99,7 @@ interface DdbItem {
   chargesUsed: number,
 }
 
-interface DdbModifier {
+export interface DdbModifier {
   fixedValue: number,
   type: string,
   subType: string,

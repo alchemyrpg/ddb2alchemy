@@ -1,4 +1,4 @@
-import { DdbArmorType, DdbCharacter } from "./ddb"
+import { DdbArmorType, DdbModifier, DdbCharacter } from "./ddb"
 import { AlchemyCharacter, AlchemyStat, AlchemyClass } from "./alchemy"
 
 // Shared between both platforms
@@ -15,6 +15,14 @@ const STATS = {
   4: "int",
   5: "wis",
   6: "cha",
+}
+const STAT_NAMES = {
+  1: "strength",
+  2: "dexterity",
+  3: "constitution",
+  4: "intelligence",
+  5: "wisdom",
+  6: "charisma",
 }
 const STAT_BONUS = {
   1: -5,
@@ -93,32 +101,59 @@ const convertStatArray = (ddbCharacter: DdbCharacter): AlchemyStat[] => {
   }))
 }
 
-// Calculate a particular stat value, inclusive of any modifiers, items, etc.
+// Calculate a particular stat value, inclusive of any modifiers
 const getStatValue = (ddbCharacter: DdbCharacter, statId: number): number => {
-  let statValue = ddbCharacter.stats.find(stat => stat.id === statId)?.value || BASE_STAT
-  return statValue
+  // Start with whatever the base stat is at level 1
+  const baseStatValue = ddbCharacter.stats.find(stat => stat.id === statId)?.value || BASE_STAT
+
+  // If there are any overrides, use the highest of those instead of the base value
+  const overrideBaseValue = maxModifier(ddbCharacter, {
+    type: "set-base",
+    subType: `${STAT_NAMES[statId]}-score`,
+  })
+
+  // Add any other modifiers to the stat, like racial bonuses and ability score improvements
+  const modifiers = sumModifiers(ddbCharacter, {
+    type: "bonus",
+    subType: `${STAT_NAMES[statId]}-score`,
+  })
+
+  return (overrideBaseValue || baseStatValue) + modifiers
 }
 
-// Calculate a particular stat bonus, inclusive of any modifiers, items, etc.
+// Calculate a particular stat bonus, inclusive of any modifiers
 const getStatBonus = (ddbCharacter: DdbCharacter, statId: number): number => {
-  let statBonus = STAT_BONUS[getStatValue(ddbCharacter, statId)]
-  return statBonus
+  return STAT_BONUS[getStatValue(ddbCharacter, statId)]
+}
+
+// Find all applicable modifiers based on keys/values in `options`
+const getModifiers = (ddbCharacter: DdbCharacter, options: object): DdbModifier[] => {
+  return Object.values(ddbCharacter.modifiers).flat()
+    .filter(modifier => Object.keys(options).every(key => modifier[key] === options[key]))
+}
+
+// Find all applicable modifiers based on keys/values in `options` and sum them
+const sumModifiers = (ddbCharacter: DdbCharacter, options: object): number => {
+  return getModifiers(ddbCharacter, options)
+    .reduce((total, modifier) => total + modifier.value, 0)
+}
+
+// Find all applicable modifiers based on keys/values in `options` and take the highest
+const maxModifier = (ddbCharacter: DdbCharacter, options: object): number => {
+  return getModifiers(ddbCharacter, options)
+    .reduce((max, modifier) => Math.max(max, modifier.value), 0)
 }
 
 // Calculate the AC of the character using 5E rules
 const getArmorClass = (ddbCharacter: DdbCharacter): number => {
-  // Base AC is 10 or your highest equipped armor's value
+  // Base AC is 10 or sum of your equipped armor + shield
   const armorItems = ddbCharacter.inventory
-    .filter(item => item.definition.armorTypeId < DdbArmorType.Shield)
+    .filter(item => item.definition.armorTypeId)
     .filter(item => item.equipped)
-  const baseAc = (armorItems.reduce((max, item) => Math.max(max, item.definition.armorClass), BASE_AC))
+  const baseAc = (armorItems.reduce((ac, item) => ac + item.definition.armorClass, 0) || BASE_AC)
 
-  // Bonus AC is total of any other equipped items that give AC
-  const acBonusItems = ddbCharacter.inventory
-    .filter(item => item.equipped)
-    .flatMap(item => item.definition.grantedModifiers)
-    .filter(mod => mod.type == "bonus" && mod.subType == "armor-class")
-  const bonusAc = acBonusItems.reduce((ac, mod) => ac + mod.value, 0)
+  // Sum any other modifiers to AC (items, racial bonuses, etc.)
+  const bonusAc = sumModifiers(ddbCharacter, { type: "bonus", subType: "armor-class" })
 
   // Light/no armor = DEX bonus, medium armor = max DEX bonus of 2, heavy armor = no DEX bonus
   let dexBonus = getStatBonus(ddbCharacter, DEX)
@@ -147,7 +182,7 @@ const getArmorClass = (ddbCharacter: DdbCharacter): number => {
     }
   }
 
-  // Add everything up. For Barbarian/Monk multiclass, use the better bonus
+  // Add everything up. For Barbarian/Monk multiclass, use the better unarmored bonus
   return baseAc + bonusAc + dexBonus + Math.max(conBonus + wisBonus)
 }
 
