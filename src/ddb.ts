@@ -23,7 +23,7 @@ export interface DdbCharacter {
   // race:
   // notes:
   // traits:
-  // inventory:
+  inventory: DdbItem[]
   currencies: {
     cp: number,
     sp: number,
@@ -33,7 +33,6 @@ export interface DdbCharacter {
   },
   classes: DdbClass[],
   // choices: (race, class, background)
-
   spells: {
     race: DdbSpell[],
     class: DdbSpell[],
@@ -45,7 +44,7 @@ interface DdbStat {
   value: number,
 }
 
-declare enum DdbAlignment {
+export enum DdbAlignment {
   LawfulGood = 1,
   NeutralGood,
   ChaoticGood,
@@ -57,13 +56,50 @@ declare enum DdbAlignment {
   ChaoticEvil
 }
 
-declare enum DdbStatType {
+export enum DdbStatType {
   Strength = 1,
   Dexterity,
   Constitution,
   Intelligence,
   Wisdom,
   Charisma
+}
+
+export enum DdbArmorType {
+  Light = 1,
+  Medium,
+  Heavy,
+  Shield
+}
+
+interface DdbItem {
+  definition: {
+    magic: boolean,
+    rarity: string,
+    name: string,
+    description: string,
+    avatarUrl: string,
+    largeAvatarUrl: string,
+    tags: string[],
+    grantedModifiers: DdbModifier[],
+    armorClass: number,
+    damageType: string,
+    armorTypeId: DdbArmorType,
+  }
+  quantity: number,
+  isAttuned: boolean,
+  equipped: boolean,
+  chargesUsed: number,
+}
+
+interface DdbModifier {
+  fixedValue: number,
+  type: string,
+  subType: string,
+  statId: DdbStatType,
+  friendlySubtypeName: string,
+  friendlyTypeName: string,
+  value: number,
 }
 
 interface DdbClass {
