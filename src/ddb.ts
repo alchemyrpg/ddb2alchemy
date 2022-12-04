@@ -20,7 +20,9 @@ export interface DdbCharacter {
   bonusStats: DdbStat[],
   overrideStats: DdbStat[],
   // background:
-  // race:
+  race: {
+    racialTraits: DdbTrait[]
+  }
   // notes:
   // traits:
   inventory: DdbItem[]
@@ -132,3 +134,12 @@ interface DdbSpell {
     description: string,
   }
 }
+
+interface DdbTrait {
+  definition: {
+    name: string,
+    description: string,
+  }
+}
+
+export const DDB_SPEED_RE = /(\S+) speed (?:is|of) (\d+)/i

@@ -1,5 +1,5 @@
-import { DdbArmorType, DdbModifier, DdbCharacter, DdbProficiencyType } from "./ddb"
-import { AlchemyCharacter, AlchemyStat, AlchemyClass, AlchemyProficiency } from "./alchemy"
+import { DdbArmorType, DdbModifier, DdbCharacter, DdbProficiencyType, DDB_SPEED_RE } from "./ddb"
+import { AlchemyCharacter, AlchemyStat, AlchemyClass, AlchemyProficiency, AlchemyMovementMode } from "./alchemy"
 
 // Shared between both platforms
 const STR = 1
@@ -58,6 +58,14 @@ const STAT_BONUS = {
 }
 const BASE_STAT = 10
 const BASE_AC = 10
+const BASE_SPEED = 30
+const MOVEMENT_TYPES = {
+  "walking": "Walking",
+  "burrowing": "Burrow",
+  "climbing": "Climb",
+  "flying": "Fly",
+  "swimming": "Swim",
+}
 
 // Convert a D&D Beyond character to an Alchemy character
 export const convertCharacter = (ddbCharacter: DdbCharacter): AlchemyCharacter => ({
@@ -72,11 +80,12 @@ export const convertCharacter = (ddbCharacter: DdbCharacter): AlchemyCharacter =
   isSpellcaster: isSpellcaster(ddbCharacter),
   items: [],
   maxHp: getMaxHp(ddbCharacter),
+  movementModes: getMovementModes(ddbCharacter),
   proficiencies: convertProficiencies(ddbCharacter),
   proficiencyBonus: 0,
   race: "",
   skills: [],
-  speed: 0,
+  speed: getSpeed(ddbCharacter),
   spellFilters: [],
   spellSlots: [],
   spells: [],
@@ -278,4 +287,30 @@ const convertProficiencies = (ddbCharacter: DdbCharacter): AlchemyProficiency[] 
   )
 
   return proficiencies.flat()
+}
+
+// Get character's movement modes and speeds
+const getMovementModes = (ddbCharacter: DdbCharacter): AlchemyMovementMode[] => {
+  return ddbCharacter.race.racialTraits
+    .filter(trait => trait.definition.name === "Speed")
+    .map(trait => {
+      // Try to parse a speed from the trait description
+      const matches = trait.definition.description.match(DDB_SPEED_RE)
+      if (!matches) return
+
+      // Convert movement mode to Alchemy format
+      const mode = MOVEMENT_TYPES[matches[1]]
+      const speed = parseInt(matches[2])
+      return {
+        mode,
+        distance: speed
+      }
+    })
+}
+
+// Use base walking speed as main speed
+const getSpeed = (ddbCharacter: DdbCharacter): number => {
+  const movementModes = getMovementModes(ddbCharacter)
+  if (!movementModes) return BASE_SPEED
+  return movementModes.find(mode => mode.mode === "Walking").distance
 }

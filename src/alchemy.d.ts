@@ -9,6 +9,7 @@ export interface AlchemyCharacter {
   isSpellcaster: Boolean,
   items: AlchemyItem[],
   maxHp: number,
+  movementModes: AlchemyMovementMode[],
   name: string,
   proficiencies: AlchemyProficiency[],
   proficiencyBonus: number,
@@ -96,7 +97,16 @@ interface AlchemySavingThrow {
 }
 
 interface AlchemyTextBlock {
-  textBlocks?: AlchemyTextBlock[],
   title: string,
-  text: string,
+  body: string,
+}
+
+interface AlchemyTextBlockSection {
+  title: string,
+  textBlocks: AlchemyTextBlock[],
+}
+
+interface AlchemyMovementMode {
+  mode: string,
+  distance: number,
 }
