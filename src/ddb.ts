@@ -79,6 +79,14 @@ export enum DdbArmorType {
   Shield
 }
 
+export enum DdbProficiencyType {
+  Tool = 2103445194,
+  Skill = 1958004211,
+  Weapon = 1782728300,
+  Language = 906033267,
+  Armor = 174869515,
+}
+
 interface DdbItem {
   definition: {
     magic: boolean,
@@ -100,6 +108,7 @@ interface DdbItem {
 }
 
 export interface DdbModifier {
+  entityTypeId: number,
   fixedValue: number,
   type: string,
   subType: string,

@@ -42,7 +42,7 @@ interface AlchemyItem {
   isMagic: Boolean,
 }
 
-interface AlchemyProficiency {
+export interface AlchemyProficiency {
   name: string,
   type: string,
 }

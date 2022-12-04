@@ -1,5 +1,5 @@
-import { DdbArmorType, DdbModifier, DdbCharacter } from "./ddb"
-import { AlchemyCharacter, AlchemyStat, AlchemyClass } from "./alchemy"
+import { DdbArmorType, DdbModifier, DdbCharacter, DdbProficiencyType } from "./ddb"
+import { AlchemyCharacter, AlchemyStat, AlchemyClass, AlchemyProficiency } from "./alchemy"
 
 // Shared between both platforms
 const STR = 1
@@ -68,11 +68,11 @@ export const convertCharacter = (ddbCharacter: DdbCharacter): AlchemyCharacter =
   currentHp: getCurrentHp(ddbCharacter),
   exp: ddbCharacter.currentXp,
   classes: convertClasses(ddbCharacter),
-  initiativeBonus: 0,
+  initiativeBonus: getInitiativeBonus(ddbCharacter),
   isSpellcaster: isSpellcaster(ddbCharacter),
   items: [],
   maxHp: getMaxHp(ddbCharacter),
-  proficiencies: [],
+  proficiencies: convertProficiencies(ddbCharacter),
   proficiencyBonus: 0,
   race: "",
   skills: [],
@@ -208,9 +208,74 @@ const convertClasses = (ddbCharacter: DdbCharacter): AlchemyClass[] => {
   }))
 }
 
+// Calculate the initiative bonus of the character using 5E rules
+const getInitiativeBonus = (ddbCharacter: DdbCharacter): number => {
+  // Base initiative bonus is DEX; add any modifiers
+  const baseInitiativeBonus = getStatBonus(ddbCharacter, DEX)
+  const modifiers = sumModifiers(ddbCharacter, { type: "bonus", subType: "initiative" })
+
+  return baseInitiativeBonus + modifiers
+}
+
 // A character is a spellcaster if they have any race or class spells.
 const isSpellcaster = (ddbCharacter: DdbCharacter): boolean => {
   if (ddbCharacter.spells.race.length > 0) return true
   if (ddbCharacter.spells.class.length > 0) return true
   return false
+}
+
+// Convert proficiencies to Alchemy format.
+const convertProficiencies = (ddbCharacter: DdbCharacter): AlchemyProficiency[] => {
+  let proficiencies = []
+
+  // languages
+  proficiencies.push(
+    getModifiers(ddbCharacter, { type: "language" })
+      .map(modifier => ({
+        name: modifier.friendlySubtypeName,
+        type: "language",
+      }))
+  )
+
+  // saving throws
+  proficiencies.push(
+    getModifiers(ddbCharacter, { type: "proficiency" })
+      .filter(modifier => modifier.subType.endsWith("saving-throws"))
+      .map(modifier => ({
+        name: modifier.friendlySubtypeName.split(" ")[0],
+        type: "save",
+      }))
+  )
+
+  // weapons
+  proficiencies.push(
+    getModifiers(ddbCharacter, { type: "proficiency" })
+      .filter(modifier => modifier.entityTypeId === DdbProficiencyType.Weapon)
+      .map(modifier => ({
+        name: modifier.friendlySubtypeName,
+        type: "weapon",
+      }))
+  )
+
+  // tools
+  proficiencies.push(
+    getModifiers(ddbCharacter, { type: "proficiency" })
+      .filter(modifier => modifier.entityTypeId === DdbProficiencyType.Tool)
+      .map(modifier => ({
+        name: modifier.friendlySubtypeName,
+        type: "tool",
+      }))
+  )
+
+  // armor
+  proficiencies.push(
+    getModifiers(ddbCharacter, { type: "proficiency" })
+      .filter(modifier => modifier.entityTypeId === DdbProficiencyType.Armor)
+      .map(modifier => ({
+        name: modifier.friendlySubtypeName,
+        type: "armor",
+      }))
+  )
+
+  return proficiencies.flat()
 }
