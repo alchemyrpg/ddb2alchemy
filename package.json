@@ -11,7 +11,7 @@
   },
   "scripts": {
     "build": "esbuild src/index.ts --outfile=public/index.min.js --bundle --minify --sourcemap",
-    "start": "esbuild src/index.ts --outfile=public/index.min.js --bundle --minify --sourcemap --servedir=public",
+    "start": "esbuild src/index.ts --outfile=public/index.min.js --bundle --sourcemap --servedir=public",
     "lint": "tsc --noEmit"
   }
 }
