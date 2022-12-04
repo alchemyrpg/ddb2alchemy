@@ -10,7 +10,7 @@
     "typescript": "^4.9.3"
   },
   "scripts": {
-    "build": "esbuild src/index.ts --outfile=public/index.js --bundle",
+    "build": "esbuild src/index.ts --outfile=public/index.js --bundle --minify",
     "start": "esbuild src/index.ts --outfile=public/index.js --servedir=public --bundle",
     "lint": "tsc --noEmit"
   }
