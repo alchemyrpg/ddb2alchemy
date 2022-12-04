@@ -22,7 +22,7 @@ export interface AlchemyCharacter {
 }
 
 interface AlchemyStat {
-  name: "str" | "dex" | "con" | "int" | "wis" | "cha",
+  name: string,
   value: number,
 }
 
@@ -44,12 +44,12 @@ interface AlchemyItem {
 
 interface AlchemyProficiency {
   name: string,
-  type: "weapon" | "armor" | "tool" | "save" | "skill" | "language",
+  type: string,
 }
 
 interface AlchemySkill {
   name: string,
-  abilityName: "str" | "dex" | "con" | "int" | "wis" | "cha",
+  abilityName: string,
   proficient: Boolean,
   doubleProficiency: Boolean,
   bonus: number,
