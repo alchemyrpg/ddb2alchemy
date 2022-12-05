@@ -66,6 +66,26 @@ const MOVEMENT_TYPES = {
   "flying": "Fly",
   "swimming": "Swim",
 }
+const SKILL_NAMES = {
+  "acrobatics": "Acrobatics",
+  "animal-handling": "Animal Handling",
+  "arcana": "Arcana",
+  "athletics": "Athletics",
+  "deception": "Deception",
+  "history": "History",
+  "insight": "Insight",
+  "intimidation": "Intimidation",
+  "investigation": "Investigation",
+  "medicine": "Medicine",
+  "nature": "Nature",
+  "perception": "Perception",
+  "performance": "Performance",
+  "persuasion": "Persuasion",
+  "religion": "Religion",
+  "sleight-of-hand": "Sleight of Hand",
+  "stealth": "Stealth",
+  "survival": "Survival",
+}
 const SKILL_STATS = {
   "acrobatics": DEX,
   "animal-handling": WIS,
@@ -285,7 +305,6 @@ const getLevel = (ddbCharacter: DdbCharacter): number => {
 // Find any modifiers granting bonuses to initiative
 const getInitiativeBonus = (ddbCharacter: DdbCharacter): number => {
   return sumModifiers(ddbCharacter, { type: "bonus", subType: "initiative" })
-
 }
 
 // A character is a spellcaster if they have any race or class spells.
@@ -353,19 +372,20 @@ const convertProficiencies = (ddbCharacter: DdbCharacter): AlchemyProficiency[] 
 
 // Get character's skill proficiencies
 const getSkills = (ddbCharacter: DdbCharacter): AlchemySkill[] => {
-  // Check for expertise first
+  // Check for expertise and proficiency first
   const expertise = getModifiers(ddbCharacter, { type: "expertise" })
     .map(modifier => modifier.friendlySubtypeName)
-
-  // Set doubleProficiency to true if the skill is in the expertise list
-  return getModifiers(ddbCharacter, { type: "proficiency" })
+  const proficient = getModifiers(ddbCharacter, { type: "proficiency" })
     .filter(modifier => modifier.entityTypeId === DdbProficiencyType.Skill)
-    .map(modifier => ({
-      name: modifier.friendlySubtypeName,
-      abilityName: STATS[SKILL_STATS[modifier.subType]],
-      proficient: true,
-      doubleProficiency: expertise.includes(modifier.friendlySubtypeName),
-    }))
+    .map(modifier => modifier.friendlySubtypeName)
+
+  // Get all skills and set proficiency/expertise accordingly
+  return Object.entries(SKILL_STATS).map(([skill, stat]) => ({
+    name: SKILL_NAMES[skill],
+    abilityName: STATS[stat],
+    proficient: proficient.includes(SKILL_NAMES[skill]),
+    doubleProficiency: expertise.includes(SKILL_NAMES[skill]),
+  })).sort((a, b) => a.name.localeCompare(b.name))
 }
 
 // Get character's movement modes and speeds
