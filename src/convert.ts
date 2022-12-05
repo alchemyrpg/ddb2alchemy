@@ -1,5 +1,5 @@
 import { DdbArmorType, DdbModifier, DdbCharacter, DdbProficiencyType, DDB_SPEED_RE } from "./ddb"
-import { AlchemyCharacter, AlchemyStat, AlchemyClass, AlchemyProficiency, AlchemyMovementMode, AlchemyTextBlockSection, AlchemySkill } from "./alchemy"
+import { AlchemyCharacter, AlchemyStat, AlchemyClass, AlchemyProficiency, AlchemyMovementMode, AlchemyTextBlockSection, AlchemySkill, AlchemyItem } from "./alchemy"
 
 // Shared between both platforms
 const STR = 1
@@ -109,28 +109,36 @@ const PROFICIENCY_BONUS = {
   20: 6,
 }
 
+// HTML to Markdown converter
+const turndownService = new TurndownService()
+
 // Convert a D&D Beyond character to an Alchemy character
 export const convertCharacter = (ddbCharacter: DdbCharacter): AlchemyCharacter => ({
   abilityScores: convertStatArray(ddbCharacter),
   ...(ddbCharacter.age) && { age: ddbCharacter.age.toString() },
   armorClass: getArmorClass(ddbCharacter),
+  copper: ddbCharacter.currencies.cp,
   classes: convertClasses(ddbCharacter),
   currentHp: getCurrentHp(ddbCharacter),
+  electrum: ddbCharacter.currencies.ep,
   exp: ddbCharacter.currentXp,
   eyes: ddbCharacter.eyes,
+  gold: ddbCharacter.currencies.gp,
   hair: ddbCharacter.hair,
   height: ddbCharacter.height,
   imageUri: convertAvatar(ddbCharacter),
   initiativeBonus: getInitiativeBonus(ddbCharacter),
   isNPC: false,
   isSpellcaster: isSpellcaster(ddbCharacter),
-  items: [], // TODO
+  items: convertItems(ddbCharacter),
   maxHp: getMaxHp(ddbCharacter),
   movementModes: getMovementModes(ddbCharacter),
   name: ddbCharacter.name,
+  platinum: ddbCharacter.currencies.pp,
   proficiencies: convertProficiencies(ddbCharacter),
   proficiencyBonus: PROFICIENCY_BONUS[getLevel(ddbCharacter)],
   race: ddbCharacter.race.baseRaceName,
+  silver: ddbCharacter.currencies.sp,
   skills: getSkills(ddbCharacter),
   skin: ddbCharacter.skin,
   speed: getSpeed(ddbCharacter),
@@ -506,4 +514,21 @@ const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] =>
   })
 
   return textBlocks
+}
+
+// Convert a character's inventory of items to Alchemy format
+const convertItems = (ddbCharacter: DdbCharacter): AlchemyItem[] => {
+  return ddbCharacter.inventory
+    .map(item => ({
+      name: item.definition.name,
+      quantity: item.quantity,
+      weight: item.definition.weight,
+      description: turndownService.turndown(item.definition.description),
+      isEquipped: item.equipped,
+      rarity: item.definition.rarity,
+      requiresAttunement: item.definition.canAttune,
+      ...(item.definition.largeAvatarUrl) && { imageUri: item.definition.largeAvatarUrl },
+      ...(item.definition.attunementDescription) && { attunementPrerequisites: item.definition.attunementDescription },
+      ...(item.definition.cost) && { cost: item.definition.cost.toString() },
+    }))
 }
