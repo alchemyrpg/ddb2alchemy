@@ -88,7 +88,7 @@ export const convertCharacter = (ddbCharacter: DdbCharacter): AlchemyCharacter =
   name: ddbCharacter.name,
   proficiencies: convertProficiencies(ddbCharacter),
   proficiencyBonus: 0, // TODO
-  race: "", // TODO
+  race: ddbCharacter.race.baseRaceName,
   skills: [], // TODO
   skin: ddbCharacter.skin,
   speed: getSpeed(ddbCharacter),

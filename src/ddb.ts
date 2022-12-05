@@ -21,6 +21,8 @@ export interface DdbCharacter {
   overrideStats: DdbStat[],
   // background:
   race: {
+    baseRaceName: string,
+    fullName: string,
     racialTraits: DdbTrait[]
   }
   // notes:

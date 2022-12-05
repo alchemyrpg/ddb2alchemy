@@ -30,7 +30,7 @@ Currently, the converter works for these properties:
 - [x] Movement modes/speed
 - [x] Name
 - [x] Weapon, armor, language, save, tool proficiencies
-- [ ] Race (name only)
+- [x] Race
 - [ ] Skills
 - [ ] Spellcasting
 - [ ] Background, appearance, and other descriptive text
