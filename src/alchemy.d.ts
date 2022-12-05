@@ -41,14 +41,14 @@ interface AlchemyClass {
 }
 
 interface AlchemyItem {
-  name: string,
-  description: string,
-  quantity: number,
-  rarity: string,
-  type: string,
-  weight: number,
   isEquipped: Boolean,
-  isMagic: Boolean,
+  name: string,
+  quantity: number,
+  weight: number,
+  description?: string,
+  rarity?: string,
+  type?: string,
+  isMagic?: Boolean,
 }
 
 export interface AlchemyProficiency {
@@ -106,12 +106,12 @@ interface AlchemySavingThrow {
 
 interface AlchemyTextBlock {
   title?: string,
-  body: string,
+  body?: string,
 }
 
 interface AlchemyTextBlockSection {
   title: string,
-  textBlocks: AlchemyTextBlock[],
+  textBlocks?: AlchemyTextBlock[],
 }
 
 interface AlchemyMovementMode {
