@@ -389,21 +389,75 @@ const getSpeed = (ddbCharacter: DdbCharacter): number => {
 
 // Generate all Alchemy description data from D&D Beyond character data
 const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] => {
-  const textBlocks = []
+  const textBlocks: AlchemyTextBlockSection[] = []
 
   // class features
   textBlocks.push({
     title: "Class Features",
-    textBlocks: []
+    textBlocks: ddbCharacter.classes
+      .flatMap(ddbClass => ddbClass.definition.classFeatures)
+      .sort((a, b) => a.displayOrder - b.displayOrder)
+      .map(feature => ({
+        title: feature.name,
+        body: feature.description,
+      }))
   })
 
   // racial traits
+  textBlocks.push({
+    title: "Racial Traits",
+  })
+
   // feats
+  textBlocks.push({
+    title: "Feats",
+  })
+
   // background
+  textBlocks.push({
+    title: "Background",
+  })
+
   // characteristics
+  textBlocks.push({
+    title: "Characteristics",
+    textBlocks: [
+      {
+        title: "Personality Traits",
+      },
+      {
+        title: "Ideals",
+      },
+      {
+        title: "Bonds",
+      },
+      {
+        title: "Flaws",
+      },
+    ]
+  })
+
+  // appearance
+  textBlocks.push({
+    title: "Appearance",
+  })
+
   // organizations
+  textBlocks.push({
+    title: "Organizations",
+  })
+
   // backstory
+  textBlocks.push({
+    title: "Backstory",
+    textBlocks: [{}]
+  })
+
   // other
+  textBlocks.push({
+    title: "Other",
+    textBlocks: [{}]
+  })
 
   return textBlocks
 }
