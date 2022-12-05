@@ -27,6 +27,7 @@ Currently, the converter works for these properties:
 - [x] Avatar/portrait image
 - [x] Initiative bonus
 - [ ] Inventory
+- [x] Currency
 - [x] HP (current, max)
 - [x] Movement modes/speed
 - [x] Name
