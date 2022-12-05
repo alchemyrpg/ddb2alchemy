@@ -19,14 +19,26 @@ export interface DdbCharacter {
   stats: DdbStat[],
   bonusStats: DdbStat[],
   overrideStats: DdbStat[],
-  // background:
+  background: DdbBackground,
   race: {
     baseRaceName: string,
     fullName: string,
     racialTraits: DdbTrait[]
   }
-  // notes:
-  // traits:
+  notes: {
+    allies: string,
+    enemies: string,
+    backstory: string,
+    organizations: string,
+    otherNotes: string
+  }
+  traits: {
+    personalityTraits: string,
+    ideals: string,
+    bonds: string,
+    flaws: string,
+    appearance: string,
+  }
   inventory: DdbItem[]
   currencies: {
     cp: number,
@@ -36,7 +48,6 @@ export interface DdbCharacter {
     pp: number
   },
   classes: DdbClass[],
-  // choices: (race, class, background)
   modifiers: {
     race: DdbModifier[],
     class: DdbModifier[],
@@ -149,7 +160,19 @@ interface DdbTrait {
   definition: {
     name: string,
     description: string,
+    displayOrder: number,
   }
+}
+
+interface DdbBackground {
+  definition: {
+    name: string,
+    description: string,
+  }
+}
+
+interface DdbBackgroundItem {
+  description: string
 }
 
 export const DDB_SPEED_RE = /(\S+) speed (?:is|of) (\d+)/i

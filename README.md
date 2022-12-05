@@ -35,3 +35,4 @@ Currently, the converter works for these properties:
 - [x] Skills
 - [ ] Spellcasting
 - [ ] Feats
+- [x] Background, appearance, and other descriptive text

@@ -405,6 +405,12 @@ const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] =>
   // racial traits
   textBlocks.push({
     title: "Racial Traits",
+    textBlocks: ddbCharacter.race.racialTraits
+      .sort((a, b) => a.definition.displayOrder - b.definition.displayOrder)
+      .map(trait => ({
+        title: trait.definition.name,
+        body: trait.definition.description,
+      }))
   })
 
   // feats
@@ -415,6 +421,10 @@ const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] =>
   // background
   textBlocks.push({
     title: "Background",
+    textBlocks: [{
+      title: ddbCharacter.background.definition.name,
+      body: ddbCharacter.background.definition.description,
+    }]
   })
 
   // characteristics
@@ -423,15 +433,19 @@ const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] =>
     textBlocks: [
       {
         title: "Personality Traits",
+        body: ddbCharacter.traits.personalityTraits,
       },
       {
         title: "Ideals",
+        body: ddbCharacter.traits.ideals,
       },
       {
         title: "Bonds",
+        body: ddbCharacter.traits.bonds,
       },
       {
         title: "Flaws",
+        body: ddbCharacter.traits.flaws,
       },
     ]
   })
@@ -439,23 +453,49 @@ const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] =>
   // appearance
   textBlocks.push({
     title: "Appearance",
+    textBlocks: [{
+      body: ddbCharacter.traits.appearance,
+    }]
   })
 
   // organizations
   textBlocks.push({
     title: "Organizations",
+    textBlocks: [{
+      body: ddbCharacter.notes.organizations,
+    }]
   })
 
   // backstory
   textBlocks.push({
     title: "Backstory",
-    textBlocks: [{}]
+    textBlocks: [{
+      body: ddbCharacter.notes.backstory,
+    }]
+  })
+
+  // allies
+  textBlocks.push({
+    title: "Allies",
+    textBlocks: [{
+      body: ddbCharacter.notes.allies,
+    }]
+  })
+
+  // enemies
+  textBlocks.push({
+    title: "Enemies",
+    textBlocks: [{
+      body: ddbCharacter.notes.enemies,
+    }]
   })
 
   // other
   textBlocks.push({
     title: "Other",
-    textBlocks: [{}]
+    textBlocks: [{
+      body: ddbCharacter.notes.otherNotes,
+    }]
   })
 
   return textBlocks
