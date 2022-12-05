@@ -26,14 +26,17 @@ Currently, the converter works for these properties:
 - [x] Experience points
 - [x] Avatar/portrait image
 - [x] Initiative bonus
-- [ ] Inventory
+- [x] Inventory items (including homebrew)
+- [ ] Inventory item actions 
 - [x] Currency
 - [x] HP (current, max)
 - [x] Movement modes/speed
 - [x] Name
-- [x] Weapon, armor, language, save, tool proficiencies
+- [x] Proficiencies (weapon, armor, language, save, tool)
 - [x] Race
 - [x] Skills
-- [ ] Spellcasting
+- [ ] Spells (SRD)
+- [ ] Spells (Expansions & homebrew)
+- [ ] Spell slots
 - [ ] Feats
 - [x] Background, appearance, and other descriptive text
