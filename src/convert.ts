@@ -274,13 +274,10 @@ const getLevel = (ddbCharacter: DdbCharacter): number => {
   return ddbCharacter.classes.reduce((total, ddbClass) => total + ddbClass.level, 0)
 }
 
-// Calculate the initiative bonus of the character using 5E rules
+// Find any modifiers granting bonuses to initiative
 const getInitiativeBonus = (ddbCharacter: DdbCharacter): number => {
-  // Base initiative bonus is DEX; add any modifiers
-  const baseInitiativeBonus = getStatBonus(ddbCharacter, DEX)
-  const modifiers = sumModifiers(ddbCharacter, { type: "bonus", subType: "initiative" })
+  return sumModifiers(ddbCharacter, { type: "bonus", subType: "initiative" })
 
-  return baseInitiativeBonus + modifiers
 }
 
 // A character is a spellcaster if they have any race or class spells.
