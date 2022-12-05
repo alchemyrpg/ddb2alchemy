@@ -60,8 +60,8 @@ interface AlchemySkill {
   name: string,
   abilityName: string,
   proficient: Boolean,
-  doubleProficiency: Boolean,
-  bonus: number,
+  doubleProficiency?: Boolean,
+  bonus?: number,
 }
 
 interface AlchemySpellSlot {

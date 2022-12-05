@@ -1,5 +1,5 @@
 import { DdbArmorType, DdbModifier, DdbCharacter, DdbProficiencyType, DDB_SPEED_RE } from "./ddb"
-import { AlchemyCharacter, AlchemyStat, AlchemyClass, AlchemyProficiency, AlchemyMovementMode, AlchemyTextBlockSection } from "./alchemy"
+import { AlchemyCharacter, AlchemyStat, AlchemyClass, AlchemyProficiency, AlchemyMovementMode, AlchemyTextBlockSection, AlchemySkill } from "./alchemy"
 
 // Shared between both platforms
 const STR = 1
@@ -66,6 +66,48 @@ const MOVEMENT_TYPES = {
   "flying": "Fly",
   "swimming": "Swim",
 }
+const SKILL_STATS = {
+  "acrobatics": DEX,
+  "animal-handling": WIS,
+  "arcana": INT,
+  "athletics": STR,
+  "deception": CHA,
+  "history": INT,
+  "insight": WIS,
+  "intimidation": CHA,
+  "investigation": INT,
+  "medicine": WIS,
+  "nature": INT,
+  "perception": WIS,
+  "performance": CHA,
+  "persuasion": CHA,
+  "religion": INT,
+  "sleight-of-hand": DEX,
+  "stealth": DEX,
+  "survival": WIS,
+}
+const PROFICIENCY_BONUS = {
+  1: 2,
+  2: 2,
+  3: 2,
+  4: 2,
+  5: 3,
+  6: 3,
+  7: 3,
+  8: 3,
+  9: 4,
+  10: 4,
+  11: 4,
+  12: 4,
+  13: 5,
+  14: 5,
+  15: 5,
+  16: 5,
+  17: 6,
+  18: 6,
+  19: 6,
+  20: 6,
+}
 
 // Convert a D&D Beyond character to an Alchemy character
 export const convertCharacter = (ddbCharacter: DdbCharacter): AlchemyCharacter => ({
@@ -87,9 +129,9 @@ export const convertCharacter = (ddbCharacter: DdbCharacter): AlchemyCharacter =
   movementModes: getMovementModes(ddbCharacter),
   name: ddbCharacter.name,
   proficiencies: convertProficiencies(ddbCharacter),
-  proficiencyBonus: 0, // TODO
+  proficiencyBonus: PROFICIENCY_BONUS[getLevel(ddbCharacter)],
   race: ddbCharacter.race.baseRaceName,
-  skills: [], // TODO
+  skills: getSkills(ddbCharacter),
   skin: ddbCharacter.skin,
   speed: getSpeed(ddbCharacter),
   spellFilters: [], // TODO
@@ -225,6 +267,11 @@ const convertClasses = (ddbCharacter: DdbCharacter): AlchemyClass[] => {
   }))
 }
 
+// Calculate total level (max of all class levels)
+const getLevel = (ddbCharacter: DdbCharacter): number => {
+  return ddbCharacter.classes.reduce((total, ddbClass) => total + ddbClass.level, 0)
+}
+
 // Calculate the initiative bonus of the character using 5E rules
 const getInitiativeBonus = (ddbCharacter: DdbCharacter): number => {
   // Base initiative bonus is DEX; add any modifiers
@@ -295,6 +342,23 @@ const convertProficiencies = (ddbCharacter: DdbCharacter): AlchemyProficiency[] 
   )
 
   return proficiencies.flat()
+}
+
+// Get character's skill proficiencies
+const getSkills = (ddbCharacter: DdbCharacter): AlchemySkill[] => {
+  // Check for expertise first
+  const expertise = getModifiers(ddbCharacter, { type: "expertise" })
+    .map(modifier => modifier.friendlySubtypeName)
+
+  // Set doubleProficiency to true if the skill is in the expertise list
+  return getModifiers(ddbCharacter, { type: "proficiency" })
+    .filter(modifier => modifier.entityTypeId === DdbProficiencyType.Skill)
+    .map(modifier => ({
+      name: modifier.friendlySubtypeName,
+      abilityName: STATS[SKILL_STATS[modifier.subType]],
+      proficient: true,
+      doubleProficiency: expertise.includes(modifier.friendlySubtypeName),
+    }))
 }
 
 // Get character's movement modes and speeds

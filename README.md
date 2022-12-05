@@ -31,6 +31,6 @@ Currently, the converter works for these properties:
 - [x] Name
 - [x] Weapon, armor, language, save, tool proficiencies
 - [x] Race
-- [ ] Skills
+- [x] Skills
 - [ ] Spellcasting
 - [ ] Background, appearance, and other descriptive text
