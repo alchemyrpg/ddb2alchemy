@@ -82,21 +82,21 @@ export const convertCharacter = (ddbCharacter: DdbCharacter): AlchemyCharacter =
   initiativeBonus: getInitiativeBonus(ddbCharacter),
   isNPC: false,
   isSpellcaster: isSpellcaster(ddbCharacter),
-  items: [],
+  items: [], // TODO
   maxHp: getMaxHp(ddbCharacter),
   movementModes: getMovementModes(ddbCharacter),
   name: ddbCharacter.name,
   proficiencies: convertProficiencies(ddbCharacter),
-  proficiencyBonus: 0,
-  race: "",
-  skills: [],
+  proficiencyBonus: 0, // TODO
+  race: "", // TODO
+  skills: [], // TODO
   skin: ddbCharacter.skin,
   speed: getSpeed(ddbCharacter),
-  spellFilters: [],
-  spells: [],
-  spellSlots: [],
+  spellFilters: [], // TODO
+  spells: [], // TODO
+  spellSlots: [], // TODO
   systemKey: "5e",
-  textBlocks: getTextBlocks(ddbCharacter),
+  textBlocks: getTextBlocks(ddbCharacter), // TODO
   weight: ddbCharacter.weight.toString(),
 })
 
