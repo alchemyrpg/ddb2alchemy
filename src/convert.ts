@@ -386,6 +386,13 @@ const getSpeed = (ddbCharacter: DdbCharacter): number => {
   return movementModes.find(mode => mode.mode === "Walking").distance
 }
 
+// Remove HTML tags and entities and trim whitespace
+const cleanHtml = (str: string): string => {
+  if (!str) return ""
+  const parser = new DOMParser()
+  return parser.parseFromString(str, "text/html").body.textContent.trim()
+}
+
 // Generate all Alchemy description data from D&D Beyond character data
 const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] => {
   const textBlocks: AlchemyTextBlockSection[] = []
@@ -398,7 +405,7 @@ const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] =>
       .sort((a, b) => a.displayOrder - b.displayOrder)
       .map(feature => ({
         title: feature.name,
-        body: feature.description,
+        body: cleanHtml(feature.description),
       }))
   })
 
@@ -409,7 +416,7 @@ const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] =>
       .sort((a, b) => a.definition.displayOrder - b.definition.displayOrder)
       .map(trait => ({
         title: trait.definition.name,
-        body: trait.definition.description,
+        body: cleanHtml(trait.definition.description),
       }))
   })
 
@@ -423,7 +430,7 @@ const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] =>
     title: "Background",
     textBlocks: [{
       title: ddbCharacter.background.definition.name,
-      body: ddbCharacter.background.definition.description,
+      body: cleanHtml(ddbCharacter.background.definition.description),
     }]
   })
 
@@ -433,19 +440,19 @@ const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] =>
     textBlocks: [
       {
         title: "Personality Traits",
-        body: ddbCharacter.traits.personalityTraits,
+        body: cleanHtml(ddbCharacter.traits.personalityTraits),
       },
       {
         title: "Ideals",
-        body: ddbCharacter.traits.ideals,
+        body: cleanHtml(ddbCharacter.traits.ideals),
       },
       {
         title: "Bonds",
-        body: ddbCharacter.traits.bonds,
+        body: cleanHtml(ddbCharacter.traits.bonds),
       },
       {
         title: "Flaws",
-        body: ddbCharacter.traits.flaws,
+        body: cleanHtml(ddbCharacter.traits.flaws),
       },
     ]
   })
@@ -454,7 +461,7 @@ const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] =>
   textBlocks.push({
     title: "Appearance",
     textBlocks: [{
-      body: ddbCharacter.traits.appearance,
+      body: cleanHtml(ddbCharacter.traits.appearance),
     }]
   })
 
@@ -462,7 +469,7 @@ const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] =>
   textBlocks.push({
     title: "Organizations",
     textBlocks: [{
-      body: ddbCharacter.notes.organizations,
+      body: cleanHtml(ddbCharacter.notes.organizations),
     }]
   })
 
@@ -470,7 +477,7 @@ const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] =>
   textBlocks.push({
     title: "Backstory",
     textBlocks: [{
-      body: ddbCharacter.notes.backstory,
+      body: cleanHtml(ddbCharacter.notes.backstory),
     }]
   })
 
@@ -478,7 +485,7 @@ const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] =>
   textBlocks.push({
     title: "Allies",
     textBlocks: [{
-      body: ddbCharacter.notes.allies,
+      body: cleanHtml(ddbCharacter.notes.allies),
     }]
   })
 
@@ -486,7 +493,7 @@ const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] =>
   textBlocks.push({
     title: "Enemies",
     textBlocks: [{
-      body: ddbCharacter.notes.enemies,
+      body: cleanHtml(ddbCharacter.notes.enemies),
     }]
   })
 
@@ -494,7 +501,7 @@ const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] =>
   textBlocks.push({
     title: "Other",
     textBlocks: [{
-      body: ddbCharacter.notes.otherNotes,
+      body: cleanHtml(ddbCharacter.notes.otherNotes),
     }]
   })
 

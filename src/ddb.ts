@@ -171,8 +171,4 @@ interface DdbBackground {
   }
 }
 
-interface DdbBackgroundItem {
-  description: string
-}
-
 export const DDB_SPEED_RE = /(\S+) speed (?:is|of) (\d+)/i
