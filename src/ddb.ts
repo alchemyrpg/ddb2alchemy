@@ -127,7 +127,15 @@ interface DdbClass {
   definition: {
     name: string,
     description: string,
+    classFeatures: DdbClassFeature[],
   }
+}
+
+interface DdbClassFeature {
+  name: string,
+  description: string,
+  requiredLevel: number,
+  displayOrder: number,
 }
 
 interface DdbSpell {
