@@ -49,6 +49,7 @@ interface AlchemyItem {
   rarity?: string,
   type?: string,
   isMagic?: Boolean,
+  spell?: AlchemySpell
 }
 
 export interface AlchemyProficiency {

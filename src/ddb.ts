@@ -115,6 +115,8 @@ interface DdbItem {
     armorClass: number,
     damageType: string,
     armorTypeId: DdbArmorType,
+    weight: number,
+    type: string,
   }
   quantity: number,
   isAttuned: boolean,

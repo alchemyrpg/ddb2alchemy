@@ -1,5 +1,5 @@
 import { DdbArmorType, DdbModifier, DdbCharacter, DdbProficiencyType, DDB_SPEED_RE } from "./ddb"
-import { AlchemyCharacter, AlchemyStat, AlchemyClass, AlchemyProficiency, AlchemyMovementMode, AlchemyTextBlockSection, AlchemySkill } from "./alchemy"
+import { AlchemyCharacter, AlchemyStat, AlchemyClass, AlchemyProficiency, AlchemyMovementMode, AlchemyTextBlockSection, AlchemySkill, AlchemyItem } from "./alchemy"
 
 // Shared between both platforms
 const STR = 1
@@ -124,7 +124,7 @@ export const convertCharacter = (ddbCharacter: DdbCharacter): AlchemyCharacter =
   initiativeBonus: getInitiativeBonus(ddbCharacter),
   isNPC: false,
   isSpellcaster: isSpellcaster(ddbCharacter),
-  items: [], // TODO
+  items: convertItems(ddbCharacter),
   maxHp: getMaxHp(ddbCharacter),
   movementModes: getMovementModes(ddbCharacter),
   name: ddbCharacter.name,
@@ -506,4 +506,17 @@ const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] =>
   })
 
   return textBlocks
+}
+
+// Convert a character's inventory of items to Alchemy format
+const convertItems = (ddbCharacter: DdbCharacter): AlchemyItem[] => {
+  return ddbCharacter.inventory
+    .map(item => ({
+      name: item.definition.name,
+      quantity: item.quantity,
+      weight: item.definition.weight,
+      description: cleanHtml(item.definition.description),
+      isEquipped: item.equipped,
+      rarity: item.definition.rarity,
+    }))
 }
