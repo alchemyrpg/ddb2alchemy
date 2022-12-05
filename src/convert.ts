@@ -109,6 +109,9 @@ const PROFICIENCY_BONUS = {
   20: 6,
 }
 
+// HTML to Markdown converter
+const turndownService = new TurndownService()
+
 // Convert a D&D Beyond character to an Alchemy character
 export const convertCharacter = (ddbCharacter: DdbCharacter): AlchemyCharacter => ({
   abilityScores: convertStatArray(ddbCharacter),
@@ -520,7 +523,7 @@ const convertItems = (ddbCharacter: DdbCharacter): AlchemyItem[] => {
       name: item.definition.name,
       quantity: item.quantity,
       weight: item.definition.weight,
-      description: cleanHtml(item.definition.description),
+      description: turndownService.turndown(item.definition.description),
       isEquipped: item.equipped,
       rarity: item.definition.rarity,
     }))
