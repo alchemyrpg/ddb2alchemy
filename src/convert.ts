@@ -112,7 +112,7 @@ const PROFICIENCY_BONUS = {
 // Convert a D&D Beyond character to an Alchemy character
 export const convertCharacter = (ddbCharacter: DdbCharacter): AlchemyCharacter => ({
   abilityScores: convertStatArray(ddbCharacter),
-  age: ddbCharacter.age.toString(),
+  ...(ddbCharacter.age) && { age: ddbCharacter.age.toString() },
   armorClass: getArmorClass(ddbCharacter),
   classes: convertClasses(ddbCharacter),
   currentHp: getCurrentHp(ddbCharacter),
@@ -134,12 +134,12 @@ export const convertCharacter = (ddbCharacter: DdbCharacter): AlchemyCharacter =
   skills: getSkills(ddbCharacter),
   skin: ddbCharacter.skin,
   speed: getSpeed(ddbCharacter),
-  spellFilters: [], // TODO
+  spellFilters: ["Known"],
   spells: [], // TODO
   spellSlots: [], // TODO
   systemKey: "5e",
   textBlocks: getTextBlocks(ddbCharacter), // TODO
-  weight: ddbCharacter.weight.toString(),
+  ...(ddbCharacter.weight) && { weight: ddbCharacter.weight.toString() },
 })
 
 // Request the D&D Beyond avatar at a higher resolution in 1:1 aspect ratio
