@@ -526,5 +526,9 @@ const convertItems = (ddbCharacter: DdbCharacter): AlchemyItem[] => {
       description: turndownService.turndown(item.definition.description),
       isEquipped: item.equipped,
       rarity: item.definition.rarity,
+      requiresAttunement: item.definition.canAttune,
+      ...(item.definition.largeAvatarUrl) && { imageUri: item.definition.largeAvatarUrl },
+      ...(item.definition.attunementDescription) && { attunementPrerequisites: item.definition.attunementDescription },
+      ...(item.definition.cost) && { cost: item.definition.cost.toString() },
     }))
 }

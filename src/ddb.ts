@@ -113,10 +113,19 @@ interface DdbItem {
     tags: string[],
     grantedModifiers: DdbModifier[],
     armorClass: number,
-    damageType: string,
     armorTypeId: DdbArmorType,
     weight: number,
     type: string,
+    damage: DdbDice,
+    damageType: string,
+    fixedDamage: number,
+    properties: DdbItemProperty[],
+    range: number,
+    longRange: number,
+    isCustomItem: boolean,
+    canAttune: boolean,
+    attunementDescription: string,
+    cost: number,
   }
   quantity: number,
   isAttuned: boolean,
@@ -133,6 +142,21 @@ export interface DdbModifier {
   friendlySubtypeName: string,
   friendlyTypeName: string,
   value: number,
+  dice: DdbDice
+}
+
+interface DdbDice {
+  diceCount: number,
+  diceValue: number,
+  diceMultiplier: number,
+  fixedValue: number,
+  diceString: string,
+}
+
+interface DdbItemProperty {
+  name: string,
+  description: string,
+  notes: string,
 }
 
 interface DdbClass {

@@ -52,9 +52,14 @@ interface AlchemyItem {
   weight: number,
   description?: string,
   rarity?: string,
+  subrarity?: string,
+  requiresAttunement?: Boolean,
+  attunementPrerequisites?: string,
   type?: string,
   isMagic?: Boolean,
-  spell?: AlchemySpell
+  spell?: AlchemySpell,
+  imageUri?: string,
+  cost?: string,
 }
 
 export interface AlchemyProficiency {
