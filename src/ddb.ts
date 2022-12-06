@@ -165,6 +165,7 @@ interface DdbClass {
     name: string,
     description: string,
     classFeatures: DdbClassFeature[],
+    canCastSpells: boolean,
   }
 }
 

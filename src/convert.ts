@@ -307,11 +307,13 @@ const getInitiativeBonus = (ddbCharacter: DdbCharacter): number => {
   return sumModifiers(ddbCharacter, { type: "bonus", subType: "initiative" })
 }
 
-// A character is a spellcaster if they have any race or class spells.
+// A character is a spellcaster if they have levels in a class that grants spellcasting
 const isSpellcaster = (ddbCharacter: DdbCharacter): boolean => {
-  if (ddbCharacter.spells.race.length > 0) return true
-  if (ddbCharacter.spells.class.length > 0) return true
-  return false
+  return ddbCharacter.classes
+    .map(ddbClass => ddbClass.definition)
+    .some(definition => definition.canCastSpells)
+}
+
 }
 
 // Convert proficiencies to Alchemy format.
