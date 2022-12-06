@@ -60,6 +60,7 @@ export interface DdbCharacter {
     class: DdbSpell[],
   }
   spellSlots: DdbSpellSlot[],
+  feats: DdbFeat[],
 }
 
 interface DdbStat {
@@ -295,3 +296,10 @@ interface DdbBackground {
 }
 
 export const DDB_SPEED_RE = /(\S+) speed (?:is|of) (\d+)/i
+
+interface DdbFeat {
+  definition: {
+    name: string,
+    description: string,
+  }
+}

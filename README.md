@@ -39,5 +39,5 @@ Currently, the converter works for these properties:
 - [x] Spells (SRD)
 - [x] Spells (Expansions & homebrew — partial support)
 - [x] Spell slots
-- [ ] Feats
+- [x] Feats
 - [x] Background, appearance, and other descriptive text
