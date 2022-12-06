@@ -1,5 +1,5 @@
-import { DdbArmorType, DdbModifier, DdbCharacter, DdbProficiencyType, DDB_SPEED_RE } from "./ddb"
-import { AlchemyCharacter, AlchemyStat, AlchemyClass, AlchemyProficiency, AlchemyMovementMode, AlchemyTextBlockSection, AlchemySkill, AlchemyItem } from "./alchemy"
+import { DdbArmorType, DdbModifier, DdbCharacter, DdbProficiencyType, DdbSpell, DdbSpellActivationType, DDB_SPEED_RE, DDB_SPELL_ACTIVATION_TYPE, DDB_SPELL_COMPONENT_TYPE } from "./ddb"
+import { AlchemyCharacter, AlchemyStat, AlchemyClass, AlchemyProficiency, AlchemyMovementMode, AlchemyTextBlockSection, AlchemySkill, AlchemyItem, AlchemySpellSlot, AlchemySpell, AlchemyDamage, AlchemySpellAtHigherLevel } from "./alchemy"
 
 // Shared between both platforms
 const STR = 1
@@ -128,6 +128,39 @@ const PROFICIENCY_BONUS = {
   19: 6,
   20: 6,
 }
+const MULTICLASS_SPELL_SLOTS = {
+  1: [2, 0, 0, 0, 0, 0, 0, 0, 0],
+  2: [3, 0, 0, 0, 0, 0, 0, 0, 0],
+  3: [4, 2, 0, 0, 0, 0, 0, 0, 0],
+  4: [4, 3, 0, 0, 0, 0, 0, 0, 0],
+  5: [4, 3, 2, 0, 0, 0, 0, 0, 0],
+  6: [4, 3, 3, 0, 0, 0, 0, 0, 0],
+  7: [4, 3, 3, 1, 0, 0, 0, 0, 0],
+  8: [4, 3, 3, 2, 0, 0, 0, 0, 0],
+  9: [4, 3, 3, 3, 1, 0, 0, 0, 0],
+  10: [4, 3, 3, 3, 2, 0, 0, 0, 0],
+  11: [4, 3, 3, 3, 2, 1, 0, 0, 0],
+  12: [4, 3, 3, 3, 2, 1, 0, 0, 0],
+  13: [4, 3, 3, 3, 2, 1, 1, 0, 0],
+  14: [4, 3, 3, 3, 2, 1, 1, 0, 0],
+  15: [4, 3, 3, 3, 2, 1, 1, 1, 0],
+  16: [4, 3, 3, 3, 2, 1, 1, 1, 0],
+  17: [4, 3, 3, 3, 2, 1, 1, 1, 1],
+  18: [4, 3, 3, 3, 3, 1, 1, 1, 1],
+  19: [4, 3, 3, 3, 3, 2, 1, 1, 1],
+  20: [4, 3, 3, 3, 3, 2, 2, 1, 1],
+}
+const CASTER_LEVEL_MULTIPLIER = {
+  "Bard": 1,
+  "Cleric": 1,
+  "Druid": 1,
+  "Sorcerer": 1,
+  "Warlock": 1,
+  "Wizard": 1,
+  "Artificer": 0.5,
+  "Paladin": 0.5,
+  "Ranger": 0.5,
+}
 
 // HTML to Markdown converter
 const turndownService = new TurndownService()
@@ -162,9 +195,10 @@ export const convertCharacter = (ddbCharacter: DdbCharacter): AlchemyCharacter =
   skills: getSkills(ddbCharacter),
   skin: ddbCharacter.skin,
   speed: getSpeed(ddbCharacter),
+  spellcastingAbility: getSpellcastingAbility(ddbCharacter),
   spellFilters: ["Known"],
-  spells: [], // TODO
-  spellSlots: [], // TODO
+  spells: convertSpells(ddbCharacter),
+  spellSlots: convertSpellSlots(ddbCharacter),
   systemKey: "5e",
   textBlocks: getTextBlocks(ddbCharacter), // TODO
   ...(ddbCharacter.weight) && { weight: ddbCharacter.weight.toString() },
@@ -307,11 +341,51 @@ const getInitiativeBonus = (ddbCharacter: DdbCharacter): number => {
   return sumModifiers(ddbCharacter, { type: "bonus", subType: "initiative" })
 }
 
-// A character is a spellcaster if they have any race or class spells.
+// A character is a spellcaster if they have levels in a class that grants spellcasting
 const isSpellcaster = (ddbCharacter: DdbCharacter): boolean => {
-  if (ddbCharacter.spells.race.length > 0) return true
-  if (ddbCharacter.spells.class.length > 0) return true
-  return false
+  return ddbCharacter.classes
+    .map(ddbClass => ddbClass.definition)
+    .some(definition => definition.canCastSpells)
+}
+
+// Use the spellcasting ability of the highest-leveled caster class
+const getSpellcastingAbility = (ddbCharacter: DdbCharacter): string => {
+  const casterClasses = ddbCharacter.classes
+    .filter(ddbClass => ddbClass.definition.canCastSpells)
+    .sort((a, b) => b.level - a.level)
+    .map(ddbClass => ddbClass.definition)
+
+  if (casterClasses.length === 0) return ""
+  return STATS[casterClasses[0].spellCastingAbilityId]
+}
+
+// Calculate the total spell slots and how many are used using 5E rules
+const convertSpellSlots = (ddbCharacter: DdbCharacter): AlchemySpellSlot[] => {
+  const isMultiCaster = ddbCharacter.classes.filter(ddbClass => ddbClass.definition.canCastSpells).length > 1
+
+  // Multiclass spellcaster: use the special table for calculating available slots
+  if (isMultiCaster) {
+    const multiClassCasterLevel = ddbCharacter.classes
+      .filter(ddbClass => ddbClass.definition.canCastSpells)
+      .map(ddbClass => CASTER_LEVEL_MULTIPLIER[ddbClass.definition.name] * ddbClass.level)
+      .reduce((total, level) => total + level, 0)
+    const availableSlots = MULTICLASS_SPELL_SLOTS[Math.floor(multiClassCasterLevel)]
+
+    return ddbCharacter.spellSlots.map((slot, level) => ({
+      remaining: availableSlots[level] - slot.used,
+      max: availableSlots[level],
+    }))
+  }
+
+  // Otherwise use the table for the spellcasting class to determine available slots
+  const casterClass = ddbCharacter.classes.find(ddbClass => ddbClass.definition.canCastSpells)
+  const availableSlots = casterClass.definition.spellRules.levelSpellSlots[casterClass.level]
+
+  // Count how many slots are used of available
+  return ddbCharacter.spellSlots.map((slot, level) => ({
+    remaining: availableSlots[level] - slot.used,
+    max: availableSlots[level]
+  }))
 }
 
 // Convert proficiencies to Alchemy format.
@@ -552,3 +626,128 @@ const convertItems = (ddbCharacter: DdbCharacter): AlchemyItem[] => {
       ...(item.definition.cost) && { cost: item.definition.cost.toString() },
     }))
 }
+
+// Convert all spells except those granted by items to Alchemy format
+const convertSpells = (ddbCharacter: DdbCharacter): AlchemySpell[] => {
+  return Object.entries(ddbCharacter.spells)
+    .filter(([origin, spells]) => origin !== "item" && spells)
+    .flatMap(([_origin, spells]) => spells)
+    .map(convertSpell)
+}
+
+// Convert a spell to Alchemy format
+const convertSpell = (ddbSpell: DdbSpell): AlchemySpell => {
+  const spell = ddbSpell.definition
+
+  // If the spell is in the SRD, let Alchemy populate its data
+  if (spell.sources.some(source => source.sourceId === 1)) return {
+    name: spell.name,
+  }
+
+  // Otherwise try to convert it to Alchemy format
+  const damage = convertSpellDamage(ddbSpell)
+  return {
+    name: spell.name,
+    level: spell.level,
+    materials: spell.componentsDescription,
+    description: turndownService.turndown(spell.description),
+    school: spell.school,
+    canCastAtHigherLevel: spell.canCastAtHigherLevel,
+    castingTime: convertSpellCastingTime(ddbSpell),
+    components: spell.components.map(c => DDB_SPELL_COMPONENT_TYPE[c][0]),
+    duration: convertSpellDuration(ddbSpell),
+    requiresConcentration: spell.concentration,
+    canBeCastAsRitual: spell.ritual,
+    rollsAttack: spell.requiresAttackRoll,
+    range: convertSpellRange(ddbSpell),
+    tags: [],
+    ...(spell.requiresSavingThrow) && { savingThrow: { ability: STATS[spell.saveDcAbilityId] } },
+    ...(damage.length) && { damage },
+  }
+}
+
+// Generate a spell's casting time as a string, e.g. "1 action" or "10 minutes"
+const convertSpellCastingTime = (ddbSpell: DdbSpell): string => {
+  const spell = ddbSpell.definition
+  switch (spell.activation.activationType) {
+    case DdbSpellActivationType.Action:
+    case DdbSpellActivationType.BonusAction:
+    case DdbSpellActivationType.Reaction:
+      return `1 ${DDB_SPELL_ACTIVATION_TYPE[spell.activation.activationType]}`
+    case DdbSpellActivationType.Minute:
+    case DdbSpellActivationType.Hour:
+    case DdbSpellActivationType.Day:
+    case DdbSpellActivationType.LegendaryAction:
+    case DdbSpellActivationType.LairAction:
+      const s = spell.activation.activationTime > 1 ? "s" : ""
+      return `${spell.activation.activationTime} ${DDB_SPELL_ACTIVATION_TYPE[spell.activation.activationType]}${s}`
+    default:
+      return ""
+  }
+}
+
+// Generate a spell's duration as a string, e.g. "up to 6 hours" or "Instantaneous"
+const convertSpellDuration = (ddbSpell: DdbSpell): string => {
+  const spell = ddbSpell.definition
+  if (spell.duration.durationType == "Instantaneous") {
+    return "Instantaneous"
+  }
+  const s = spell.duration.durationInterval > 1 ? "s" : ""
+  const upto = (
+    spell.duration.durationType == "UntilDispelled" ||
+    spell.duration.durationType == "Concentration") ? "Up to " : ""
+  return `${upto}${spell.duration.durationInterval} ${spell.duration.durationUnit}${s}`
+}
+
+// Generate a spell's range as a string, e.g. "60 ft." or "Self"
+const convertSpellRange = (ddbSpell: DdbSpell): string => {
+  const spell = ddbSpell.definition
+  if (spell.range.rangeValue) return `${spell.range.rangeValue} ft.`
+  return spell.range.origin
+}
+
+// Convert a spell's damage to Alchemy format
+const convertSpellDamage = (ddbSpell: DdbSpell): AlchemyDamage[] => {
+  return ddbSpell.definition.modifiers
+    .filter(modifier => modifier.type == "damage")
+    .map(modifier => ({
+      type: modifier.friendlySubtypeName,
+      dice: `${modifier.die.diceCount}d${modifier.die.diceValue}`,
+      bonus: modifier.die.fixedValue,
+    }))
+}
+
+// Convert a spell's damage at higher levels to Alchemy format
+/*
+const convertSpellHigherLevels = (ddbSpell: DdbSpell): AlchemySpellAtHigherLevel[] => {
+  try {
+    switch (ddbSpell.definition.atHigherLevels.scaleType) {
+      case "characterLevel":
+        return ddbSpell.definition.modifiers.map(modifier => ({
+          applyAtLevels: modifier.atHigherLevels.higherLevelDefinitions.map(def => def.level),
+          damage: {
+            dice: `1d${modifier.atHigherLevels.higherLevelDefinitions[0].dice.diceValue}`,
+            bonus: modifier.atHigherLevels.higherLevelDefinitions[0].dice.fixedValue,
+            type: modifier.friendlySubtypeName,
+          },
+          type: "at-character-level"
+        }))
+      case "spellscale":
+        return ddbSpell.definition.modifiers.map(modifier => ({
+          applyAtLevels: ddbSpell.definition.atHigherLevels.higherLevelDefinitions.map(def => def.level + ddbSpell.definition.level),
+          damage: {
+            dice: `1d${modifier.atHigherLevels.higherLevelDefinitions[0].dice.diceValue}`,
+            bonus: modifier.atHigherLevels.higherLevelDefinitions[0].dice.fixedValue,
+            type: modifier.friendlySubtypeName,
+          },
+          type: "spell-level"
+        }))
+      default:
+        return []
+    }
+  }
+  catch(TypeError) {
+    return []
+  }
+}
+*/

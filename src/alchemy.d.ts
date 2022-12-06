@@ -28,6 +28,7 @@ export interface AlchemyCharacter {
   skin?: string,
   speed: number,
   systemKey: string,
+  spellcastingAbility: string,
   spellFilters: string[],
   spellSlots: AlchemySpellSlot[],
   spells: AlchemySpell[],
@@ -80,16 +81,21 @@ interface AlchemySpellSlot {
   remaining: number,
 }
 
-type SpellComponent = "V" | "S" | "M"
+type AlchemySpell = AlchemySrdSpell | AlchemyCustomSpell
 
-interface AlchemySpell {
+interface AlchemySrdSpell {
+  name: string,
+}
+
+interface AlchemyCustomSpell {
   name: string,
   level: number,
   school: string,
   canCastAtHigherLevel: Boolean,
   castingTime: string,
-  components: SpellComponent[],
+  components: string[],
   duration: string,
+  damage?: AlchemyDamage[],
   higherLevelDescription: string,
   higherLevels: AlchemySpellAtHigherLevel[],
   range: string,
@@ -98,6 +104,8 @@ interface AlchemySpell {
   tags: string[],
   description: string,
   materials: string,
+  requiresConcentration?: Boolean,
+  canBeCastAsRitual?: Boolean,
 }
 
 interface AlchemySpellAtHigherLevel {
@@ -107,6 +115,7 @@ interface AlchemySpellAtHigherLevel {
 }
 
 interface AlchemyDamage {
+  bonus?: number,
   dice: string,
   type: string,
 }
