@@ -1,5 +1,5 @@
-import { DdbArmorType, DdbModifier, DdbCharacter, DdbProficiencyType, DdbSpell, DdbSpellActivationType, DDB_SPEED_IS_RE, DDB_SPEED_EQUALS_RE, DDB_SPELL_ACTIVATION_TYPE, DDB_SPELL_COMPONENT_TYPE } from "./ddb"
-import { AlchemyCharacter, AlchemyStat, AlchemyClass, AlchemyProficiency, AlchemyMovementMode, AlchemyTextBlockSection, AlchemySkill, AlchemyItem, AlchemySpellSlot, AlchemySpell, AlchemyDamage, AlchemySpellAtHigherLevel } from "./alchemy"
+import { DdbArmorType, DdbModifier, DdbCharacter, DdbEntityType, DdbActivationType, DDB_ACTIVATION_TYPE, DdbItem, DdbNoteTypeId, DdbStatType, DdbAttackType, DdbAction, DDB_WEAPON_CATEGORY, DdbSpell, DDB_SPEED_IS_RE, DDB_SPEED_EQUALS_RE, DDB_SPELL_COMPONENT_TYPE } from "./ddb"
+import { AlchemyCharacter, AlchemyStat, AlchemyClass, AlchemyProficiency, AlchemyMovementMode, AlchemyTextBlockSection, AlchemySkill, AlchemyItem, AlchemySpellSlot, AlchemySpell, AlchemyAction, AlchemyDiceRoll } from "./alchemy"
 import TurndownService from 'turndown'
 import * as turndownPluginGfm from 'turndown-plugin-gfm'
 
@@ -427,7 +427,7 @@ const convertProficiencies = (ddbCharacter: DdbCharacter): AlchemyProficiency[] 
   // weapons
   proficiencies.push(
     getModifiers(ddbCharacter, { type: "proficiency" })
-      .filter(modifier => modifier.entityTypeId === DdbProficiencyType.Weapon)
+      .filter(modifier => modifier.entityTypeId === DdbEntityType.Weapon)
       .map(modifier => ({
         name: modifier.friendlySubtypeName,
         type: "weapon",
@@ -437,7 +437,7 @@ const convertProficiencies = (ddbCharacter: DdbCharacter): AlchemyProficiency[] 
   // tools
   proficiencies.push(
     getModifiers(ddbCharacter, { type: "proficiency" })
-      .filter(modifier => modifier.entityTypeId === DdbProficiencyType.Tool)
+      .filter(modifier => modifier.entityTypeId === DdbEntityType.Tool)
       .map(modifier => ({
         name: modifier.friendlySubtypeName,
         type: "tool",
@@ -447,7 +447,7 @@ const convertProficiencies = (ddbCharacter: DdbCharacter): AlchemyProficiency[] 
   // armor
   proficiencies.push(
     getModifiers(ddbCharacter, { type: "proficiency" })
-      .filter(modifier => modifier.entityTypeId === DdbProficiencyType.Armor)
+      .filter(modifier => modifier.entityTypeId === DdbEntityType.Armor)
       .map(modifier => ({
         name: modifier.friendlySubtypeName,
         type: "armor",
@@ -463,7 +463,7 @@ const getSkills = (ddbCharacter: DdbCharacter): AlchemySkill[] => {
   const expertise = getModifiers(ddbCharacter, { type: "expertise" })
     .map(modifier => modifier.friendlySubtypeName)
   const proficient = getModifiers(ddbCharacter, { type: "proficiency" })
-    .filter(modifier => modifier.entityTypeId === DdbProficiencyType.Skill)
+    .filter(modifier => modifier.entityTypeId === DdbEntityType.Skill)
     .map(modifier => modifier.friendlySubtypeName)
 
   // Get all skills and set proficiency/expertise accordingly
@@ -735,17 +735,14 @@ const convertSpell = (ddbSpell: DdbSpell): AlchemySpell => {
 const convertSpellCastingTime = (ddbSpell: DdbSpell): string => {
   const spell = ddbSpell.definition
   switch (spell.activation.activationType) {
-    case DdbSpellActivationType.Action:
-    case DdbSpellActivationType.BonusAction:
-    case DdbSpellActivationType.Reaction:
-      return `1 ${DDB_SPELL_ACTIVATION_TYPE[spell.activation.activationType]}`
-    case DdbSpellActivationType.Minute:
-    case DdbSpellActivationType.Hour:
-    case DdbSpellActivationType.Day:
-    case DdbSpellActivationType.LegendaryAction:
-    case DdbSpellActivationType.LairAction:
+    case DdbActivationType.Action:
+    case DdbActivationType.BonusAction:
+    case DdbActivationType.Reaction:
+      return `1 ${DDB_ACTIVATION_TYPE[spell.activation.activationType]}`
+    case DdbActivationType.Minute:
+    case DdbActivationType.Day:
       const s = spell.activation.activationTime > 1 ? "s" : ""
-      return `${spell.activation.activationTime} ${DDB_SPELL_ACTIVATION_TYPE[spell.activation.activationType]}${s}`
+      return `${spell.activation.activationTime} ${DDB_ACTIVATION_TYPE[spell.activation.activationType]}${s}`
     default:
       return ""
   }
@@ -772,14 +769,18 @@ const convertSpellRange = (ddbSpell: DdbSpell): string => {
 }
 
 // Convert a spell's damage to Alchemy format
-const convertSpellDamage = (ddbSpell: DdbSpell): AlchemyDamage[] => {
+const convertSpellDamage = (ddbSpell: DdbSpell): AlchemyDiceRoll[] => {
   return ddbSpell.definition.modifiers
     .filter(modifier => modifier.type == "damage")
-    .map(modifier => ({
-      type: modifier.friendlySubtypeName,
-      dice: `${modifier.die.diceCount}d${modifier.die.diceValue}`,
-      bonus: modifier.die.fixedValue,
-    }))
+    .map(modifier => {
+      const dice = modifier.die || modifier.dice
+
+      return {
+        type: modifier.friendlySubtypeName,
+        dice: `${dice.diceCount}d${dice.diceValue}`,
+        bonus: dice.fixedValue,
+      }
+    })
 }
 
 // Convert a spell's damage at higher levels to Alchemy format

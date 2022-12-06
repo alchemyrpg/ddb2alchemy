@@ -1,5 +1,6 @@
 export interface AlchemyCharacter {
   abilityScores: AlchemyStat[],
+  actions?: AlchemyAction[],
   age?: string,
   armorClass: number,
   copper?: number,
@@ -95,7 +96,7 @@ interface AlchemyCustomSpell {
   castingTime: string,
   components: string[],
   duration: string,
-  damage?: AlchemyDamage[],
+  damage?: AlchemyDiceRoll[],
   higherLevelDescription: string,
   higherLevels: AlchemySpellAtHigherLevel[],
   range: string,
@@ -110,13 +111,7 @@ interface AlchemyCustomSpell {
 
 interface AlchemySpellAtHigherLevel {
   applyAtLevels: number[],
-  damage: AlchemyDamage,
-  type: string,
-}
-
-interface AlchemyDamage {
-  bonus?: number,
-  dice: string,
+  damage: AlchemyDiceRoll,
   type: string,
 }
 
@@ -137,4 +132,50 @@ interface AlchemyTextBlockSection {
 interface AlchemyMovementMode {
   mode: string,
   distance: number,
+}
+
+interface AlchemyAction {
+  name: string,
+  description: string,
+  sortOrder?: number,
+  steps: AlchemyActionStep[],
+}
+
+interface AlchemyActionStep {
+  type: string,
+  journalCommand?: AlchemyActionStepJournalCommand,
+  diceRoll?: AlchemyDiceRoll[],
+  attack?: AlchemyAttack,
+  skillCheck?: AlchemySkillCheck,
+}
+
+interface AlchemyActionStepJournalCommand {
+  command: string,
+  args: string,
+}
+
+interface AlchemyDiceRoll {
+  abilityName?: string,
+  bonus?: number,
+  dice: string,
+  type: string,
+}
+
+interface AlchemyAttack {
+  ability: string,
+  bonus?: number,
+  crit: number,
+  damageRolls: AlchemyDiceRoll[],
+  isProficient: boolean,
+  isRanged: boolean,
+  name: string,
+  range?: number,
+  longRange?: number,
+  rollsAttack?: boolean,
+  savingThrow?: AlchemySavingThrow,
+}
+
+interface AlchemySkillCheck {
+  skillName: string,
+  rollModifier: string,
 }
