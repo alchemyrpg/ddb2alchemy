@@ -200,7 +200,7 @@ export const convertCharacter = (ddbCharacter: DdbCharacter): AlchemyCharacter =
   spells: convertSpells(ddbCharacter),
   spellSlots: convertSpellSlots(ddbCharacter),
   systemKey: "5e",
-  textBlocks: getTextBlocks(ddbCharacter), // TODO
+  textBlocks: getTextBlocks(ddbCharacter),
   ...(ddbCharacter.weight) && { weight: ddbCharacter.weight.toString() },
 })
 
@@ -508,7 +508,7 @@ const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] =>
       .sort((a, b) => a.displayOrder - b.displayOrder)
       .map(feature => ({
         title: feature.name,
-        body: cleanHtml(feature.description),
+        body: turndownService.turndown(feature.description),
       }))
   })
 
@@ -519,13 +519,17 @@ const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] =>
       .sort((a, b) => a.definition.displayOrder - b.definition.displayOrder)
       .map(trait => ({
         title: trait.definition.name,
-        body: cleanHtml(trait.definition.description),
+        body: turndownService.turndown(trait.definition.description),
       }))
   })
 
   // feats
   textBlocks.push({
     title: "Feats",
+    textBlocks: ddbCharacter.feats.map(feat => ({
+      title: feat.definition.name,
+      body: turndownService.turndown(feat.definition.description),
+    }))
   })
 
   // background
@@ -533,7 +537,7 @@ const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] =>
     title: "Background",
     textBlocks: [{
       title: ddbCharacter.background.definition.name,
-      body: cleanHtml(ddbCharacter.background.definition.description),
+      body: turndownService.turndown(ddbCharacter.background.definition.description),
     }]
   })
 
@@ -543,19 +547,19 @@ const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] =>
     textBlocks: [
       {
         title: "Personality Traits",
-        body: cleanHtml(ddbCharacter.traits.personalityTraits),
+        body: turndownService.turndown(ddbCharacter.traits.personalityTraits),
       },
       {
         title: "Ideals",
-        body: cleanHtml(ddbCharacter.traits.ideals),
+        body: turndownService.turndown(ddbCharacter.traits.ideals),
       },
       {
         title: "Bonds",
-        body: cleanHtml(ddbCharacter.traits.bonds),
+        body: turndownService.turndown(ddbCharacter.traits.bonds),
       },
       {
         title: "Flaws",
-        body: cleanHtml(ddbCharacter.traits.flaws),
+        body: turndownService.turndown(ddbCharacter.traits.flaws),
       },
     ]
   })
@@ -564,23 +568,26 @@ const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] =>
   textBlocks.push({
     title: "Appearance",
     textBlocks: [{
-      body: cleanHtml(ddbCharacter.traits.appearance),
+      body: turndownService.turndown(ddbCharacter.traits.appearance),
     }]
   })
 
   // organizations
   textBlocks.push({
     title: "Organizations",
-    textBlocks: [{
-      body: cleanHtml(ddbCharacter.notes.organizations),
-    }]
+    textBlocks: cleanHtml(ddbCharacter.notes.organizations)
+      .split("\n\n")
+      .map(org => ({
+        body: org,
+        title: org,
+      }))
   })
 
   // backstory
   textBlocks.push({
     title: "Backstory",
     textBlocks: [{
-      body: cleanHtml(ddbCharacter.notes.backstory),
+      body: turndownService.turndown(ddbCharacter.notes.backstory),
     }]
   })
 
@@ -588,7 +595,7 @@ const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] =>
   textBlocks.push({
     title: "Allies",
     textBlocks: [{
-      body: cleanHtml(ddbCharacter.notes.allies),
+      body: turndownService.turndown(ddbCharacter.notes.allies),
     }]
   })
 
@@ -596,7 +603,7 @@ const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] =>
   textBlocks.push({
     title: "Enemies",
     textBlocks: [{
-      body: cleanHtml(ddbCharacter.notes.enemies),
+      body: turndownService.turndown(ddbCharacter.notes.enemies),
     }]
   })
 
@@ -604,7 +611,7 @@ const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] =>
   textBlocks.push({
     title: "Other",
     textBlocks: [{
-      body: cleanHtml(ddbCharacter.notes.otherNotes),
+      body: turndownService.turndown(ddbCharacter.notes.otherNotes),
     }]
   })
 
