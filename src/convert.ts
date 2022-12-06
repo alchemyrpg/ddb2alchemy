@@ -379,6 +379,7 @@ const convertSpellSlots = (ddbCharacter: DdbCharacter): AlchemySpellSlot[] => {
 
   // Otherwise use the table for the spellcasting class to determine available slots
   const casterClass = ddbCharacter.classes.find(ddbClass => ddbClass.definition.canCastSpells)
+  if (!casterClass) return []
   const availableSlots = casterClass.definition.spellRules.levelSpellSlots[casterClass.level]
 
   // Count how many slots are used of available
