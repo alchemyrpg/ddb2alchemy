@@ -1,5 +1,5 @@
 import { DdbArmorType, DdbModifier, DdbCharacter, DdbProficiencyType, DDB_SPEED_RE } from "./ddb"
-import { AlchemyCharacter, AlchemyStat, AlchemyClass, AlchemyProficiency, AlchemyMovementMode, AlchemyTextBlockSection, AlchemySkill, AlchemyItem } from "./alchemy"
+import { AlchemyCharacter, AlchemyStat, AlchemyClass, AlchemyProficiency, AlchemyMovementMode, AlchemyTextBlockSection, AlchemySkill, AlchemyItem, AlchemySpellSlot } from "./alchemy"
 
 // Shared between both platforms
 const STR = 1
@@ -128,6 +128,39 @@ const PROFICIENCY_BONUS = {
   19: 6,
   20: 6,
 }
+const MULTICLASS_SPELL_SLOTS = {
+  1: [2, 0, 0, 0, 0, 0, 0, 0, 0],
+  2: [3, 0, 0, 0, 0, 0, 0, 0, 0],
+  3: [4, 2, 0, 0, 0, 0, 0, 0, 0],
+  4: [4, 3, 0, 0, 0, 0, 0, 0, 0],
+  5: [4, 3, 2, 0, 0, 0, 0, 0, 0],
+  6: [4, 3, 3, 0, 0, 0, 0, 0, 0],
+  7: [4, 3, 3, 1, 0, 0, 0, 0, 0],
+  8: [4, 3, 3, 2, 0, 0, 0, 0, 0],
+  9: [4, 3, 3, 3, 1, 0, 0, 0, 0],
+  10: [4, 3, 3, 3, 2, 0, 0, 0, 0],
+  11: [4, 3, 3, 3, 2, 1, 0, 0, 0],
+  12: [4, 3, 3, 3, 2, 1, 0, 0, 0],
+  13: [4, 3, 3, 3, 2, 1, 1, 0, 0],
+  14: [4, 3, 3, 3, 2, 1, 1, 0, 0],
+  15: [4, 3, 3, 3, 2, 1, 1, 1, 0],
+  16: [4, 3, 3, 3, 2, 1, 1, 1, 0],
+  17: [4, 3, 3, 3, 2, 1, 1, 1, 1],
+  18: [4, 3, 3, 3, 3, 1, 1, 1, 1],
+  19: [4, 3, 3, 3, 3, 2, 1, 1, 1],
+  20: [4, 3, 3, 3, 3, 2, 2, 1, 1],
+}
+const CASTER_LEVEL_MULTIPLIER = {
+  "Bard": 1,
+  "Cleric": 1,
+  "Druid": 1,
+  "Sorcerer": 1,
+  "Warlock": 1,
+  "Wizard": 1,
+  "Artificer": 0.5,
+  "Paladin": 0.5,
+  "Ranger": 0.5,
+}
 
 // HTML to Markdown converter
 const turndownService = new TurndownService()
@@ -165,7 +198,7 @@ export const convertCharacter = (ddbCharacter: DdbCharacter): AlchemyCharacter =
   spellcastingAbility: getSpellcastingAbility(ddbCharacter),
   spellFilters: ["Known"],
   spells: [], // TODO
-  spellSlots: [], // TODO
+  spellSlots: convertSpellSlots(ddbCharacter),
   systemKey: "5e",
   textBlocks: getTextBlocks(ddbCharacter), // TODO
   ...(ddbCharacter.weight) && { weight: ddbCharacter.weight.toString() },
@@ -323,7 +356,36 @@ const getSpellcastingAbility = (ddbCharacter: DdbCharacter): string => {
     .map(ddbClass => ddbClass.definition)
 
   if (casterClasses.length === 0) return ""
-  return STAT_NAMES[casterClasses[0].spellCastingAbilityId]
+  return STATS[casterClasses[0].spellCastingAbilityId]
+}
+
+// Calculate the total spell slots and how many are used using 5E rules
+const convertSpellSlots = (ddbCharacter: DdbCharacter): AlchemySpellSlot[] => {
+  const isMultiCaster = ddbCharacter.classes.filter(ddbClass => ddbClass.definition.canCastSpells).length > 1
+
+  // Multiclass spellcaster: use the special table for calculating available slots
+  if (isMultiCaster) {
+    const multiClassCasterLevel = ddbCharacter.classes
+      .filter(ddbClass => ddbClass.definition.canCastSpells)
+      .map(ddbClass => CASTER_LEVEL_MULTIPLIER[ddbClass.definition.name] * ddbClass.level)
+      .reduce((total, level) => total + level, 0)
+    const availableSlots = MULTICLASS_SPELL_SLOTS[Math.floor(multiClassCasterLevel)]
+
+    return ddbCharacter.spellSlots.map((slot, level) => ({
+      remaining: availableSlots[level] - slot.used,
+      max: availableSlots[level],
+    }))
+  }
+
+  // Otherwise use the table for the spellcasting class to determine available slots
+  const casterClass = ddbCharacter.classes.find(ddbClass => ddbClass.definition.canCastSpells)
+  const availableSlots = casterClass.definition.spellRules.levelSpellSlots[casterClass.level]
+
+  // Count how many slots are used of available
+  return ddbCharacter.spellSlots.map((slot, level) => ({
+    remaining: availableSlots[level] - slot.used,
+    max: availableSlots[level]
+  }))
 }
 
 // Convert proficiencies to Alchemy format.

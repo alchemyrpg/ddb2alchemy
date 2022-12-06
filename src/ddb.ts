@@ -59,6 +59,7 @@ export interface DdbCharacter {
     race: DdbSpell[],
     class: DdbSpell[],
   }
+  spellSlots: DdbSpellSlot[],
 }
 
 interface DdbStat {
@@ -167,6 +168,9 @@ interface DdbClass {
     classFeatures: DdbClassFeature[],
     spellCastingAbilityId: DdbStatType,
     canCastSpells: boolean,
+    spellRules: {
+      levelSpellSlots: number[][],
+    }
   }
 }
 
@@ -182,6 +186,12 @@ interface DdbSpell {
     name: string,
     description: string,
   }
+}
+
+interface DdbSpellSlot {
+  level: number,
+  used: number,
+  available: number,
 }
 
 interface DdbTrait {

@@ -20,6 +20,7 @@
 ## Functionality
 Currently, the converter works for these properties:
 - [x] Ability scores
+- [ ] Actions
 - [x] Age, height, weight, eyes, hair, skin
 - [x] Armor class
 - [x] Classes (names and levels only)
@@ -37,6 +38,6 @@ Currently, the converter works for these properties:
 - [x] Skills
 - [ ] Spells (SRD)
 - [ ] Spells (Expansions & homebrew)
-- [ ] Spell slots
+- [x] Spell slots
 - [ ] Feats
 - [x] Background, appearance, and other descriptive text
