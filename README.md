@@ -36,8 +36,8 @@ Currently, the converter works for these properties:
 - [x] Proficiencies (weapon, armor, language, save, tool)
 - [x] Race
 - [x] Skills
-- [ ] Spells (SRD)
-- [ ] Spells (Expansions & homebrew)
+- [x] Spells (SRD)
+- [x] Spells (Expansions & homebrew — partial support)
 - [x] Spell slots
 - [ ] Feats
 - [x] Background, appearance, and other descriptive text

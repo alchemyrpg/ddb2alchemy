@@ -117,7 +117,7 @@ interface DdbItem {
     armorTypeId: DdbArmorType,
     weight: number,
     type: string,
-    damage: DdbDice,
+    damage: DdbDie,
     damageType: string,
     fixedDamage: number,
     properties: DdbItemProperty[],
@@ -143,10 +143,15 @@ export interface DdbModifier {
   friendlySubtypeName: string,
   friendlyTypeName: string,
   value: number,
-  dice: DdbDice
+  dice: DdbDie[],
+  die: DdbDie,
+  atHigherLevels: {
+    scaleType: string,
+    higherLevelDefinitions: DdbHigherLevelDefinition[],
+  }
 }
 
-interface DdbDice {
+interface DdbDie {
   diceCount: number,
   diceValue: number,
   diceMultiplier: number,
@@ -181,11 +186,91 @@ interface DdbClassFeature {
   displayOrder: number,
 }
 
-interface DdbSpell {
+export interface DdbSpell {
   definition: {
     name: string,
     description: string,
+    level: number,
+    school: string,
+    duration: {
+      durationInterval: number,
+      durationUnit: string,
+      durationType: string,
+    },
+    activation: {
+      activationTime: number,
+      activationType: DdbSpellActivationType,
+    },
+    range: {
+      rangeValue: number,
+      origin: string,
+    },
+    concentration: boolean,
+    ritual: boolean,
+    components: DdbSpellComponentType[],
+    componentsDescription: string,
+    canCastAtHigherLevel: boolean,
+    atHigherLevels: {
+      scaleType: string,
+      higherLevelDefinitions: DdbHigherLevelDefinition[],
+    },
+    sources: DdbSource[],
+    requiresAttackRoll: boolean,
+    requiresSavingThrow: boolean,
+    saveDcAbilityId: DdbStatType,
+    modifiers: DdbModifier[],
   }
+}
+
+export const DDB_SPELL_ACTIVATION_TYPE = {
+  1: 'Action',
+  2: 'Bonus Action',
+  3: 'Reaction',
+  4: 'Minute',
+  5: 'Hour',
+  6: 'Day',
+  7: 'Special',
+  8: 'Legendary Action',
+  9: 'Lair Action',
+  10: 'None',
+}
+
+interface DdbSource {
+  sourceId: number,
+  pageNumber: number,
+  sourceType: number
+}
+
+export enum DdbSpellActivationType {
+  Action = 1,
+  BonusAction,
+  Reaction,
+  Minute,
+  Hour,
+  Day,
+  Special,
+  LegendaryAction,
+  LairAction,
+  None,
+}
+
+export const DDB_SPELL_COMPONENT_TYPE = {
+  1: 'Verbal',
+  2: 'Somatic',
+  3: 'Material',
+}
+
+enum DdbSpellComponentType {
+  Verbal = 1,
+  Somatic,
+  Material,
+}
+
+interface DdbHigherLevelDefinition {
+  level: number,
+  details: string,
+  dice: DdbDie,
+  value: number,
 }
 
 interface DdbSpellSlot {

@@ -1,5 +1,5 @@
-import { DdbArmorType, DdbModifier, DdbCharacter, DdbProficiencyType, DDB_SPEED_RE } from "./ddb"
-import { AlchemyCharacter, AlchemyStat, AlchemyClass, AlchemyProficiency, AlchemyMovementMode, AlchemyTextBlockSection, AlchemySkill, AlchemyItem, AlchemySpellSlot } from "./alchemy"
+import { DdbArmorType, DdbModifier, DdbCharacter, DdbProficiencyType, DdbSpell, DdbSpellActivationType, DDB_SPEED_RE, DDB_SPELL_ACTIVATION_TYPE, DDB_SPELL_COMPONENT_TYPE } from "./ddb"
+import { AlchemyCharacter, AlchemyStat, AlchemyClass, AlchemyProficiency, AlchemyMovementMode, AlchemyTextBlockSection, AlchemySkill, AlchemyItem, AlchemySpellSlot, AlchemySpell, AlchemyDamage, AlchemySpellAtHigherLevel } from "./alchemy"
 
 // Shared between both platforms
 const STR = 1
@@ -197,7 +197,7 @@ export const convertCharacter = (ddbCharacter: DdbCharacter): AlchemyCharacter =
   speed: getSpeed(ddbCharacter),
   spellcastingAbility: getSpellcastingAbility(ddbCharacter),
   spellFilters: ["Known"],
-  spells: [], // TODO
+  spells: convertSpells(ddbCharacter),
   spellSlots: convertSpellSlots(ddbCharacter),
   systemKey: "5e",
   textBlocks: getTextBlocks(ddbCharacter), // TODO
@@ -626,3 +626,128 @@ const convertItems = (ddbCharacter: DdbCharacter): AlchemyItem[] => {
       ...(item.definition.cost) && { cost: item.definition.cost.toString() },
     }))
 }
+
+// Convert all spells except those granted by items to Alchemy format
+const convertSpells = (ddbCharacter: DdbCharacter): AlchemySpell[] => {
+  return Object.entries(ddbCharacter.spells)
+    .filter(([origin, spells]) => origin !== "item" && spells)
+    .flatMap(([_origin, spells]) => spells)
+    .map(convertSpell)
+}
+
+// Convert a spell to Alchemy format
+const convertSpell = (ddbSpell: DdbSpell): AlchemySpell => {
+  const spell = ddbSpell.definition
+
+  // If the spell is in the SRD, let Alchemy populate its data
+  if (spell.sources.some(source => source.sourceId === 1)) return {
+    name: spell.name,
+  }
+
+  // Otherwise try to convert it to Alchemy format
+  const damage = convertSpellDamage(ddbSpell)
+  return {
+    name: spell.name,
+    level: spell.level,
+    materials: spell.componentsDescription,
+    description: turndownService.turndown(spell.description),
+    school: spell.school,
+    canCastAtHigherLevel: spell.canCastAtHigherLevel,
+    castingTime: convertSpellCastingTime(ddbSpell),
+    components: spell.components.map(c => DDB_SPELL_COMPONENT_TYPE[c][0]),
+    duration: convertSpellDuration(ddbSpell),
+    requiresConcentration: spell.concentration,
+    canBeCastAsRitual: spell.ritual,
+    rollsAttack: spell.requiresAttackRoll,
+    range: convertSpellRange(ddbSpell),
+    tags: [],
+    ...(spell.requiresSavingThrow) && { savingThrow: { ability: STATS[spell.saveDcAbilityId] } },
+    ...(damage.length) && { damage },
+  }
+}
+
+// Generate a spell's casting time as a string, e.g. "1 action" or "10 minutes"
+const convertSpellCastingTime = (ddbSpell: DdbSpell): string => {
+  const spell = ddbSpell.definition
+  switch (spell.activation.activationType) {
+    case DdbSpellActivationType.Action:
+    case DdbSpellActivationType.BonusAction:
+    case DdbSpellActivationType.Reaction:
+      return `1 ${DDB_SPELL_ACTIVATION_TYPE[spell.activation.activationType]}`
+    case DdbSpellActivationType.Minute:
+    case DdbSpellActivationType.Hour:
+    case DdbSpellActivationType.Day:
+    case DdbSpellActivationType.LegendaryAction:
+    case DdbSpellActivationType.LairAction:
+      const s = spell.activation.activationTime > 1 ? "s" : ""
+      return `${spell.activation.activationTime} ${DDB_SPELL_ACTIVATION_TYPE[spell.activation.activationType]}${s}`
+    default:
+      return ""
+  }
+}
+
+// Generate a spell's duration as a string, e.g. "up to 6 hours" or "Instantaneous"
+const convertSpellDuration = (ddbSpell: DdbSpell): string => {
+  const spell = ddbSpell.definition
+  if (spell.duration.durationType == "Instantaneous") {
+    return "Instantaneous"
+  }
+  const s = spell.duration.durationInterval > 1 ? "s" : ""
+  const upto = (
+    spell.duration.durationType == "UntilDispelled" ||
+    spell.duration.durationType == "Concentration") ? "Up to " : ""
+  return `${upto}${spell.duration.durationInterval} ${spell.duration.durationUnit}${s}`
+}
+
+// Generate a spell's range as a string, e.g. "60 ft." or "Self"
+const convertSpellRange = (ddbSpell: DdbSpell): string => {
+  const spell = ddbSpell.definition
+  if (spell.range.rangeValue) return `${spell.range.rangeValue} ft.`
+  return spell.range.origin
+}
+
+// Convert a spell's damage to Alchemy format
+const convertSpellDamage = (ddbSpell: DdbSpell): AlchemyDamage[] => {
+  return ddbSpell.definition.modifiers
+    .filter(modifier => modifier.type == "damage")
+    .map(modifier => ({
+      type: modifier.friendlySubtypeName,
+      dice: `${modifier.die.diceCount}d${modifier.die.diceValue}`,
+      bonus: modifier.die.fixedValue,
+    }))
+}
+
+// Convert a spell's damage at higher levels to Alchemy format
+/*
+const convertSpellHigherLevels = (ddbSpell: DdbSpell): AlchemySpellAtHigherLevel[] => {
+  try {
+    switch (ddbSpell.definition.atHigherLevels.scaleType) {
+      case "characterLevel":
+        return ddbSpell.definition.modifiers.map(modifier => ({
+          applyAtLevels: modifier.atHigherLevels.higherLevelDefinitions.map(def => def.level),
+          damage: {
+            dice: `1d${modifier.atHigherLevels.higherLevelDefinitions[0].dice.diceValue}`,
+            bonus: modifier.atHigherLevels.higherLevelDefinitions[0].dice.fixedValue,
+            type: modifier.friendlySubtypeName,
+          },
+          type: "at-character-level"
+        }))
+      case "spellscale":
+        return ddbSpell.definition.modifiers.map(modifier => ({
+          applyAtLevels: ddbSpell.definition.atHigherLevels.higherLevelDefinitions.map(def => def.level + ddbSpell.definition.level),
+          damage: {
+            dice: `1d${modifier.atHigherLevels.higherLevelDefinitions[0].dice.diceValue}`,
+            bonus: modifier.atHigherLevels.higherLevelDefinitions[0].dice.fixedValue,
+            type: modifier.friendlySubtypeName,
+          },
+          type: "spell-level"
+        }))
+      default:
+        return []
+    }
+  }
+  catch(TypeError) {
+    return []
+  }
+}
+*/
