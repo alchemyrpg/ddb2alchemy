@@ -28,6 +28,7 @@ export interface AlchemyCharacter {
   skin?: string,
   speed: number,
   systemKey: string,
+  spellcastingAbility: string,
   spellFilters: string[],
   spellSlots: AlchemySpellSlot[],
   spells: AlchemySpell[],

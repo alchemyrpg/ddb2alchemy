@@ -162,6 +162,7 @@ export const convertCharacter = (ddbCharacter: DdbCharacter): AlchemyCharacter =
   skills: getSkills(ddbCharacter),
   skin: ddbCharacter.skin,
   speed: getSpeed(ddbCharacter),
+  spellcastingAbility: getSpellcastingAbility(ddbCharacter),
   spellFilters: ["Known"],
   spells: [], // TODO
   spellSlots: [], // TODO
@@ -314,6 +315,15 @@ const isSpellcaster = (ddbCharacter: DdbCharacter): boolean => {
     .some(definition => definition.canCastSpells)
 }
 
+// Use the spellcasting ability of the highest-leveled caster class
+const getSpellcastingAbility = (ddbCharacter: DdbCharacter): string => {
+  const casterClasses = ddbCharacter.classes
+    .filter(ddbClass => ddbClass.definition.canCastSpells)
+    .sort((a, b) => b.level - a.level)
+    .map(ddbClass => ddbClass.definition)
+
+  if (casterClasses.length === 0) return ""
+  return STAT_NAMES[casterClasses[0].spellCastingAbilityId]
 }
 
 // Convert proficiencies to Alchemy format.
