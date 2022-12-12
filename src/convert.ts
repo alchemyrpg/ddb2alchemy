@@ -172,6 +172,7 @@ turndownService.use(turndownPluginGfm.gfm)
 export const convertCharacter = (ddbCharacter: DdbCharacter): AlchemyCharacter => ({
   abilityScores: convertStatArray(ddbCharacter),
   ...(ddbCharacter.age) && { age: ddbCharacter.age.toString() },
+  actions: convertActions(ddbCharacter),
   armorClass: getArmorClass(ddbCharacter),
   copper: ddbCharacter.currencies.cp,
   classes: convertClasses(ddbCharacter),
@@ -817,3 +818,101 @@ const convertSpellHigherLevels = (ddbSpell: DdbSpell): AlchemySpellAtHigherLevel
   }
 }
 */
+
+// Convert anything that seems like an action to an Alchemy action
+const convertActions = (ddbCharacter: DdbCharacter): AlchemyAction[] => {
+  const actions = []
+
+  // Add attack actions for any items that deal damage
+  const itemAttacks = ddbCharacter.inventory
+    .filter(item => item.definition.damage)
+    .map(item => createItemAttackAction(ddbCharacter, item))
+  actions.push(...itemAttacks)
+
+  // Add attack actions for any attacks granted by race, class, background, etc.
+  // Add dice roll actions for any other actions that can roll dice
+  // Add journal command actions for any other actions that can be activated
+
+  // Add a sortOrder to each action and return
+  return actions.map((action, index) => ({
+    sortOrder: index,
+    ...action
+  }))
+}
+
+const createItemAttackAction = (ddbCharacter: DdbCharacter, item: DdbItem): AlchemyAction => {
+  // Get the name, checking if it was set as a custom name
+  let itemName = item.definition.name
+  const itemNameNotes = ddbCharacter.characterValues
+    .filter(note => note.valueId == item.id.toString())
+    .find(note => note.typeId == DdbNoteTypeId.Name)
+  if (itemNameNotes) { itemName = itemNameNotes.value.toString() }
+
+  // Generate a name for the action with the item's type, if it's not obvious
+  const actionName = itemName == item.definition.type ? itemName : `${itemName} (${item.definition.type})`
+
+  // Use str as the damage stat unless the item has finesse, in which case
+  // use the higher of str and dex
+  let attackAbility = "str"
+  if (item.definition.properties.find(prop => prop.name == "Finesse")) {
+    if (getStatBonus(ddbCharacter, DdbStatType.Dexterity) > getStatBonus(ddbCharacter, DdbStatType.Strength)) {
+      attackAbility = "dex"
+    }
+  }
+
+  // Calculate damage dice, starting with base damage and type
+  const actionDamageRolls: AlchemyDiceRoll[] = []
+  actionDamageRolls.push({
+    type: item.definition.damageType,
+    dice: item.definition.damage.diceString,
+    bonus: item.definition.damage.fixedValue,
+    abilityName: attackAbility,
+  })
+  item.definition.grantedModifiers
+    .filter(modifier => modifier.type == "damage")
+    .forEach(modifier => {
+      const dice = modifier.die || modifier.dice
+
+      actionDamageRolls.push({
+        type: modifier.friendlySubtypeName,
+        dice: dice.diceString,
+        bonus: dice.fixedValue,
+      })
+    })
+  
+  // Check if proficient in weapon, weapon type ("light"), or weapon category ("martial")
+  const isProficientInWeapon = !!getModifiers(ddbCharacter, { type: "proficiency" })
+  .filter(modifier => modifier.entityTypeId === DdbEntityType.Weapon)
+  .find(modifier => modifier.friendlySubtypeName === item.definition.type)
+  const isProficientInWeaponType = !!getModifiers(ddbCharacter, { type: "proficiency" })
+    .filter(modifier => modifier.entityTypeId === DdbEntityType.WeaponType)
+    .find(modifier => {
+      const proficientType = modifier.friendlySubtypeName
+      const weaponTypes = item.definition.properties.map(prop => `${prop.name} Weapons`)
+      return weaponTypes.includes(proficientType)
+    })
+  const isProficientInWeaponCategory = !!getModifiers(ddbCharacter, { type: "proficiency" })
+    .filter(modifier => modifier.entityTypeId === DdbEntityType.WeaponType)
+    .find(modifier => {
+      const proficientType = modifier.friendlySubtypeName
+      const weaponCategory = `${DDB_WEAPON_CATEGORY[item.definition.categoryId]} Weapons`
+      return proficientType === weaponCategory
+    })
+
+  // Create the action
+  return {
+    name: actionName,
+    description: turndownService.turndown(item.definition.description || ""),
+    steps: [{
+      attack: {
+        ability: attackAbility,
+        crit: 20, // no way to detect/set this in DDB right now
+        damageRolls: actionDamageRolls,
+        isProficient: isProficientInWeapon || isProficientInWeaponType || isProficientInWeaponCategory,
+        isRanged: item.definition.attackType == DdbAttackType.Ranged,
+        name: itemName,
+      },
+      type: "custom-attack"
+    }]
+  }
+}
