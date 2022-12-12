@@ -547,19 +547,19 @@ const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] =>
     textBlocks: [
       {
         title: "Personality Traits",
-        body: turndownService.turndown(ddbCharacter.traits.personalityTraits),
+        body: turndownService.turndown(ddbCharacter.traits.personalityTraits || ""),
       },
       {
         title: "Ideals",
-        body: turndownService.turndown(ddbCharacter.traits.ideals),
+        body: turndownService.turndown(ddbCharacter.traits.ideals || ""),
       },
       {
         title: "Bonds",
-        body: turndownService.turndown(ddbCharacter.traits.bonds),
+        body: turndownService.turndown(ddbCharacter.traits.bonds || ""),
       },
       {
         title: "Flaws",
-        body: turndownService.turndown(ddbCharacter.traits.flaws),
+        body: turndownService.turndown(ddbCharacter.traits.flaws || ""),
       },
     ]
   })
@@ -568,7 +568,7 @@ const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] =>
   textBlocks.push({
     title: "Appearance",
     textBlocks: [{
-      body: turndownService.turndown(ddbCharacter.traits.appearance),
+      body: turndownService.turndown(ddbCharacter.traits.appearance || ""),
     }]
   })
 
@@ -587,7 +587,7 @@ const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] =>
   textBlocks.push({
     title: "Backstory",
     textBlocks: [{
-      body: turndownService.turndown(ddbCharacter.notes.backstory),
+      body: turndownService.turndown(ddbCharacter.notes.backstory || ""),
     }]
   })
 
@@ -595,7 +595,7 @@ const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] =>
   textBlocks.push({
     title: "Allies",
     textBlocks: [{
-      body: turndownService.turndown(ddbCharacter.notes.allies),
+      body: turndownService.turndown(ddbCharacter.notes.allies || ""),
     }]
   })
 
@@ -603,7 +603,7 @@ const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] =>
   textBlocks.push({
     title: "Enemies",
     textBlocks: [{
-      body: turndownService.turndown(ddbCharacter.notes.enemies),
+      body: turndownService.turndown(ddbCharacter.notes.enemies || ""),
     }]
   })
 
@@ -611,7 +611,7 @@ const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] =>
   textBlocks.push({
     title: "Other",
     textBlocks: [{
-      body: turndownService.turndown(ddbCharacter.notes.otherNotes),
+      body: turndownService.turndown(ddbCharacter.notes.otherNotes || ""),
     }]
   })
 
