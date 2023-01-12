@@ -824,14 +824,15 @@ const convertActions = (ddbCharacter: DdbCharacter): AlchemyAction[] => {
   const actions = []
 
   // Add attack actions for any items that deal damage
-  const itemAttacks = ddbCharacter.inventory
+  ddbCharacter.inventory
     .filter(item => item.definition.damage)
-    .map(item => createItemAttackAction(ddbCharacter, item))
-  actions.push(...itemAttacks)
+    .map(item => actions.push(createItemAttackAction(ddbCharacter, item)))
 
-  // Add attack actions for any attacks granted by race, class, background, etc.
-  // Add dice roll actions for any other actions that can roll dice
-  // Add journal command actions for any other actions that can be activated
+  // Add actions for all other defined actions, from any source
+  Object.entries(ddbCharacter.actions)
+    .flatMap(([source, actions]) => actions)
+    .filter(action => action)
+    .map(action => actions.push(createGenericAction(action)))
 
   // Add a sortOrder to each action and return
   return actions.map((action, index) => ({
@@ -875,15 +876,15 @@ const createItemAttackAction = (ddbCharacter: DdbCharacter, item: DdbItem): Alch
 
       actionDamageRolls.push({
         type: modifier.friendlySubtypeName,
-        dice: dice.diceString,
-        bonus: dice.fixedValue,
+        ...(dice) && { dice: dice.diceString },
+        bonus: modifier.fixedValue || dice.fixedValue,
       })
     })
-  
+
   // Check if proficient in weapon, weapon type ("light"), or weapon category ("martial")
   const isProficientInWeapon = !!getModifiers(ddbCharacter, { type: "proficiency" })
-  .filter(modifier => modifier.entityTypeId === DdbEntityType.Weapon)
-  .find(modifier => modifier.friendlySubtypeName === item.definition.type)
+    .filter(modifier => modifier.entityTypeId === DdbEntityType.Weapon)
+    .find(modifier => modifier.friendlySubtypeName === item.definition.type)
   const isProficientInWeaponType = !!getModifiers(ddbCharacter, { type: "proficiency" })
     .filter(modifier => modifier.entityTypeId === DdbEntityType.WeaponType)
     .find(modifier => {
@@ -914,5 +915,39 @@ const createItemAttackAction = (ddbCharacter: DdbCharacter, item: DdbItem): Alch
       },
       type: "custom-attack"
     }]
+  }
+}
+
+const createGenericAction = (ddbAction: DdbAction): AlchemyAction => {
+  const dice = ddbAction.dice || ddbAction.die
+
+  // Add dice roll actions for any actions that can roll dice
+  if (dice) {
+    return {
+      name: ddbAction.name,
+      description: turndownService.turndown(ddbAction.description || ""),
+      steps: [{
+        diceRoll: [{
+          dice: dice.diceString,
+          bonus: dice.fixedValue,
+        }],
+        type: "custom-dice-roll"
+      }]
+    }
+  }
+
+  // Add journal command actions for any other actions that can be activated
+  if (ddbAction.activation.activationType) {
+    return {
+      name: ddbAction.name,
+      description: turndownService.turndown(ddbAction.description || ""),
+      steps: [{
+        journalCommand: {
+          command: "/me",
+          args: `uses ${ddbAction.name}!`,
+        },
+        type: "journal-command"
+      }]
+    }
   }
 }

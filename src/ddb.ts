@@ -334,7 +334,7 @@ interface DdbRange {
   minimumRange: number,
 }
 
-interface DdbAction {
+export interface DdbAction {
   name: string,
   description: string,
   snippet: string,
@@ -345,6 +345,7 @@ interface DdbAction {
   attackType: DdbAttackType,
   attackSubtype: string,
   dice: DdbDie,
+  die?: DdbDie,
   value: number,
   isProficient: boolean,
   displayAsAttack: boolean,

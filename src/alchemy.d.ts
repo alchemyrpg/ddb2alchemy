@@ -158,7 +158,7 @@ interface AlchemyDiceRoll {
   abilityName?: string,
   bonus?: number,
   dice: string,
-  type: string,
+  type?: string,
 }
 
 interface AlchemyAttack {
