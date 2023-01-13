@@ -292,6 +292,7 @@ interface DdbBackground {
   definition: {
     name: string,
     description: string,
+    shortDescription: string,
   }
 }
 
