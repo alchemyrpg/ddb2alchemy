@@ -486,7 +486,7 @@ const getMovementModes = (ddbCharacter: DdbCharacter): AlchemyMovementMode[] => 
 const getSpeed = (ddbCharacter: DdbCharacter): number => {
   const movementModes = getMovementModes(ddbCharacter)
   if (!movementModes) return BASE_SPEED
-  return movementModes.find(mode => mode.mode === "Walking").distance
+  return movementModes.find(mode => mode.mode === "Walking")?.distance
 }
 
 // Remove HTML tags and entities and trim whitespace
