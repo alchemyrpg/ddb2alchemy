@@ -670,7 +670,7 @@ const convertSpell = (ddbSpell: DdbSpell): AlchemySpell => {
     rollsAttack: spell.requiresAttackRoll,
     range: convertSpellRange(ddbSpell),
     tags: [],
-    ...(spell.requiresSavingThrow) && { savingThrow: { ability: STATS[spell.saveDcAbilityId] } },
+    ...(spell.requiresSavingThrow) && { savingThrow: { abilityName: STATS[spell.saveDcAbilityId] } },
     ...(damage.length) && { damage },
   }
 }
