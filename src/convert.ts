@@ -640,6 +640,7 @@ const convertSpells = (ddbCharacter: DdbCharacter): AlchemySpell[] => {
   return Object.entries(ddbCharacter.spells)
     .filter(([origin, spells]) => origin !== "item" && spells)
     .flatMap(([_origin, spells]) => spells)
+    .filter(spell => spell.definition)
     .map(convertSpell)
 }
 
