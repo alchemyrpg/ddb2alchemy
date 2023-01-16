@@ -1,5 +1,6 @@
 import { DdbArmorType, DdbModifier, DdbCharacter, DdbProficiencyType, DdbSpell, DdbSpellActivationType, DDB_SPEED_RE, DDB_SPELL_ACTIVATION_TYPE, DDB_SPELL_COMPONENT_TYPE } from "./ddb"
 import { AlchemyCharacter, AlchemyStat, AlchemyClass, AlchemyProficiency, AlchemyMovementMode, AlchemyTextBlockSection, AlchemySkill, AlchemyItem, AlchemySpellSlot, AlchemySpell, AlchemyDamage, AlchemySpellAtHigherLevel } from "./alchemy"
+import * as turndownPluginGfm from 'turndown-plugin-gfm'
 
 // Shared between both platforms
 const STR = 1
@@ -164,6 +165,7 @@ const CASTER_LEVEL_MULTIPLIER = {
 
 // HTML to Markdown converter
 const turndownService = new TurndownService()
+turndownService.use(turndownPluginGfm.gfm)
 
 // Convert a D&D Beyond character to an Alchemy character
 export const convertCharacter = (ddbCharacter: DdbCharacter): AlchemyCharacter => ({
