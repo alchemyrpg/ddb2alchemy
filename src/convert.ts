@@ -1,5 +1,6 @@
 import { DdbArmorType, DdbModifier, DdbCharacter, DdbProficiencyType, DdbSpell, DdbSpellActivationType, DDB_SPEED_RE, DDB_SPELL_ACTIVATION_TYPE, DDB_SPELL_COMPONENT_TYPE } from "./ddb"
 import { AlchemyCharacter, AlchemyStat, AlchemyClass, AlchemyProficiency, AlchemyMovementMode, AlchemyTextBlockSection, AlchemySkill, AlchemyItem, AlchemySpellSlot, AlchemySpell, AlchemyDamage, AlchemySpellAtHigherLevel } from "./alchemy"
+import * as turndownPluginGfm from 'turndown-plugin-gfm'
 
 // Shared between both platforms
 const STR = 1
@@ -164,6 +165,7 @@ const CASTER_LEVEL_MULTIPLIER = {
 
 // HTML to Markdown converter
 const turndownService = new TurndownService()
+turndownService.use(turndownPluginGfm.gfm)
 
 // Convert a D&D Beyond character to an Alchemy character
 export const convertCharacter = (ddbCharacter: DdbCharacter): AlchemyCharacter => ({
@@ -486,7 +488,7 @@ const getMovementModes = (ddbCharacter: DdbCharacter): AlchemyMovementMode[] => 
 const getSpeed = (ddbCharacter: DdbCharacter): number => {
   const movementModes = getMovementModes(ddbCharacter)
   if (!movementModes) return BASE_SPEED
-  return movementModes.find(mode => mode.mode === "Walking").distance
+  return movementModes.find(mode => mode.mode === "Walking")?.distance
 }
 
 // Remove HTML tags and entities and trim whitespace
@@ -640,6 +642,7 @@ const convertSpells = (ddbCharacter: DdbCharacter): AlchemySpell[] => {
   return Object.entries(ddbCharacter.spells)
     .filter(([origin, spells]) => origin !== "item" && spells)
     .flatMap(([_origin, spells]) => spells)
+    .filter(spell => spell.definition)
     .map(convertSpell)
 }
 
@@ -669,7 +672,7 @@ const convertSpell = (ddbSpell: DdbSpell): AlchemySpell => {
     rollsAttack: spell.requiresAttackRoll,
     range: convertSpellRange(ddbSpell),
     tags: [],
-    ...(spell.requiresSavingThrow) && { savingThrow: { ability: STATS[spell.saveDcAbilityId] } },
+    ...(spell.requiresSavingThrow) && { savingThrow: { abilityName: STATS[spell.saveDcAbilityId] } },
     ...(damage.length) && { damage },
   }
 }
