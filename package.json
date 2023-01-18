@@ -7,7 +7,7 @@
   "private": true,
   "dependencies": {
     "turndown": "^7.1.1",
-    "turndown-plugin-gfm": "1.0.2"
+    "turndown-plugin-gfm": "^1.0.2"
   },
   "scripts": {
     "build": "esbuild src/site.ts --outfile=public/index.min.js --bundle --minify --sourcemap",
