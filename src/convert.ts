@@ -539,7 +539,7 @@ const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] =>
     title: "Background",
     textBlocks: [{
       title: ddbCharacter.background.definition.name,
-      body: turndownService.turndown(ddbCharacter.background.definition.shortDescription),
+      body: turndownService.turndown(ddbCharacter.background.definition.description),
     }]
   })
 
