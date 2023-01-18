@@ -1,5 +1,6 @@
 import { DdbArmorType, DdbModifier, DdbCharacter, DdbProficiencyType, DdbSpell, DdbSpellActivationType, DDB_SPEED_RE, DDB_SPELL_ACTIVATION_TYPE, DDB_SPELL_COMPONENT_TYPE } from "./ddb"
 import { AlchemyCharacter, AlchemyStat, AlchemyClass, AlchemyProficiency, AlchemyMovementMode, AlchemyTextBlockSection, AlchemySkill, AlchemyItem, AlchemySpellSlot, AlchemySpell, AlchemyDamage, AlchemySpellAtHigherLevel } from "./alchemy"
+import TurndownService from 'turndown'
 import * as turndownPluginGfm from 'turndown-plugin-gfm'
 
 // Shared between both platforms
