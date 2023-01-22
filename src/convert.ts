@@ -312,10 +312,18 @@ const getArmorClass = (ddbCharacter: DdbCharacter): number => {
   return baseAc + bonusAc + dexBonus + Math.max(conBonus + wisBonus)
 }
 
+// Calculate the base HP of the character, inclusive of bonus from CON modifier.
+const getBaseHp = (ddbCharacter: DdbCharacter): number => {
+  const conBonus = getStatBonus(ddbCharacter, CON)
+  const levels = ddbCharacter.classes.reduce((total, c) => total + c.level, 0)
+  return ddbCharacter.baseHitPoints + (conBonus * levels)
+}
+
 // Calculate the current HP of the character using overrides, bonuses, etc.
 const getCurrentHp = (ddbCharacter: DdbCharacter): number => {
+  const baseHp = getBaseHp(ddbCharacter)
   return ddbCharacter.overrideHitPoints ||
-    (ddbCharacter.baseHitPoints +
+    (baseHp +
       ddbCharacter.bonusHitPoints +
       ddbCharacter.temporaryHitPoints -
       ddbCharacter.removedHitPoints)
@@ -323,7 +331,8 @@ const getCurrentHp = (ddbCharacter: DdbCharacter): number => {
 
 // Calculate the max HP of the character using overrides, bonuses, etc.
 const getMaxHp = (ddbCharacter: DdbCharacter): number => {
-  return ddbCharacter.baseHitPoints + ddbCharacter.bonusHitPoints
+  const baseHp = getBaseHp(ddbCharacter)
+  return baseHp + ddbCharacter.bonusHitPoints
 }
 
 // Convert D&D Beyond class info to Alchemy, discarding most of it
