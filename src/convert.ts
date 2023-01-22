@@ -649,11 +649,12 @@ const convertItems = (ddbCharacter: DdbCharacter): AlchemyItem[] => {
 
 // Convert all spells except those granted by items to Alchemy format
 const convertSpells = (ddbCharacter: DdbCharacter): AlchemySpell[] => {
-  return Object.entries(ddbCharacter.spells)
+  return [...Object.entries(ddbCharacter.spells)
     .filter(([origin, spells]) => origin !== "item" && spells)
     .flatMap(([_origin, spells]) => spells)
-    .filter(spell => spell.definition)
-    .map(convertSpell)
+    .filter(spell => spell.definition),
+  ...ddbCharacter.classSpells.reduce((classSpellList, classSpellBlock) => ([...classSpellList, ...classSpellBlock.spells] as DdbSpell[]), [] as DdbSpell[])
+  ].map(convertSpell)
 }
 
 // Convert a spell to Alchemy format
@@ -661,7 +662,7 @@ const convertSpell = (ddbSpell: DdbSpell): AlchemySpell => {
   const spell = ddbSpell.definition
 
   // If the spell is in the SRD, let Alchemy populate its data
-  if (spell.sources.some(source => source.sourceId === 1)) return {
+  if (spell.sources.some(source => source.sourceId === 1 && source.pageNumber !== null)) return {
     name: spell.name,
   }
 
