@@ -61,6 +61,11 @@ export interface DdbCharacter {
   }
   spellSlots: DdbSpellSlot[],
   feats: DdbFeat[],
+  classSpells: {
+    entityTypeId: number;
+    characterClassId: number;
+    spells: DdbSpell[];
+  }[]
 }
 
 interface DdbStat {
