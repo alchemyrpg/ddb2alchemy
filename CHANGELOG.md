@@ -5,6 +5,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.2] - 2023-01-22
+
+### Fixed
+
+- Fixed an issue causing imported characters to have incorrect HP (missing CON modifier). ([#18](https://github.com/alchemyrpg/ddb2alchemy/pull/18))
+- Fixed an issue preventing all of a character's spells from being converted. ([#19](https://github.com/alchemyrpg/ddb2alchemy/pull/19))
+
 ## [0.1.1] - 2023-01-18
 
 ### Fixed
