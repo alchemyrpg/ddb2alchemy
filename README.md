@@ -55,6 +55,11 @@ Currently, the converter works for these properties:
 - [x] Feats
 - [x] Background, appearance, and other descriptive text
 
+## Contributing
+We welcome contributions to this repository! The D&D Beyond conversion process is complex and ever-changing, so your help in keeping things working smoothly is greatly appreciated.
+
+Please see [CONTRIBUTING](CONTRIBUTING.md) for more information on how to contribute.
+
 ## License
 
 [MIT](LICENSE)
