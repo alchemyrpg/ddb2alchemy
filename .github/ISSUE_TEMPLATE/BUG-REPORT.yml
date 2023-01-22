@@ -23,12 +23,6 @@ body:
       placeholder: e.g. https://ddb.ac/characters/64766909/RRCKTv
     validations:
       required: true
-  - type: textarea
-    id: logs
-    attributes:
-      label: Relevant log output
-      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
-      render: shell
   - type: input
     id: Alchemy-version
     attributes:
