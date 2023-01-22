@@ -2,6 +2,7 @@
 
 [![ci](https://github.com/alchemyrpg/ddb2alchemy/actions/workflows/ci.yml/badge.svg)](https://github.com/alchemyrpg/ddb2alchemy/actions/workflows/ci.yml)
 [![deploy](https://github.com/alchemy/ddb2alchemy/actions/workflows/deploy.yml/badge.svg)](https://github.com/alchemyrpg/ddb2alchemy/actions/workflows/deploy.yml)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
 
 This repository contains the code that converts a D&D Beyond character to [JSON compatible with Alchemy](https://alchemyrpg.github.io/slate). Alchemy uses this library directly during the D&D Beyond import process.
 
