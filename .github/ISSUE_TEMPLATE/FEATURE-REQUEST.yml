@@ -1,0 +1,30 @@
+name: Feature Request
+description: Ask for a new feature
+title: "[Feature Request]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this feature request!
+  - type: textarea
+    id: what-is-it
+    attributes:
+      label: What would you like to see?
+      placeholder: It would be rad if my imported character had...
+    validations:
+      required: true
+  - type: input
+    id: ddb-link
+    attributes:
+      label: D&D Beyond Character Link
+      description: Please provide a link to the public character sheet in D&D Beyond. This will help us plan the enhancement.
+      placeholder: e.g. https://ddb.ac/characters/64766909/RRCKTv
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com)
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
