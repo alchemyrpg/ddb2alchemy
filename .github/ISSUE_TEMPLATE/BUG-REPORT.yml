@@ -1,0 +1,45 @@
+name: Bug Report
+description: File a bug report
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Also tell us, what did you expect to happen?
+      placeholder: Tell us what you see!
+    validations:
+      required: true
+  - type: input
+    id: ddb-link
+    attributes:
+      label: D&D Beyond Character Link
+      description: Please provide a link to the public character sheet in D&D Beyond. This will help us reproduce the issue.
+      placeholder: e.g. https://ddb.ac/characters/64766909/RRCKTv
+    validations:
+      required: true
+  - type: input
+    id: Alchemy-version
+    attributes:
+      label: Alchemy Version
+      description: What version of Alchemy are you running? You can find this under (?) > Feedback > Alchemy Version.
+      placeholder: e.g. 0.176.0 (a322a92)
+  - type: input
+    id: Alchemy-user-agent
+    attributes:
+      label: Alchemy User Agent
+      description: What is the user agent displayed in the Alchemy app? You can find this under (?) > Feedback > User Agent.
+      placeholder: e.g. Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Alchemy/1.1.0 Chrome/108.0.5359.125 Electron/22.0.1 Safari/537.36
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/alchemyrpg/ddb2alchemy/blob/main/CODE_OF_CONDUCT.md)
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
