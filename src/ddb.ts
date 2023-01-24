@@ -294,10 +294,15 @@ interface DdbTrait {
 }
 
 interface DdbBackground {
+  hasCustomBackground: boolean,
   definition: {
     name: string,
     description: string,
     shortDescription: string,
+  }
+  customBackground: {
+    name: string,
+    description: string,
   }
 }
 

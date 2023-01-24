@@ -545,13 +545,24 @@ const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] =>
   })
 
   // background
-  textBlocks.push({
-    title: "Background",
-    textBlocks: [{
-      title: ddbCharacter.background.definition.name,
-      body: turndownService.turndown(ddbCharacter.background.definition.description),
-    }]
-  })
+  if (ddbCharacter.background.hasCustomBackground) {
+    textBlocks.push({
+      title: "Background",
+      textBlocks: [{
+        title: ddbCharacter.background.customBackground.name,
+        body: turndownService.turndown(ddbCharacter.background.customBackground.description),
+      }]
+    })
+  }
+  else {
+    textBlocks.push({
+      title: "Background",
+      textBlocks: [{
+        title: ddbCharacter.background.definition.name,
+        body: turndownService.turndown(ddbCharacter.background.definition.description),
+      }]
+    })
+  }
 
   // characteristics
   textBlocks.push({
