@@ -676,7 +676,7 @@ const convertSpell = (ddbSpell: DdbSpell): AlchemySpell => {
     school: spell.school,
     canCastAtHigherLevel: spell.canCastAtHigherLevel,
     castingTime: convertSpellCastingTime(ddbSpell),
-    components: spell.components.map(c => DDB_SPELL_COMPONENT_TYPE[c][0]),
+    components: spell.components.filter(c => c <= 3).map(c => DDB_SPELL_COMPONENT_TYPE[c][0]),
     duration: convertSpellDuration(ddbSpell),
     requiresConcentration: spell.concentration,
     canBeCastAsRitual: spell.ritual,
