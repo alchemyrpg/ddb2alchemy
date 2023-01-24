@@ -5,6 +5,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.3] - 2023-01-24
+
+### Fixed
+
+- Fix an issue importing a character with a spell with a spell component besides verbal, somatic, or material. ([#25](https://github.com/alchemyrpg/ddb2alchemy/pull/25))
+- Fix an issue importing a character with a custom background. ([#26](https://github.com/alchemyrpg/ddb2alchemy/pull/26))
+
 ## [0.1.2] - 2023-01-22
 
 ### Fixed
