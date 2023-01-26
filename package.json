@@ -1,6 +1,6 @@
 {
   "name": "ddb2alchemy",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Convert D&D Beyond characters for use with the Alchemy VTT.",
   "main": "src/index.ts",
   "license": "MIT",
