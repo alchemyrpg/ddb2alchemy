@@ -554,13 +554,19 @@ const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] =>
       }]
     })
   }
-  else {
+  else if (ddbCharacter.background.definition) {
     textBlocks.push({
       title: "Background",
       textBlocks: [{
         title: ddbCharacter.background.definition.name,
         body: turndownService.turndown(ddbCharacter.background.definition.description),
       }]
+    })
+  }
+  else {
+    textBlocks.push({
+      title: "Background",
+      textBlocks: []
     })
   }
 
