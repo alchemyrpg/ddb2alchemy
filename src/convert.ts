@@ -481,7 +481,7 @@ const getMovementModes = (ddbCharacter: DdbCharacter): AlchemyMovementMode[] => 
     .filter(trait => trait.definition.name === "Speed")
     .map(trait => {
       // Try to parse a speed from the trait description
-      const matches = trait.definition.description.match(DDB_SPEED_RE)
+      const matches = cleanHtml(trait.definition.description).match(DDB_SPEED_RE)
       if (!matches) return
 
       // Convert movement mode to Alchemy format
