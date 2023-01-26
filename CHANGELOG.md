@@ -5,6 +5,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.4] - 2023-01-26
+
+### Fixed
+
+- Fixed an issue importing a character without a background. ([#28](https://github.com/alchemyrpg/ddb2alchemy/pull/28))
+- Fixed an issue importing a character with a custom long description for their speed. ([#29](https://github.com/alchemyrpg/ddb2alchemy/pull/29))
+
 ## [0.1.3] - 2023-01-24
 
 ### Fixed
