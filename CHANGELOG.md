@@ -5,6 +5,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.5] - 2023-02-01
+
+### Changed
+
+- Bookmarklet and standalone conversion site now use v5 of the D&D Beyond character service.
+
+### Fixed
+
+- Fixed an issue importing a character without a background. ([#33](https://github.com/alchemyrpg/ddb2alchemy/pull/33))
+
 ## [0.1.4] - 2023-01-26
 
 ### Fixed
