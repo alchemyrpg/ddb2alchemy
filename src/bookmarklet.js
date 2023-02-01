@@ -3,7 +3,7 @@ const parts = window.location.toString().match(/https:\/\/www\.dndbeyond\.com\/c
 if (!parts) return
 
 // get the character id and character API url
-const API = "https://character-service.dndbeyond.com/character/v3/character"
+const API = "https://character-service.dndbeyond.com/character/v5/character"
 const characterId = parts[1]
 
 // prompts the user to download a file with the given filename and contents

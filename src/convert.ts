@@ -550,7 +550,7 @@ const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] =>
       title: "Background",
       textBlocks: [{
         title: ddbCharacter.background.customBackground.name,
-        body: turndownService.turndown(ddbCharacter.background.customBackground.description),
+        body: turndownService.turndown(ddbCharacter.background.customBackground.description || ""),
       }]
     })
   }
@@ -559,7 +559,7 @@ const getTextBlocks = (ddbCharacter: DdbCharacter): AlchemyTextBlockSection[] =>
       title: "Background",
       textBlocks: [{
         title: ddbCharacter.background.definition.name,
-        body: turndownService.turndown(ddbCharacter.background.definition.description),
+        body: turndownService.turndown(ddbCharacter.background.definition.description  || ""),
       }]
     })
   }
