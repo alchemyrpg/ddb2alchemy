@@ -1,4 +1,4 @@
-import { DdbArmorType, DdbModifier, DdbCharacter, DdbProficiencyType, DdbSpell, DdbSpellActivationType, DDB_SPEED_RE, DDB_SPELL_ACTIVATION_TYPE, DDB_SPELL_COMPONENT_TYPE } from "./ddb"
+import { DdbArmorType, DdbModifier, DdbCharacter, DdbProficiencyType, DdbSpell, DdbSpellActivationType, DDB_SPEED_IS_RE, DDB_SPEED_EQUALS_RE, DDB_SPELL_ACTIVATION_TYPE, DDB_SPELL_COMPONENT_TYPE } from "./ddb"
 import { AlchemyCharacter, AlchemyStat, AlchemyClass, AlchemyProficiency, AlchemyMovementMode, AlchemyTextBlockSection, AlchemySkill, AlchemyItem, AlchemySpellSlot, AlchemySpell, AlchemyDamage, AlchemySpellAtHigherLevel } from "./alchemy"
 import TurndownService from 'turndown'
 import * as turndownPluginGfm from 'turndown-plugin-gfm'
@@ -477,20 +477,46 @@ const getSkills = (ddbCharacter: DdbCharacter): AlchemySkill[] => {
 
 // Get character's movement modes and speeds
 const getMovementModes = (ddbCharacter: DdbCharacter): AlchemyMovementMode[] => {
+  // Mode-specific bonuses plus general bonus
+  const bonuses = {
+    all: sumModifiers(ddbCharacter, { type: "bonus", subType: "speed" }),
+    walking: sumModifiers(ddbCharacter, { type: "bonus", subType: "speed-walking" }),
+    climbing: sumModifiers(ddbCharacter, { type: "bonus", subType: "speed-climbing" }),
+    flying: sumModifiers(ddbCharacter, { type: "bonus", subType: "speed-flying" }),
+    swimming: sumModifiers(ddbCharacter, { type: "bonus", subType: "speed-swimming" }),
+    burrowing: sumModifiers(ddbCharacter, { type: "bonus", subType: "speed-burrowing" }),
+  }
+
   return ddbCharacter.race.racialTraits
     .filter(trait => trait.definition.name === "Speed")
-    .map(trait => {
-      // Try to parse a speed from the trait description
-      const matches = cleanHtml(trait.definition.description).match(DDB_SPEED_RE)
-      if (!matches) return
+    .flatMap(trait => {
+      // Try to parse any speed from the trait description
+      const desc = cleanHtml(trait.definition.description)
+      const isMatches = desc.match(DDB_SPEED_IS_RE)
+      const equalsMatches = desc.match(DDB_SPEED_EQUALS_RE)
+      if (!isMatches && !equalsMatches) return
+      let speeds = []
 
-      // Convert movement mode to Alchemy format
-      const mode = MOVEMENT_TYPES[matches[1]]
-      const speed = parseInt(matches[2])
-      return {
-        mode,
+      // For speeds listed directly, add any bonuses and convert to Alchemy format
+      const mode = MOVEMENT_TYPES[isMatches[1]]
+      const speed = parseInt(isMatches[2]) + (bonuses.all || 0) + (bonuses[isMatches[1]] || 0)
+      speeds.push({
+        mode: mode,
         distance: speed
+      })
+
+      // Convert any speeds listed as equal to other speeds
+      if (equalsMatches) {        
+        const mode2 = MOVEMENT_TYPES[equalsMatches[1]]
+        const otherMode = MOVEMENT_TYPES[equalsMatches[2]]
+        const otherSpeed = speeds.find(speed => speed.mode === otherMode)?.distance
+        speeds.push({
+          mode: mode2,
+          distance: otherSpeed
+        })
       }
+
+      return speeds
     })
 }
 
