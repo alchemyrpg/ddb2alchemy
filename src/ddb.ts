@@ -306,7 +306,8 @@ interface DdbBackground {
   }
 }
 
-export const DDB_SPEED_RE = /(\S+) speed (?:is|of) (\d+)/i
+export const DDB_SPEED_IS_RE = /(\S+) speed (?:is|of) (\d+)/i
+export const DDB_SPEED_EQUALS_RE = /(\S+) speed equal to your (\S+) speed/i
 
 interface DdbFeat {
   definition: {
