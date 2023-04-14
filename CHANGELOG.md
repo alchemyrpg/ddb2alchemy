@@ -5,6 +5,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.6] - 2023-04-13
+
+### Fixed
+
+- Speeds listed in racial traits listed as "equal to your X speed" without giving a flat value are now imported correctly. ([#34](https://github.com/alchemyrpg/ddb2alchemy/pull/34))
+- Items that provide speed bonuses are now factored into the character's speed.  ([#34](https://github.com/alchemyrpg/ddb2alchemy/pull/34))
+
 ## [0.1.5] - 2023-02-01
 
 ### Changed
