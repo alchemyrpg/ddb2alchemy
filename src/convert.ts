@@ -704,13 +704,14 @@ const getSubclassSpells = async (beyondCharacter: DdbCharacter): Promise<DdbSpel
     const query = `?classLevel=${level}&classId=${subclassDefinition.id}${campaignId ? `&campaignId=${campaignId}` : ''}`
 
     const resp = await fetch('/get-always-prepped-spells' + query)
+    console.log(resp)
 
     const spells = await resp.json() as DdbSpell[]
 
     subClassSpells.push(...spells)
-
-    return subClassSpells
   }
+
+  return subClassSpells
 }
 
 // Convert all spells except those granted by items to Alchemy format

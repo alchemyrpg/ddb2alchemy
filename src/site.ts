@@ -13,8 +13,6 @@ async function convertFile(
   reader: FileReader,
   event: ProgressEvent<FileReader>
 ): Promise<void> {
-  console.log('convert file hit.')
-
   const ddbCharacter = JSON.parse(reader.result.toString());
   download(
     `${ddbCharacter.name} - Alchemy.json`,

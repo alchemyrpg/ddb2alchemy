@@ -24,9 +24,9 @@ app.get('/get-always-prepped-spells', async (req, res) => {
 
 	const response = await fetch(requestURL)
 	
-	if (response.status > 200 || response.status < 200) {
-		console.error(`Failed status: ${response.status} | ${response.statusText}`)
-	}
+	// if (response.status > 200 || response.status < 200) {
+	// 	console.error(`Failed status: ${response.status} | ${response.statusText}`)
+	// }
 
 	const { data } = await response.json()
 
