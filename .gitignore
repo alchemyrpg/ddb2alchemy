@@ -1,4 +1,10 @@
+# node stuff
 node_modules
+.yarn
+.yarnrc.yml
+package-lock.json
+
+# site stuff
 public/index.js
 public/index.min.js
 *.js.map

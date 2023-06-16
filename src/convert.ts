@@ -2,6 +2,7 @@ import { DdbArmorType, DdbModifier, DdbCharacter, DdbProficiencyType, DdbSpell, 
 import { AlchemyCharacter, AlchemyStat, AlchemyClass, AlchemyProficiency, AlchemyMovementMode, AlchemyTextBlockSection, AlchemySkill, AlchemyItem, AlchemySpellSlot, AlchemySpell, AlchemyDamage, AlchemySpellAtHigherLevel } from "./alchemy"
 import TurndownService from 'turndown'
 import * as turndownPluginGfm from 'turndown-plugin-gfm'
+import fetch from 'ky'
 
 // Shared between both platforms
 const STR = 1
@@ -169,7 +170,7 @@ const turndownService = new TurndownService()
 turndownService.use(turndownPluginGfm.gfm)
 
 // Convert a D&D Beyond character to an Alchemy character
-export const convertCharacter = (ddbCharacter: DdbCharacter): AlchemyCharacter => ({
+export const convertCharacter = async (ddbCharacter: DdbCharacter): Promise<AlchemyCharacter> => ({
   abilityScores: convertStatArray(ddbCharacter),
   ...(ddbCharacter.age) && { age: ddbCharacter.age.toString() },
   armorClass: getArmorClass(ddbCharacter),
@@ -200,7 +201,7 @@ export const convertCharacter = (ddbCharacter: DdbCharacter): AlchemyCharacter =
   speed: getSpeed(ddbCharacter),
   spellcastingAbility: getSpellcastingAbility(ddbCharacter),
   spellFilters: ["Known"],
-  spells: convertSpells(ddbCharacter),
+  spells: await convertSpells(ddbCharacter),
   spellSlots: convertSpellSlots(ddbCharacter),
   systemKey: "5e",
   textBlocks: getTextBlocks(ddbCharacter),
@@ -690,18 +691,50 @@ const convertItems = (ddbCharacter: DdbCharacter): AlchemyItem[] => {
     }))
 }
 
+const getSubclassSpells = async (beyondCharacter: DdbCharacter): Promise<DdbSpell[]> => {
+  const subClassSpells: DdbSpell[] = []
+
+  const campaignId = beyondCharacter.campaign
+    ? beyondCharacter.campaign.id
+    : undefined
+
+  for (const { level, subclassDefinition } of beyondCharacter.classes) {
+    if (!subclassDefinition) continue
+
+    try {
+      const query = `?classLevel=${level}&classId=${subclassDefinition.id}${campaignId ? `&campaignId=${campaignId}` : ''}`
+
+      const resp = await fetch('/get-always-prepped-spells' + query)
+
+      const spells = await resp.json() as DdbSpell[]
+
+      subClassSpells.push(...spells)
+    } catch (_error) {
+      console.error(_error)
+    }
+  }
+
+  return subClassSpells
+}
+
 // Convert all spells except those granted by items to Alchemy format
-const convertSpells = (ddbCharacter: DdbCharacter): AlchemySpell[] => {
-  return [...Object.entries(ddbCharacter.spells)
+const convertSpells = async (ddbCharacter: DdbCharacter): Promise<AlchemySpell[]> => {
+  console.log(ddbCharacter)
+
+  return [
+  ...Object.entries(ddbCharacter.spells)
     .filter(([origin, spells]) => origin !== "item" && spells)
     .flatMap(([_origin, spells]) => spells)
     .filter(spell => spell.definition),
-  ...ddbCharacter.classSpells.reduce((classSpellList, classSpellBlock) => ([...classSpellList, ...classSpellBlock.spells] as DdbSpell[]), [] as DdbSpell[])
+  ...ddbCharacter.classSpells.reduce((classSpellList, classSpellBlock) => ([...classSpellList, ...classSpellBlock.spells] as DdbSpell[]), [] as DdbSpell[]),
+  ...(await getSubclassSpells(ddbCharacter)),
   ].map(convertSpell)
 }
 
 // Convert a spell to Alchemy format
 const convertSpell = (ddbSpell: DdbSpell): AlchemySpell => {
+  console.log(ddbSpell)  
+
   const spell = ddbSpell.definition
 
   // If the spell is in the SRD, let Alchemy populate its data

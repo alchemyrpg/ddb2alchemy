@@ -25,6 +25,9 @@ export interface DdbCharacter {
     fullName: string,
     racialTraits: DdbTrait[]
   }
+  campaign?: {
+    id: number
+  }
   notes: {
     allies: string,
     enemies: string,
@@ -171,7 +174,7 @@ interface DdbItemProperty {
   notes: string,
 }
 
-interface DdbClass {
+export interface DdbClass {
   level: number,
   definition: {
     name: string,
@@ -182,6 +185,9 @@ interface DdbClass {
     spellRules: {
       levelSpellSlots: number[][],
     }
+  }
+  subclassDefinition?: {
+    id: number
   }
 }
 

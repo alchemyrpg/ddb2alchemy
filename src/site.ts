@@ -9,14 +9,16 @@ function convert(event: SubmitEvent) {
   reader.readAsText(file);
 }
 
-function convertFile(
+async function convertFile(
   reader: FileReader,
   event: ProgressEvent<FileReader>
-): void {
+): Promise<void> {
+  console.log('convert file hit.')
+
   const ddbCharacter = JSON.parse(reader.result.toString());
   download(
     `${ddbCharacter.name} - Alchemy.json`,
-    JSON.stringify(convertCharacter(ddbCharacter))
+    JSON.stringify(await convertCharacter(ddbCharacter))
   );
 }
 
