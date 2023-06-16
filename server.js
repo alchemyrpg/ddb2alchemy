@@ -23,7 +23,11 @@ app.get('/get-always-prepped-spells', async (req, res) => {
 	const API_ALWAYS_PREPARED_SPELLS = "https://character-service.dndbeyond.com/character/v5/game-data/always-prepared-spells?sharingSetting=2"
 	const requestURL = `${API_ALWAYS_PREPARED_SPELLS}&classLevel=${classLevel}&classId=${classId}${campaignId ? `&campaignId=${campaignId}` : ''}`
 
-	const response = await fetch(requestURL) 
+	const response = await fetch(requestURL)
+	
+	if (response.status > 200 || response.status < 200) {
+		console.error(`Failed status: ${response.status} | ${response.statusText}`)
+	}
 
 	const { data } = await response.json()
 

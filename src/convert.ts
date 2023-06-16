@@ -701,26 +701,20 @@ const getSubclassSpells = async (beyondCharacter: DdbCharacter): Promise<DdbSpel
   for (const { level, subclassDefinition } of beyondCharacter.classes) {
     if (!subclassDefinition) continue
 
-    try {
-      const query = `?classLevel=${level}&classId=${subclassDefinition.id}${campaignId ? `&campaignId=${campaignId}` : ''}`
+    const query = `?classLevel=${level}&classId=${subclassDefinition.id}${campaignId ? `&campaignId=${campaignId}` : ''}`
 
-      const resp = await fetch('/get-always-prepped-spells' + query)
+    const resp = await fetch('/get-always-prepped-spells' + query)
 
-      const spells = await resp.json() as DdbSpell[]
+    const spells = await resp.json() as DdbSpell[]
 
-      subClassSpells.push(...spells)
-    } catch (_error) {
-      console.error(_error)
-    }
+    subClassSpells.push(...spells)
+
+    return subClassSpells
   }
-
-  return subClassSpells
 }
 
 // Convert all spells except those granted by items to Alchemy format
 const convertSpells = async (ddbCharacter: DdbCharacter): Promise<AlchemySpell[]> => {
-  console.log(ddbCharacter)
-
   return [
   ...Object.entries(ddbCharacter.spells)
     .filter(([origin, spells]) => origin !== "item" && spells)
@@ -733,8 +727,6 @@ const convertSpells = async (ddbCharacter: DdbCharacter): Promise<AlchemySpell[]
 
 // Convert a spell to Alchemy format
 const convertSpell = (ddbSpell: DdbSpell): AlchemySpell => {
-  console.log(ddbSpell)  
-
   const spell = ddbSpell.definition
 
   // If the spell is in the SRD, let Alchemy populate its data
