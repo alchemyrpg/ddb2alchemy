@@ -701,14 +701,16 @@ const getSubclassSpells = async (beyondCharacter: DdbCharacter): Promise<DdbSpel
   for (const { level, subclassDefinition } of beyondCharacter.classes) {
     if (!subclassDefinition) continue
 
-    const query = `?classLevel=${level}&classId=${subclassDefinition.id}${campaignId ? `&campaignId=${campaignId}` : ''}`
+    try {
+      const query = `?classLevel=${level}&classId=${subclassDefinition.id}${campaignId ? `&campaignId=${campaignId}` : ''}`
+      const resp = await fetch('/get-always-prepped-spells' + query)
+      const spells = await resp.json() as DdbSpell[]
+      
+      subClassSpells.push(...spells)
+    } catch (_error) {
+      console.error(`An error occurred for grabbing subClass spells: ${_error}`)
+    }
 
-    const resp = await fetch('/get-always-prepped-spells' + query)
-    console.log(resp)
-
-    const spells = await resp.json() as DdbSpell[]
-
-    subClassSpells.push(...spells)
   }
 
   return subClassSpells
