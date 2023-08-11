@@ -208,7 +208,7 @@ export const convertCharacter = (
     gold: ddbCharacter.currencies.gp,
     hair: ddbCharacter.hair,
     height: ddbCharacter.height,
-    imageUri: convertAvatar(ddbCharacter),
+    imageUri: ddbCharacter.decorations.avatarUrl,
     initiativeBonus: getInitiativeBonus(ddbCharacter),
     isNPC: false,
     isSpellcaster: isSpellcaster(ddbCharacter),
@@ -232,18 +232,6 @@ export const convertCharacter = (
     textBlocks: getTextBlocks(ddbCharacter),
     ...(ddbCharacter.weight && { weight: ddbCharacter.weight.toString() }),
 });
-
-// Request the D&D Beyond avatar at a higher resolution in 1:1 aspect ratio
-export const convertAvatar = (ddbCharacter: DdbCharacter): string => {
-    if (!ddbCharacter.avatarUrl) return null;
-
-    let url = new URL(ddbCharacter.avatarUrl);
-    let params = url.searchParams;
-    params.set('width', '1000');
-    params.set('height', '1000');
-    url.search = params.toString();
-    return url.toString();
-};
 
 // Convert D&D Beyond style stat arrays to Alchemy style stat arrays
 const convertStatArray = (ddbCharacter: DdbCharacter): AlchemyStat[] => {
