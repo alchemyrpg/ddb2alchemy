@@ -12,11 +12,13 @@
   "scripts": {
     "build": "esbuild src/site.ts --outfile=public/index.min.js --bundle --minify --sourcemap",
     "start": "esbuild src/site.ts --outfile=public/index.min.js --bundle --sourcemap --servedir=public",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit && prettier --check .",
+    "format": "prettier --write ."
   },
   "devDependencies": {
     "@types/turndown": "^5.0.1",
     "esbuild": "^0.15.16",
+    "prettier": "^3.0.1",
     "typescript": "^4.9.3"
   }
 }

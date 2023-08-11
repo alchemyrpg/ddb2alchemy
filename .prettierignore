@@ -1,0 +1,9 @@
+# Ignore test site files
+public
+
+# Ignore dependencies
+node_modules
+
+# Ignore package config since yarn/npm want to format it
+package.json
+yarn.lock

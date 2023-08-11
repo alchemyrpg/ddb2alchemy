@@ -15,4 +15,6 @@ Use the issue tracker to suggest feature requests, report bugs, or find ways to 
 ## Changing the codebase
 Generally speaking, you should fork this repository, make changes in your own fork, and then submit a pull request. At minimum, please include a link to a D&D Beyond character that can be used to validate the changes. Updating any applicable tests or creating new tests is also appreciated.
 
+We use [prettier](https://prettier.io/) to format the codebase. Please run `yarn format` before submitting a pull request; otherwise the automated tests will fail. This helps ensure that the code is consistently formatted and easy to read.
+
 Once your pull request has been submitted, a project maintainer will review it and provide feedback. If the changes are approved, the pull request will be merged into the codebase. Eventually, the changes will be published in a new version of the library and pulled into an Alchemy release by Alchemy staff.
