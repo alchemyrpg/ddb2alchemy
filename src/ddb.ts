@@ -55,6 +55,13 @@ export interface DdbCharacter {
     feat: DdbModifier[],
     condition: DdbModifier[],
   },
+  actions: {
+    race: DdbAction[],
+    class: DdbAction[],
+    background: DdbAction[],
+    item: DdbAction[],
+    feat: DdbAction[],
+  }
   spells: {
     race: DdbSpell[],
     class: DdbSpell[],
@@ -66,6 +73,7 @@ export interface DdbCharacter {
     characterClassId: number;
     spells: DdbSpell[];
   }[]
+  characterValues: DdbNote[],
 }
 
 interface DdbStat {
@@ -101,16 +109,24 @@ export enum DdbArmorType {
   Shield
 }
 
-export enum DdbProficiencyType {
+export enum DdbEntityType {
   Tool = 2103445194,
   Skill = 1958004211,
   Weapon = 1782728300,
+  WeaponType = 660121713,
   Language = 906033267,
   Armor = 174869515,
 }
 
-interface DdbItem {
+export enum DdbAttackType {
+  Melee = 1,
+  Ranged
+}
+
+export interface DdbItem {
+  id: number,
   definition: {
+    baseTypeId: DdbEntityType,
     magic: boolean,
     rarity: string,
     name: string,
@@ -133,6 +149,8 @@ interface DdbItem {
     canAttune: boolean,
     attunementDescription: string,
     cost: number,
+    attackType: DdbAttackType,
+    categoryId: number,
   }
   quantity: number,
   isAttuned: boolean,
@@ -149,8 +167,8 @@ export interface DdbModifier {
   friendlySubtypeName: string,
   friendlyTypeName: string,
   value: number,
-  dice: DdbDie[],
-  die: DdbDie,
+  dice?: DdbDie,
+  die?: DdbDie,
   atHigherLevels: {
     scaleType: string,
     higherLevelDefinitions: DdbHigherLevelDefinition[],
@@ -205,7 +223,7 @@ export interface DdbSpell {
     },
     activation: {
       activationTime: number,
-      activationType: DdbSpellActivationType,
+      activationType: DdbActivationType,
     },
     range: {
       rangeValue: number,
@@ -228,17 +246,13 @@ export interface DdbSpell {
   }
 }
 
-export const DDB_SPELL_ACTIVATION_TYPE = {
+export const DDB_ACTIVATION_TYPE = {
   1: 'Action',
-  2: 'Bonus Action',
-  3: 'Reaction',
-  4: 'Minute',
-  5: 'Hour',
-  6: 'Day',
-  7: 'Special',
-  8: 'Legendary Action',
-  9: 'Lair Action',
-  10: 'None',
+  3: 'Bonus Action',
+  4: 'Reaction',
+  6: 'Minute',
+  7: 'Day',
+  8: 'Special',
 }
 
 interface DdbSource {
@@ -247,17 +261,13 @@ interface DdbSource {
   sourceType: number
 }
 
-export enum DdbSpellActivationType {
+export enum DdbActivationType {
   Action = 1,
-  BonusAction,
-  Reaction,
-  Minute,
-  Hour,
-  Day,
-  Special,
-  LegendaryAction,
-  LairAction,
-  None,
+  BonusAction = 3,
+  Reaction = 4,
+  Minute = 6,
+  Day = 7,
+  Special = 8,
 }
 
 export const DDB_SPELL_COMPONENT_TYPE = {
@@ -314,4 +324,61 @@ interface DdbFeat {
     name: string,
     description: string,
   }
+}
+
+interface DdbRange {
+  range: number,
+  longRange: number,
+  aoeType: number,
+  aoeSize: number,
+  minimumRange: number,
+}
+
+export interface DdbAction {
+  name: string,
+  description: string,
+  snippet: string,
+  abilityModifierStatId: DdbStatType,
+  saveStatId: DdbStatType,
+  fixedSaveDc: number,
+  attackTypeRange: DdbAttackType,
+  attackType: DdbAttackType,
+  attackSubtype: string,
+  dice: DdbDie,
+  die?: DdbDie,
+  value: number,
+  isProficient: boolean,
+  displayAsAttack: boolean,
+  range: DdbRange,
+  activation: {
+    activationTime: number,
+    activationType: DdbActivationType,
+  },
+  numberOfTargets: number,
+  fixedToHit: number,
+  limitedUse: {
+    name: string,
+    statModifierUsesId: DdbStatType,
+    resetType: number,
+    numberUsed: number,
+    maxUses: number,
+  }
+}
+
+export const DDB_WEAPON_CATEGORY = {
+  1: 'Simple',
+  2: 'Martial',
+  3: 'Exotic',
+}
+
+interface DdbNote {
+  typeId: DdbNoteTypeId,
+  value: string | number,
+  notes: string,
+  valueId: string,
+  valueTypeId: DdbEntityType,
+}
+
+export enum DdbNoteTypeId {
+  Name = 8,
 }
