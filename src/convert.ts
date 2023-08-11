@@ -234,7 +234,7 @@ export const convertCharacter = (
 });
 
 // Request the D&D Beyond avatar at a higher resolution in 1:1 aspect ratio
-const convertAvatar = (ddbCharacter: DdbCharacter): string => {
+export const convertAvatar = (ddbCharacter: DdbCharacter): string => {
     if (!ddbCharacter.avatarUrl) return null;
 
     let url = new URL(ddbCharacter.avatarUrl);
