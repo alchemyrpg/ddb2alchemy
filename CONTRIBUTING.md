@@ -6,13 +6,14 @@ There are three main ways to contribute to this project:
 
 1. File a bug, issue, or feature request in the [issue tracker](https://github.com/alchemyrpg/ddb2alchemy/issues/new).
 2. Participate in [discussions](https://github.com/alchemyrpg/ddb2alchemy/discussions) on GitHub.
-2. Submit a [pull request](https://github.com/alchemyrpg/ddb2alchemy/compare) to change the codebase.
+3. Submit a [pull request](https://github.com/alchemyrpg/ddb2alchemy/compare) to change the codebase.
 
 ## Using the issue tracker
 
 Use the issue tracker to suggest feature requests, report bugs, or find ways to contribute. Find a bug or feature, mention in the issue that you'd like to take on that effort, then follow the steps below to submit a pull request.
 
 ## Changing the codebase
+
 Generally speaking, you should fork this repository, make changes in your own fork, and then submit a pull request. At minimum, please include a link to a D&D Beyond character that can be used to validate the changes. Updating any applicable tests or creating new tests is also appreciated.
 
 We use [prettier](https://prettier.io/) to format the codebase. Please run `yarn format` before submitting a pull request; otherwise the automated tests will fail. This helps ensure that the code is consistently formatted and easy to read.

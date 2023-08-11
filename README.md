@@ -12,28 +12,28 @@ This repository contains the code that converts a D&D Beyond character to [JSON 
 
 Currently, the converter works for these properties:
 
-- [x] Ability scores
-- [ ] Actions
-- [x] Age, height, weight, eyes, hair, skin
-- [x] Armor class
-- [x] Classes (names and levels only)
-- [x] Experience points
-- [x] Avatar/portrait image
-- [x] Initiative bonus
-- [x] Inventory items (including homebrew)
-- [ ] Inventory item actions
-- [x] Currency
-- [x] HP (current, max)
-- [x] Movement modes/speed
-- [x] Name
-- [x] Proficiencies (weapon, armor, language, save, tool)
-- [x] Race
-- [x] Skills
-- [x] Spells (SRD)
-- [x] Spells (Expansions & homebrew — partial support)
-- [x] Spell slots
-- [x] Feats
-- [x] Background, appearance, and other descriptive text
+-   [x] Ability scores
+-   [ ] Actions
+-   [x] Age, height, weight, eyes, hair, skin
+-   [x] Armor class
+-   [x] Classes (names and levels only)
+-   [x] Experience points
+-   [x] Avatar/portrait image
+-   [x] Initiative bonus
+-   [x] Inventory items (including homebrew)
+-   [ ] Inventory item actions
+-   [x] Currency
+-   [x] HP (current, max)
+-   [x] Movement modes/speed
+-   [x] Name
+-   [x] Proficiencies (weapon, armor, language, save, tool)
+-   [x] Race
+-   [x] Skills
+-   [x] Spells (SRD)
+-   [x] Spells (Expansions & homebrew — partial support)
+-   [x] Spell slots
+-   [x] Feats
+-   [x] Background, appearance, and other descriptive text
 
 ## Usage Outside of Alchemy
 
@@ -56,6 +56,7 @@ This library is directly integrated into Alchemy, but if you're developing chang
 5. Upload the file you downloaded in step 2
 
 ## Contributing
+
 We welcome contributions to this repository! The D&D Beyond conversion process is complex and ever-changing, so your help in keeping things working smoothly is greatly appreciated.
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for more information on how to contribute.
