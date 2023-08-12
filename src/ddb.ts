@@ -1,5 +1,7 @@
 export interface DdbCharacter {
-    avatarUrl: string;
+    decorations: {
+        avatarUrl: string;
+    };
     name: string;
     gender: string;
     faith: string;
@@ -15,7 +17,7 @@ export interface DdbCharacter {
     removedHitPoints: number;
     temporaryHitPoints: number;
     currentXp: number;
-    alignment: DdbAlignment;
+    alignmentId: DdbAlignment;
     stats: DdbStat[];
     bonusStats: DdbStat[];
     overrideStats: DdbStat[];
@@ -149,12 +151,12 @@ export interface DdbModifier {
     friendlySubtypeName: string;
     friendlyTypeName: string;
     value: number;
-    dice: DdbDie[];
-    die: DdbDie;
-    atHigherLevels: {
-        scaleType: string;
+    dice: DdbDie[] | DdbDie;
+    die?: DdbDie;
+    atHigherLevels?: {
         higherLevelDefinitions: DdbHigherLevelDefinition[];
     };
+    scaleType?: string;
 }
 
 interface DdbDie {
@@ -217,9 +219,9 @@ export interface DdbSpell {
         componentsDescription: string;
         canCastAtHigherLevel: boolean;
         atHigherLevels: {
-            scaleType: string;
             higherLevelDefinitions: DdbHigherLevelDefinition[];
         };
+        scaleType: string;
         sources: DdbSource[];
         requiresAttackRoll: boolean;
         requiresSavingThrow: boolean;
