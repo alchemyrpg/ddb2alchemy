@@ -1,39 +1,47 @@
-import {
-    DdbArmorType,
-    DdbModifier,
-    DdbCharacter,
-    DdbProficiencyType,
-    DdbSpell,
-    DdbSpellActivationType,
-    DDB_SPEED_IS_RE,
-    DDB_SPEED_EQUALS_RE,
-    DDB_SPELL_ACTIVATION_TYPE,
-    DDB_SPELL_COMPONENT_TYPE,
-} from './ddb';
-import {
-    AlchemyCharacter,
-    AlchemyStat,
-    AlchemyClass,
-    AlchemyProficiency,
-    AlchemyMovementMode,
-    AlchemyTextBlockSection,
-    AlchemySkill,
-    AlchemyItem,
-    AlchemySpellSlot,
-    AlchemySpell,
-    AlchemyDamage,
-    AlchemySpellAtHigherLevel,
-} from './alchemy';
 import TurndownService from 'turndown';
 import * as turndownPluginGfm from 'turndown-plugin-gfm';
+import { DEFAULT_ACTIONS } from './actions';
+import {
+    AlchemyAction,
+    AlchemyActionStepDamage,
+    AlchemyCharacter,
+    AlchemyClass,
+    AlchemyDamage,
+    AlchemyItem,
+    AlchemyMovementMode,
+    AlchemyProficiency,
+    AlchemySkill,
+    AlchemySpell,
+    AlchemySpellSlot,
+    AlchemyStat,
+    AlchemyTextBlockSection,
+} from './alchemy';
+import {
+    DDB_SPEED_EQUALS_RE,
+    DDB_SPEED_IS_RE,
+    DDB_SPELL_ACTIVATION_TYPE,
+    DDB_SPELL_COMPONENT_TYPE,
+    DDB_WEAPON_CATEGORY,
+    DdbAction,
+    DdbArmorType,
+    DdbAttackType,
+    DdbCharacter,
+    DdbEntityType,
+    DdbItem,
+    DdbModifier,
+    DdbNoteTypeId,
+    DdbSpell,
+    DdbSpellActivationType,
+    DdbStatType,
+} from './ddb';
 
 // Shared between both platforms
-const STR = 1;
-const DEX = 2;
-const CON = 3;
-const INT = 4;
-const WIS = 5;
-const CHA = 6;
+export const STR = 1;
+export const DEX = 2;
+export const CON = 3;
+export const INT = 4;
+export const WIS = 5;
+export const CHA = 6;
 const STATS = {
     1: 'str',
     2: 'dex',
@@ -188,50 +196,131 @@ const CASTER_LEVEL_MULTIPLIER = {
     Ranger: 0.5,
 };
 
+const DEFAULT_ALCHEMY_CHARACTER: AlchemyCharacter = {
+    abilityScores: [],
+    armorClass: 0,
+    classes: [],
+    currentHp: 0,
+    exp: 0,
+    imageUri: '',
+    initiativeBonus: 0,
+    isNPC: false,
+    isSpellcaster: false,
+    items: [],
+    maxHp: 0,
+    movementModes: [],
+    name: '',
+    proficiencies: [],
+    proficiencyBonus: 0,
+    race: '',
+    skills: [],
+    speed: 0,
+    spellcastingAbility: '',
+    spellFilters: ['Known'],
+    spells: [],
+    spellSlots: [],
+    systemKey: '5e',
+    textBlocks: [],
+};
+
 // HTML to Markdown converter
 const turndownService = new TurndownService();
 turndownService.use(turndownPluginGfm.gfm);
 
+export type ConversionOptions = { [K in keyof AlchemyCharacter]?: boolean };
+
+const shouldConvert = <
+    TProp extends keyof AlchemyCharacter,
+    TReturn = Pick<AlchemyCharacter, TProp>,
+>(
+    options: ConversionOptions | undefined,
+    property: TProp,
+    converter: () => AlchemyCharacter[TProp],
+): TReturn | {} => {
+    return options === undefined || options[property]
+        ? { [property]: converter() }
+        : {};
+};
+
 // Convert a D&D Beyond character to an Alchemy character
 export const convertCharacter = (
     ddbCharacter: DdbCharacter,
-): AlchemyCharacter => ({
-    abilityScores: convertStatArray(ddbCharacter),
-    ...(ddbCharacter.age && { age: ddbCharacter.age.toString() }),
-    armorClass: getArmorClass(ddbCharacter),
-    copper: ddbCharacter.currencies.cp,
-    classes: convertClasses(ddbCharacter),
-    currentHp: getCurrentHp(ddbCharacter),
-    electrum: ddbCharacter.currencies.ep,
-    exp: ddbCharacter.currentXp,
-    eyes: ddbCharacter.eyes,
-    gold: ddbCharacter.currencies.gp,
-    hair: ddbCharacter.hair,
-    height: ddbCharacter.height,
-    imageUri: ddbCharacter.decorations.avatarUrl,
-    initiativeBonus: getInitiativeBonus(ddbCharacter),
-    isNPC: false,
-    isSpellcaster: isSpellcaster(ddbCharacter),
-    items: convertItems(ddbCharacter),
-    maxHp: getMaxHp(ddbCharacter),
-    movementModes: getMovementModes(ddbCharacter),
-    name: ddbCharacter.name,
-    platinum: ddbCharacter.currencies.pp,
-    proficiencies: convertProficiencies(ddbCharacter),
-    proficiencyBonus: PROFICIENCY_BONUS[getLevel(ddbCharacter)],
-    race: ddbCharacter.race.baseRaceName,
-    silver: ddbCharacter.currencies.sp,
-    skills: getSkills(ddbCharacter),
-    skin: ddbCharacter.skin,
-    speed: getSpeed(ddbCharacter),
-    spellcastingAbility: getSpellcastingAbility(ddbCharacter),
-    spellFilters: ['Known'],
-    spells: convertSpells(ddbCharacter),
-    spellSlots: convertSpellSlots(ddbCharacter),
-    systemKey: '5e',
-    textBlocks: getTextBlocks(ddbCharacter),
-    ...(ddbCharacter.weight && { weight: ddbCharacter.weight.toString() }),
-});
+    options?: ConversionOptions,
+): AlchemyCharacter => {
+    return {
+        ...DEFAULT_ALCHEMY_CHARACTER,
+        ...shouldConvert(options, 'abilityScores', () =>
+            convertStatArray(ddbCharacter),
+        ),
+        ...shouldConvert(options, 'age', () =>
+            (ddbCharacter.age ?? '').toString(),
+        ),
+        ...shouldConvert(options, 'armorClass', () =>
+            getArmorClass(ddbCharacter),
+        ),
+        ...shouldConvert(options, 'copper', () => ddbCharacter.currencies.cp),
+        ...shouldConvert(options, 'classes', () =>
+            convertClasses(ddbCharacter),
+        ),
+        ...shouldConvert(options, 'currentHp', () =>
+            getCurrentHp(ddbCharacter),
+        ),
+        ...shouldConvert(options, 'electrum', () => ddbCharacter.currencies.ep),
+        ...shouldConvert(options, 'exp', () => ddbCharacter.currentXp),
+        ...shouldConvert(options, 'eyes', () => ddbCharacter.eyes),
+        ...shouldConvert(options, 'gold', () => ddbCharacter.currencies.gp),
+        ...shouldConvert(options, 'hair', () => ddbCharacter.hair),
+        ...shouldConvert(options, 'height', () => ddbCharacter.height),
+        ...shouldConvert(options, 'imageUri', () => {
+            console.log('Convert Image');
+            return ddbCharacter.decorations.avatarUrl;
+        }),
+        ...shouldConvert(options, 'initiativeBonus', () =>
+            getInitiativeBonus(ddbCharacter),
+        ),
+        ...shouldConvert(options, 'isSpellcaster', () =>
+            isSpellcaster(ddbCharacter),
+        ),
+        ...shouldConvert(options, 'items', () => convertItems(ddbCharacter)),
+        ...shouldConvert(options, 'maxHp', () => getMaxHp(ddbCharacter)),
+        ...shouldConvert(options, 'movementModes', () =>
+            getMovementModes(ddbCharacter),
+        ),
+        ...shouldConvert(options, 'name', () => ddbCharacter.name),
+        ...shouldConvert(options, 'platinum', () => ddbCharacter.currencies.pp),
+        ...shouldConvert(options, 'proficiencies', () =>
+            convertProficiencies(ddbCharacter),
+        ),
+        ...shouldConvert(
+            options,
+            'proficiencyBonus',
+            () => PROFICIENCY_BONUS[getLevel(ddbCharacter)],
+        ),
+        ...shouldConvert(options, 'race', () => ddbCharacter.race.baseRaceName),
+        ...shouldConvert(options, 'silver', () => ddbCharacter.currencies.sp),
+        ...shouldConvert(options, 'skills', () => getSkills(ddbCharacter)),
+        ...shouldConvert(options, 'skin', () => ddbCharacter.skin),
+        ...shouldConvert(options, 'speed', () => getSpeed(ddbCharacter)),
+        ...shouldConvert(options, 'spellcastingAbility', () =>
+            getSpellcastingAbility(ddbCharacter),
+        ),
+        ...shouldConvert(options, 'spellcastingAbility', () =>
+            getSpellcastingAbility(ddbCharacter),
+        ),
+        ...shouldConvert(options, 'spells', () => convertSpells(ddbCharacter)),
+        ...shouldConvert(options, 'spellSlots', () =>
+            convertSpellSlots(ddbCharacter),
+        ),
+        ...shouldConvert(options, 'textBlocks', () =>
+            getTextBlocks(ddbCharacter),
+        ),
+        ...shouldConvert(
+            options,
+            'weight',
+            () => ddbCharacter.weight ?? ''.toString(),
+        ),
+    };
+};
 
 // Convert D&D Beyond style stat arrays to Alchemy style stat arrays
 const convertStatArray = (ddbCharacter: DdbCharacter): AlchemyStat[] => {
@@ -366,7 +455,7 @@ const getBaseHp = (ddbCharacter: DdbCharacter): number => {
 };
 
 // Calculate the current HP of the character using overrides, bonuses, etc.
-const getCurrentHp = (ddbCharacter: DdbCharacter): number => {
+export const getCurrentHp = (ddbCharacter: DdbCharacter): number => {
     const baseHp = getBaseHp(ddbCharacter);
     return (
         ddbCharacter.overrideHitPoints ||
@@ -491,8 +580,7 @@ const convertProficiencies = (
     proficiencies.push(
         getModifiers(ddbCharacter, { type: 'proficiency' })
             .filter(
-                (modifier) =>
-                    modifier.entityTypeId === DdbProficiencyType.Weapon,
+                (modifier) => modifier.entityTypeId === DdbEntityType.Weapon,
             )
             .map((modifier) => ({
                 name: modifier.friendlySubtypeName,
@@ -503,9 +591,7 @@ const convertProficiencies = (
     // tools
     proficiencies.push(
         getModifiers(ddbCharacter, { type: 'proficiency' })
-            .filter(
-                (modifier) => modifier.entityTypeId === DdbProficiencyType.Tool,
-            )
+            .filter((modifier) => modifier.entityTypeId === DdbEntityType.Tool)
             .map((modifier) => ({
                 name: modifier.friendlySubtypeName,
                 type: 'tool',
@@ -515,10 +601,7 @@ const convertProficiencies = (
     // armor
     proficiencies.push(
         getModifiers(ddbCharacter, { type: 'proficiency' })
-            .filter(
-                (modifier) =>
-                    modifier.entityTypeId === DdbProficiencyType.Armor,
-            )
+            .filter((modifier) => modifier.entityTypeId === DdbEntityType.Armor)
             .map((modifier) => ({
                 name: modifier.friendlySubtypeName,
                 type: 'armor',
@@ -535,9 +618,7 @@ const getSkills = (ddbCharacter: DdbCharacter): AlchemySkill[] => {
         (modifier) => modifier.friendlySubtypeName,
     );
     const proficient = getModifiers(ddbCharacter, { type: 'proficiency' })
-        .filter(
-            (modifier) => modifier.entityTypeId === DdbProficiencyType.Skill,
-        )
+        .filter((modifier) => modifier.entityTypeId === DdbEntityType.Skill)
         .map((modifier) => modifier.friendlySubtypeName);
 
     // Get all skills and set proficiency/expertise accordingly
@@ -890,10 +971,7 @@ const convertSpellCastingTime = (ddbSpell: DdbSpell): string => {
                 DDB_SPELL_ACTIVATION_TYPE[spell.activation.activationType]
             }`;
         case DdbSpellActivationType.Minute:
-        case DdbSpellActivationType.Hour:
         case DdbSpellActivationType.Day:
-        case DdbSpellActivationType.LegendaryAction:
-        case DdbSpellActivationType.LairAction:
             const s = spell.activation.activationTime > 1 ? 's' : '';
             return `${spell.activation.activationTime} ${
                 DDB_SPELL_ACTIVATION_TYPE[spell.activation.activationType]
@@ -929,44 +1007,192 @@ const convertSpellRange = (ddbSpell: DdbSpell): string => {
 const convertSpellDamage = (ddbSpell: DdbSpell): AlchemyDamage[] => {
     return ddbSpell.definition.modifiers
         .filter((modifier) => modifier.type == 'damage')
-        .map((modifier) => ({
-            type: modifier.friendlySubtypeName,
-            dice: `${modifier.die.diceCount}d${modifier.die.diceValue}`,
-            bonus: modifier.die.fixedValue,
-        }));
+        .map((modifier) => {
+            const dice = modifier.die || modifier.dice;
+            return {
+                type: modifier.friendlySubtypeName,
+                dice: `${dice.diceCount}d${dice.diceValue}`,
+                bonus: dice.fixedValue,
+            };
+        });
 };
 
-// Convert a spell's damage at higher levels to Alchemy format
-/*
-const convertSpellHigherLevels = (ddbSpell: DdbSpell): AlchemySpellAtHigherLevel[] => {
-  try {
-    switch (ddbSpell.definition.atHigherLevels.scaleType) {
-      case "characterLevel":
-        return ddbSpell.definition.modifiers.map(modifier => ({
-          applyAtLevels: modifier.atHigherLevels.higherLevelDefinitions.map(def => def.level),
-          damage: {
-            dice: `1d${modifier.atHigherLevels.higherLevelDefinitions[0].dice.diceValue}`,
-            bonus: modifier.atHigherLevels.higherLevelDefinitions[0].dice.fixedValue,
-            type: modifier.friendlySubtypeName,
-          },
-          type: "at-character-level"
-        }))
-      case "spellscale":
-        return ddbSpell.definition.modifiers.map(modifier => ({
-          applyAtLevels: ddbSpell.definition.atHigherLevels.higherLevelDefinitions.map(def => def.level + ddbSpell.definition.level),
-          damage: {
-            dice: `1d${modifier.atHigherLevels.higherLevelDefinitions[0].dice.diceValue}`,
-            bonus: modifier.atHigherLevels.higherLevelDefinitions[0].dice.fixedValue,
-            type: modifier.friendlySubtypeName,
-          },
-          type: "spell-level"
-        }))
-      default:
-        return []
+const convertActions = (ddbCharacter: DdbCharacter): AlchemyAction[] => {
+    const actions = [...DEFAULT_ACTIONS];
+
+    // Add attack actions for any items that deal damage
+    ddbCharacter.inventory
+        .filter((item) => item.definition.damage)
+        .map((item) =>
+            actions.push(createItemAttackAction(ddbCharacter, item)),
+        );
+
+    // Add actions for all other defined actions, from any source
+    Object.entries(ddbCharacter.actions)
+        .flatMap(([source, actions]) => actions)
+        .filter((action) => action)
+        .map((action) => actions.push(createGenericAction(action)));
+
+    // Add a sortOrder to each action if not present
+    return actions.map((action, index) => ({
+        sortOrder: action.sortOrder ?? index,
+        ...action,
+    }));
+};
+
+const createItemAttackAction = (
+    ddbCharacter: DdbCharacter,
+    item: DdbItem,
+): AlchemyAction => {
+    // Get the name, checking if it was set as a custom name
+    const itemName = ddbCharacter.characterValues
+        .filter(
+            (note) =>
+                note.valueId == item.id.toString() &&
+                note.typeId == DdbNoteTypeId.Name,
+        )
+        .reduce(
+            (name, note) => (name = note.value.toString()),
+            item.definition.name,
+        );
+
+    // Generate a name for the action with the item's type, if it's not obvious
+    const actionName =
+        itemName == item.definition.type
+            ? itemName
+            : `${itemName} (${item.definition.type})`;
+
+    // Use str as the damage stat unless the item has finesse, in which case
+    // use the higher of str and dex
+    let attackAbility = 'str';
+    if (item.definition.properties.some((prop) => prop.name == 'Finesse')) {
+        if (
+            getStatBonus(ddbCharacter, DdbStatType.Dexterity) >
+            getStatBonus(ddbCharacter, DdbStatType.Strength)
+        ) {
+            attackAbility = 'dex';
+        }
     }
-  }
-  catch(TypeError) {
-    return []
-  }
-}
-*/
+
+    // Calculate damage dice, starting with base damage and type
+    const actionDamageRolls: AlchemyActionStepDamage[] = [];
+    actionDamageRolls.push({
+        type: item.definition.damageType,
+        dice: item.definition.damage.diceString,
+        bonus: item.definition.damage.fixedValue,
+        abilityName: attackAbility,
+    });
+    item.definition.grantedModifiers
+        .filter((modifier) => modifier.type == 'damage')
+        .forEach((modifier) => {
+            const dice = modifier.die || modifier.dice;
+
+            actionDamageRolls.push({
+                type: modifier.friendlySubtypeName,
+                ...(dice && { dice: dice.diceString }),
+                bonus: modifier.fixedValue || dice.fixedValue,
+            });
+        });
+
+    // Check if proficient in weapon, weapon type ("light"), or weapon category ("martial")
+    const isProficientInWeapon = !!getModifiers(ddbCharacter, {
+        type: 'proficiency',
+    })
+        .filter((modifier) => modifier.entityTypeId === DdbEntityType.Weapon)
+        .find(
+            (modifier) => modifier.friendlySubtypeName === item.definition.type,
+        );
+
+    const isProficientInWeaponType = !!getModifiers(ddbCharacter, {
+        type: 'proficiency',
+    })
+        .filter(
+            (modifier) => modifier.entityTypeId === DdbEntityType.WeaponType,
+        )
+        .find((modifier) => {
+            const proficientType = modifier.friendlySubtypeName;
+            const weaponTypes = item.definition.properties.map(
+                (prop) => `${prop.name} Weapons`,
+            );
+            return weaponTypes.includes(proficientType);
+        });
+    const isProficientInWeaponCategory = !!getModifiers(ddbCharacter, {
+        type: 'proficiency',
+    })
+        .filter(
+            (modifier) => modifier.entityTypeId === DdbEntityType.WeaponType,
+        )
+        .find((modifier) => {
+            const proficientType = modifier.friendlySubtypeName;
+            const weaponCategory = `${
+                DDB_WEAPON_CATEGORY[item.definition.categoryId]
+            } Weapons`;
+            return proficientType === weaponCategory;
+        });
+
+    // Create the action
+    return {
+        name: actionName,
+        description: turndownService.turndown(
+            item.definition.description ?? '',
+        ),
+        steps: [
+            {
+                attack: {
+                    ability: attackAbility,
+                    actionType: 'Action',
+                    crit: 20, // no way to detect/set this in DDB right now
+                    damageRolls: actionDamageRolls,
+                    isProficient:
+                        isProficientInWeapon ||
+                        isProficientInWeaponType ||
+                        isProficientInWeaponCategory,
+                    isRanged:
+                        item.definition.attackType == DdbAttackType.Ranged,
+                    name: itemName,
+                },
+                type: 'custom-attack',
+            },
+        ],
+    };
+};
+
+const createGenericAction = (ddbAction: DdbAction): AlchemyAction => {
+    const dice = ddbAction.dice || ddbAction.die;
+
+    // Add dice roll actions for any actions that can roll dice
+    if (dice) {
+        return {
+            name: ddbAction.name,
+            description: turndownService.turndown(ddbAction.description ?? ''),
+            steps: [
+                {
+                    diceRoll: [
+                        {
+                            dice: dice.diceString,
+                            bonus: dice.fixedValue,
+                        },
+                    ],
+                    type: 'custom-dice-roll',
+                },
+            ],
+        };
+    }
+
+    // Add journal command actions for any other actions that can be activated
+    if (ddbAction.activation.activationType) {
+        return {
+            name: ddbAction.name,
+            description: turndownService.turndown(ddbAction.description ?? ''),
+            steps: [
+                {
+                    journalCommand: {
+                        command: '/me',
+                        args: `uses ${ddbAction.name}!`,
+                    },
+                    type: 'journal-command',
+                },
+            ],
+        };
+    }
+};

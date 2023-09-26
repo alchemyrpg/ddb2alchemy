@@ -1,5 +1,6 @@
 export interface AlchemyCharacter {
     abilityScores: AlchemyStat[];
+    actions?: AlchemyAction[];
     age?: string;
     armorClass: number;
     copper?: number;
@@ -137,4 +138,56 @@ interface AlchemyTextBlockSection {
 interface AlchemyMovementMode {
     mode: string;
     distance: number;
+}
+
+interface AlchemyAction {
+    name: string;
+    description: string;
+    sortOrder?: number;
+    steps: AlchemyActionStep[];
+}
+
+interface AlchemyActionStep {
+    type:
+        | 'message'
+        | 'journal-command'
+        | 'custom-dice-roll'
+        | 'custom-attack'
+        | 'skill-check';
+    journalCommand?: AlchemyActionStepJournalCommand;
+    diceRoll?: AlchemyActionStepDamage[];
+    attack?: AlchemyActionStepAttack;
+    skillCheck?: AlchemyStepSkillCheck;
+}
+
+interface AlchemyActionStepJournalCommand {
+    command: '/me' | '/roll' | '/whisper';
+    args: string;
+}
+
+interface AlchemyActionStepDamage {
+    abilityName?: string;
+    bonus?: number;
+    dice: string;
+    type?: string;
+}
+
+interface AlchemyActionStepAttack {
+    ability: string;
+    actionType: 'Action' | 'Bonus Action' | 'Reaction';
+    bonus?: number;
+    crit: number;
+    damageRolls: AlchemyActionStepDamage[];
+    isProficient: boolean;
+    isRanged: boolean;
+    name: string;
+    range?: number;
+    longRange?: number;
+    rollsAttack?: boolean;
+    savingThrow?: AlchemySavingThrow;
+}
+
+interface AlchemyStepSkillCheck {
+    skillName: string;
+    rollModifier?: 'advantage' | 'disadvantage';
 }

@@ -68,6 +68,14 @@ export interface DdbCharacter {
         characterClassId: number;
         spells: DdbSpell[];
     }[];
+    actions: {
+        race: DdbAction[];
+        class: DdbAction[];
+        background: DdbAction[];
+        item: DdbAction[];
+        feat: DdbAction[];
+    };
+    characterValues: DdbNote[];
 }
 
 interface DdbStat {
@@ -103,16 +111,19 @@ export enum DdbArmorType {
     Shield,
 }
 
-export enum DdbProficiencyType {
+export enum DdbEntityType {
     Tool = 2103445194,
     Skill = 1958004211,
     Weapon = 1782728300,
     Language = 906033267,
     Armor = 174869515,
+    WeaponType = 660121713,
 }
 
-interface DdbItem {
+export interface DdbItem {
+    id: number;
     definition: {
+        baseTypeId: DdbEntityType;
         magic: boolean;
         rarity: string;
         name: string;
@@ -135,6 +146,8 @@ interface DdbItem {
         canAttune: boolean;
         attunementDescription: string;
         cost: number;
+        attackType: DdbAttackType;
+        categoryId: number;
     };
     quantity: number;
     isAttuned: boolean;
@@ -151,7 +164,7 @@ export interface DdbModifier {
     friendlySubtypeName: string;
     friendlyTypeName: string;
     value: number;
-    dice: DdbDie[] | DdbDie;
+    dice?: DdbDie;
     die?: DdbDie;
     atHigherLevels?: {
         higherLevelDefinitions: DdbHigherLevelDefinition[];
@@ -251,15 +264,11 @@ interface DdbSource {
 
 export enum DdbSpellActivationType {
     Action = 1,
-    BonusAction,
-    Reaction,
-    Minute,
-    Hour,
-    Day,
-    Special,
-    LegendaryAction,
-    LairAction,
-    None,
+    BonusAction = 2,
+    Reaction = 4,
+    Minute = 6,
+    Day = 7,
+    Special = 8,
 }
 
 export const DDB_SPELL_COMPONENT_TYPE = {
@@ -316,4 +325,75 @@ interface DdbFeat {
         name: string;
         description: string;
     };
+}
+
+interface DdbRange {
+    range: number;
+    longRange: number;
+    aoeType: number;
+    aoeSize: number;
+    minimumRange: number;
+}
+
+export enum DdbAttackType {
+    Melee = 1,
+    Ranged,
+}
+
+export interface DdbAction {
+    name: string;
+    description: string;
+    snippet: string;
+    abilityModifierStatId: DdbStatType;
+    saveStatId: DdbStatType;
+    fixedSaveDc: number;
+    attackTypeRange: DdbAttackType;
+    attackType: DdbAttackType;
+    attackSubtype: string;
+    dice: DdbDie;
+    die?: DdbDie;
+    value: number;
+    isProficient: boolean;
+    displayAsAttack: boolean;
+    range: DdbRange;
+    activation: {
+        activationTime: number;
+        activationType: DdbActivationType;
+    };
+    numberOfTargets: number;
+    fixedToHit: number;
+    limitedUse: {
+        name: string;
+        statModifierUsesId: DdbStatType;
+        resetType: number;
+        numberUsed: number;
+        maxUses: number;
+    };
+}
+
+export const DDB_WEAPON_CATEGORY = {
+    1: 'Simple',
+    2: 'Martial',
+    3: 'Exotic',
+};
+
+interface DdbNote {
+    typeId: DdbNoteTypeId;
+    value: string | number;
+    notes: string;
+    valueId: string;
+    valueTypeId: DdbEntityType;
+}
+
+export enum DdbNoteTypeId {
+    Name = 8,
+}
+
+export enum DdbActivationType {
+    Action = 1,
+    BonusAction = 3,
+    Reaction = 4,
+    Minute = 6,
+    Day = 7,
+    Special = 8,
 }

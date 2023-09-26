@@ -3,8 +3,8 @@
  */
 
 import { describe, expect, test } from '@jest/globals';
-import * as character from './fixtures/25188288.json';
 import { convertCharacter } from '../src';
+import * as character from './fixtures/25188288.json';
 
 describe('character conversion', () => {
     test('uses the d&d beyond avatar image', () => {
