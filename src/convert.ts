@@ -1,6 +1,5 @@
 import TurndownService from 'turndown';
 import * as turndownPluginGfm from 'turndown-plugin-gfm';
-import { DEFAULT_ACTIONS } from './actions';
 import {
     AlchemyAction,
     AlchemyActionStepDamage,
@@ -251,6 +250,9 @@ export const convertCharacter = (
         ...DEFAULT_ALCHEMY_CHARACTER,
         ...shouldConvert(options, 'abilityScores', () =>
             convertStatArray(ddbCharacter),
+        ),
+        ...shouldConvert(options, 'actions', () =>
+            convertActions(ddbCharacter),
         ),
         ...shouldConvert(options, 'age', () =>
             (ddbCharacter.age ?? '').toString(),
@@ -1018,7 +1020,7 @@ const convertSpellDamage = (ddbSpell: DdbSpell): AlchemyDamage[] => {
 };
 
 const convertActions = (ddbCharacter: DdbCharacter): AlchemyAction[] => {
-    const actions = [...DEFAULT_ACTIONS];
+    const actions = [];
 
     // Add attack actions for any items that deal damage
     ddbCharacter.inventory
@@ -1034,6 +1036,7 @@ const convertActions = (ddbCharacter: DdbCharacter): AlchemyAction[] => {
         .map((action) => actions.push(createGenericAction(action)));
 
     // Add a sortOrder to each action if not present
+    // TODO: Base sortOrder on Attuned -> Equipped -> Generic -> Other Inventory
     return actions.map((action, index) => ({
         sortOrder: action.sortOrder ?? index,
         ...action,
@@ -1116,6 +1119,7 @@ const createItemAttackAction = (
             );
             return weaponTypes.includes(proficientType);
         });
+
     const isProficientInWeaponCategory = !!getModifiers(ddbCharacter, {
         type: 'proficiency',
     })
@@ -1123,10 +1127,10 @@ const createItemAttackAction = (
             (modifier) => modifier.entityTypeId === DdbEntityType.WeaponType,
         )
         .find((modifier) => {
-            const proficientType = modifier.friendlySubtypeName;
+            const proficientType = modifier.subType;
             const weaponCategory = `${
                 DDB_WEAPON_CATEGORY[item.definition.categoryId]
-            } Weapons`;
+            }-weapons`.toLowerCase();
             return proficientType === weaponCategory;
         });
 

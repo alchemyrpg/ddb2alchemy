@@ -1,0 +1,4151 @@
+{
+    "id": 109499948,
+    "userId": 114360248,
+    "username": "CyberWomble",
+    "isAssignedToPlayer": true,
+    "readonlyUrl": "https://dndbeyond.com/characters/109499948",
+    "decorations": {
+        "avatarUrl": null,
+        "frameAvatarUrl": null,
+        "backdropAvatarUrl": null,
+        "smallBackdropAvatarUrl": null,
+        "largeBackdropAvatarUrl": null,
+        "thumbnailBackdropAvatarUrl": null,
+        "defaultBackdrop": {
+            "backdropAvatarUrl": "https://www.dndbeyond.com/avatars/61/514/636453152540608423.jpeg",
+            "smallBackdropAvatarUrl": "https://www.dndbeyond.com/avatars/61/515/636453152541077230.jpeg",
+            "largeBackdropAvatarUrl": "https://www.dndbeyond.com/avatars/61/516/636453152541702237.jpeg",
+            "thumbnailBackdropAvatarUrl": "https://www.dndbeyond.com/avatars/61/517/636453152542014800.jpeg"
+        },
+        "avatarId": null,
+        "portraitDecorationKey": null,
+        "frameAvatarDecorationKey": null,
+        "frameAvatarId": null,
+        "backdropAvatarDecorationKey": null,
+        "backdropAvatarId": null,
+        "smallBackdropAvatarDecorationKey": "",
+        "smallBackdropAvatarId": null,
+        "largeBackdropAvatarDecorationKey": "",
+        "largeBackdropAvatarId": null,
+        "thumbnailBackdropAvatarDecorationKey": "",
+        "thumbnailBackdropAvatarId": null,
+        "themeColor": null
+    },
+    "name": "Xyrcharis",
+    "socialName": null,
+    "gender": null,
+    "faith": "",
+    "age": null,
+    "hair": "",
+    "eyes": null,
+    "skin": null,
+    "height": null,
+    "weight": null,
+    "inspiration": false,
+    "baseHitPoints": 10,
+    "bonusHitPoints": null,
+    "overrideHitPoints": null,
+    "removedHitPoints": 0,
+    "temporaryHitPoints": 0,
+    "currentXp": 0,
+    "alignmentId": 4,
+    "lifestyleId": 6,
+    "stats": [
+        {
+            "id": 1,
+            "name": null,
+            "value": 12
+        },
+        {
+            "id": 2,
+            "name": null,
+            "value": 13
+        },
+        {
+            "id": 3,
+            "name": null,
+            "value": 8
+        },
+        {
+            "id": 4,
+            "name": null,
+            "value": 10
+        },
+        {
+            "id": 5,
+            "name": null,
+            "value": 14
+        },
+        {
+            "id": 6,
+            "name": null,
+            "value": 15
+        }
+    ],
+    "bonusStats": [
+        {
+            "id": 1,
+            "name": null,
+            "value": null
+        },
+        {
+            "id": 2,
+            "name": null,
+            "value": null
+        },
+        {
+            "id": 3,
+            "name": null,
+            "value": null
+        },
+        {
+            "id": 4,
+            "name": null,
+            "value": null
+        },
+        {
+            "id": 5,
+            "name": null,
+            "value": null
+        },
+        {
+            "id": 6,
+            "name": null,
+            "value": null
+        }
+    ],
+    "overrideStats": [
+        {
+            "id": 1,
+            "name": null,
+            "value": null
+        },
+        {
+            "id": 2,
+            "name": null,
+            "value": null
+        },
+        {
+            "id": 3,
+            "name": null,
+            "value": null
+        },
+        {
+            "id": 4,
+            "name": null,
+            "value": null
+        },
+        {
+            "id": 5,
+            "name": null,
+            "value": null
+        },
+        {
+            "id": 6,
+            "name": null,
+            "value": null
+        }
+    ],
+    "background": {
+        "hasCustomBackground": false,
+        "definition": {
+            "id": 7,
+            "entityTypeId": 1669830167,
+            "definitionKey": "1669830167:7",
+            "name": "Acolyte",
+            "description": "<p>You have spent your life in the service of a temple to a specific god or pantheon of gods. You act as an intermediary between the realm of the holy and the mortal world, performing sacred rites and offering sacrifices in order to conduct worshipers into the presence of the divine. You are not necessarily a cleric&mdash;performing sacred rites is not the same thing as channeling divine power.</p>\r\n<p>Choose a god, a pantheon of gods, or some other quasi-divine being, and work with your DM to detail the nature of your religious service. The <a href=\"https://www.dndbeyond.com/sources/phb/appendix-b-gods-of-the-multiverse\">Gods of the Multiverse</a> section contains a sample pantheon, from the Forgotten Realms setting. Were you a lesser functionary in a temple, raised from childhood to assist the priests in the sacred rites? Or were you a high priest who suddenly experienced a call to serve your god in a different way? Perhaps you were the leader of a small cult outside of any established temple structure, or even an occult group that served a fiendish master that you now deny.</p>\r\n<div class=\"line character height1 marginTop20 marginBottom20\">&nbsp;</div>\r\n<dl>\r\n<dt><strong>Skill Proficiencies:</strong> Insight, Religion</dt>\r\n<dt><strong>Languages:</strong> Two of your choice</dt>\r\n<dt><strong>Equipment:</strong> A holy symbol (a gift to you when you entered the priesthood), a prayer book or prayer wheel, 5 sticks of incense, vestments, a set of common clothes, and a pouch containing 15 gp</dt>\r\n</dl>\r\n<blockquote>\r\n<p><strong>FEATURE: SHELTER OF THE FAITHFUL</strong></p>\r\n<p>As an acolyte, you command the respect of those who share your faith, and you can perform the religious ceremonies of your deity. You and your adventuring companions can expect to receive free healing and care at a temple, shrine, or other established presence of your faith, though you must provide any material components needed for spells. Those who share your religion will support you (but only you) at a modest lifestyle.</p>\r\n<p>You might also have ties to a specific temple dedicated to your chosen deity or pantheon, and you have a residence there. This could be the temple where you used to serve, if you remain on good terms with it, or a temple where you have found a new home. While near your temple, you can call upon the priests for assistance, provided the assistance you ask for is not hazardous and you remain in good standing with your temple.</p>\r\n</blockquote>\r\n<div class=\"line character height1 marginTop20 marginBottom20\">&nbsp;</div>\r\n<h5>Suggested Characteristics</h5>\r\n<p>Acolytes are shaped by their experience in temples or other religious communities. Their study of the history and tenets of their faith and their relationships to temples, shrines, or hierarchies affect their mannerisms and ideals. Their flaws might be some hidden hypocrisy or heretical idea, or an ideal or bond taken to an extreme.</p>\r\n<table class=\"compendium-left-aligned-table\">\r\n<thead>\r\n<tr>\r\n<th>d8</th>\r\n<th>Personality Trait</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>1</td>\r\n<td>I idolize a particular hero of my faith, and constantly refer to that person’s deeds and example.</td>\r\n</tr>\r\n<tr>\r\n<td>2</td>\r\n<td>I can find common ground between the fiercest enemies, empathizing with them and always working toward peace.</td>\r\n</tr>\r\n<tr>\r\n<td>3</td>\r\n<td>I see omens in every event and action. The gods try to speak to us, we just need to listen.</td>\r\n</tr>\r\n<tr>\r\n<td>4</td>\r\n<td>Nothing can shake my optimistic attitude.</td>\r\n</tr>\r\n<tr>\r\n<td>5</td>\r\n<td>I quote (or misquote) sacred texts and proverbs in almost every situation.</td>\r\n</tr>\r\n<tr>\r\n<td>6</td>\r\n<td>I am tolerant (or intolerant) of other faiths and respect (or condemn) the worship of other gods.</td>\r\n</tr>\r\n<tr>\r\n<td>7</td>\r\n<td>I’ve enjoyed fine food, drink, and high society among my temple’s elite. Rough living grates on me.</td>\r\n</tr>\r\n<tr>\r\n<td>8</td>\r\n<td>I’ve spent so long in the temple that I have little practical experience dealing with people in the outside world.</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p>&nbsp;</p>\r\n<table class=\"compendium-left-aligned-table\">\r\n<thead>\r\n<tr>\r\n<th>d6</th>\r\n<th>Ideal</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>1</td>\r\n<td><strong>Tradition.</strong> The ancient traditions of worship and sacrifice must be preserved and upheld. (Lawful)</td>\r\n</tr>\r\n<tr>\r\n<td>2</td>\r\n<td><strong>Charity.</strong> I always try to help those in need, no matter what the personal cost. (Good)</td>\r\n</tr>\r\n<tr>\r\n<td>3</td>\r\n<td><strong>Change.</strong> We must help bring about the changes the gods are constantly working in the world. (Chaotic)</td>\r\n</tr>\r\n<tr>\r\n<td>4</td>\r\n<td><strong>Power.</strong> I hope to one day rise to the top of my faith’s religious hierarchy. (Lawful)</td>\r\n</tr>\r\n<tr>\r\n<td>5</td>\r\n<td><strong>Faith.</strong> I trust that my deity will guide my actions. I have faith that if I work hard, things will go well. (Lawful)</td>\r\n</tr>\r\n<tr>\r\n<td>6</td>\r\n<td><strong>Aspiration.</strong> I seek to prove myself worthy of my god’s favor by matching my actions against his or her teachings. (Any)</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p>&nbsp;</p>\r\n<table class=\"compendium-left-aligned-table\">\r\n<thead>\r\n<tr>\r\n<th>d6</th>\r\n<th>Bond</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>1</td>\r\n<td>I would die to recover an ancient relic of my faith that was lost long ago.</td>\r\n</tr>\r\n<tr>\r\n<td>2</td>\r\n<td>I will someday get revenge on the corrupt temple hierarchy who branded me a heretic.</td>\r\n</tr>\r\n<tr>\r\n<td>3</td>\r\n<td>I owe my life to the priest who took me in when my parents died.</td>\r\n</tr>\r\n<tr>\r\n<td>4</td>\r\n<td>Everything I do is for the common people.</td>\r\n</tr>\r\n<tr>\r\n<td>5</td>\r\n<td>I will do anything to protect the temple where I served.</td>\r\n</tr>\r\n<tr>\r\n<td>6</td>\r\n<td>I seek to preserve a sacred text that my enemies consider heretical and seek to destroy.</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p>&nbsp;</p>\r\n<table class=\"compendium-left-aligned-table\">\r\n<thead>\r\n<tr>\r\n<th>d6</th>\r\n<th>Flaw</th>\r\n</tr>\r\n</thead>\r\n<tbody>\r\n<tr>\r\n<td>1</td>\r\n<td>I judge others harshly, and myself even more severely.</td>\r\n</tr>\r\n<tr>\r\n<td>2</td>\r\n<td>I put too much trust in those who wield power within my temple’s hierarchy.</td>\r\n</tr>\r\n<tr>\r\n<td>3</td>\r\n<td>My piety sometimes leads me to blindly trust those that profess faith in my god.</td>\r\n</tr>\r\n<tr>\r\n<td>4</td>\r\n<td>I am inflexible in my thinking.</td>\r\n</tr>\r\n<tr>\r\n<td>5</td>\r\n<td>I am suspicious of strangers and expect the worst of them.</td>\r\n</tr>\r\n<tr>\r\n<td>6</td>\r\n<td>Once I pick a goal, I become obsessed with it to the detriment of everything else in my life.</td>\r\n</tr>\r\n</tbody>\r\n</table>",
+            "snippet": "",
+            "shortDescription": "<p>You have spent your life in the service of a temple to a specific god or pantheon of gods. You act as an intermediary between the realm of the holy and the mortal world, performing sacred rites and offering sacrifices in order to conduct worshipers into the presence of the divine. You are not necessarily a cleric&mdash;performing sacred rites is not the same thing as channeling divine power.</p>\r\n<p>Choose a god, a pantheon of gods, or some other quasi-divine being, and work with your DM to detail the nature of your religious service. The <a title=\"Gods of the Multiverse\" href=\"https://www.dndbeyond.com/sources/phb/appendix-b-gods-of-the-multiverse\">Gods of the Multiverse</a> section contains a sample pantheon, from the Forgotten Realms setting. Were you a lesser functionary in a temple, raised from childhood to assist the priests in the sacred rites? Or were you a high priest who suddenly experienced a call to serve your god in a different way? Perhaps you were the leader of a small cult outside of any established temple structure, or even an occult group that served a fiendish master that you now deny.</p>",
+            "skillProficienciesDescription": "Insight, Religion",
+            "toolProficienciesDescription": "",
+            "languagesDescription": "Two of your choice",
+            "equipmentDescription": "A holy symbol (a gift to you when you entered the priesthood), a prayer book or prayer wheel, 5 sticks of incense, vestments, a set of common clothes, and a pouch containing 15 gp.",
+            "featureName": "Shelter of the Faithful",
+            "featureDescription": "<p>As an acolyte, you command the respect of those who share your faith, and you can perform the religious ceremonies of your deity. You and your adventuring companions can expect to receive free healing and care at a temple, shrine, or other established presence of your faith, though you must provide any material components needed for spells. Those who share your religion will support you (but only you) at a modest lifestyle.</p>\r\n<p>You might also have ties to a specific temple dedicated to your chosen deity or pantheon, and you have a residence there. This could be the temple where you used to serve, if you remain on good terms with it, or a temple where you have found a new home. While near your temple, you can call upon the priests for assistance, provided the assistance you ask for is not hazardous and you remain in good standing with your temple.</p>",
+            "avatarUrl": null,
+            "largeAvatarUrl": null,
+            "suggestedCharacteristicsDescription": "<p>Acolytes are shaped by their experience in temples or other religious communities. Their study of the history and tenets of their faith and their relationships to temples, shrines, or hierarchies affect their mannerisms and ideals. Their flaws might be some hidden hypocrisy or heretical idea, or an ideal or bond taken to an extreme.</p>",
+            "suggestedProficiencies": null,
+            "suggestedLanguages": null,
+            "organization": null,
+            "contractsDescription": "",
+            "spellsPreDescription": "",
+            "spellsPostDescription": "",
+            "personalityTraits": [
+                {
+                    "id": 43,
+                    "description": "I idolize a particular hero of my faith, and constantly refer to that person’s deeds and example.",
+                    "diceRoll": 1
+                },
+                {
+                    "id": 44,
+                    "description": "I can find common ground between the fiercest enemies, empathizing with them and always working toward peace.",
+                    "diceRoll": 2
+                },
+                {
+                    "id": 45,
+                    "description": "I see omens in every event and action. The gods try to speak to us, we just need to listen.",
+                    "diceRoll": 3
+                },
+                {
+                    "id": 46,
+                    "description": "Nothing can shake my optimistic attitude.",
+                    "diceRoll": 4
+                },
+                {
+                    "id": 47,
+                    "description": "I quote (or misquote) sacred texts and proverbs in almost every situation.",
+                    "diceRoll": 5
+                },
+                {
+                    "id": 48,
+                    "description": "I am tolerant (or intolerant) of other faiths and respect (or condemn) the worship of other gods.",
+                    "diceRoll": 6
+                },
+                {
+                    "id": 49,
+                    "description": "I’ve enjoyed fine food, drink, and high society among my temple’s elite. Rough living grates on me.",
+                    "diceRoll": 7
+                },
+                {
+                    "id": 50,
+                    "description": "I’ve spent so long in the temple that I have little practical experience dealing with people in the outside world.",
+                    "diceRoll": 8
+                }
+            ],
+            "ideals": [
+                {
+                    "id": 57,
+                    "description": "Tradition. The ancient traditions of worship and sacrifice must be preserved and upheld. (Lawful)",
+                    "diceRoll": 1
+                },
+                {
+                    "id": 58,
+                    "description": "Charity. I always try to help those in need, no matter what the personal cost. (Good)",
+                    "diceRoll": 2
+                },
+                {
+                    "id": 59,
+                    "description": "Change. We must help bring about the changes the gods are constantly working in the world. (Chaotic)",
+                    "diceRoll": 3
+                },
+                {
+                    "id": 60,
+                    "description": "Power. I hope to one day rise to the top of my faith’s religious hierarchy. (Lawful)",
+                    "diceRoll": 4
+                },
+                {
+                    "id": 61,
+                    "description": "Faith. I trust that my deity will guide my actions. I have faith that if I work hard, things will go well. (Lawful)",
+                    "diceRoll": 5
+                },
+                {
+                    "id": 62,
+                    "description": "Aspiration. I seek to prove myself worthy of my god’s favor by matching my actions against his or her teachings. (Any)",
+                    "diceRoll": 6
+                }
+            ],
+            "bonds": [
+                {
+                    "id": 51,
+                    "description": "I would die to recover an ancient relic of my faith that was lost long ago.",
+                    "diceRoll": 1
+                },
+                {
+                    "id": 52,
+                    "description": "I will someday get revenge on the corrupt temple hierarchy who branded me a heretic.",
+                    "diceRoll": 2
+                },
+                {
+                    "id": 53,
+                    "description": "I owe my life to the priest who took me in when my parents died.",
+                    "diceRoll": 3
+                },
+                {
+                    "id": 54,
+                    "description": "Everything I do is for the common people.",
+                    "diceRoll": 4
+                },
+                {
+                    "id": 55,
+                    "description": "I will do anything to protect the temple where I served.",
+                    "diceRoll": 5
+                },
+                {
+                    "id": 56,
+                    "description": "I seek to preserve a sacred text that my enemies consider heretical and seek to destroy.",
+                    "diceRoll": 6
+                }
+            ],
+            "flaws": [
+                {
+                    "id": 63,
+                    "description": "I judge others harshly, and myself even more severely.",
+                    "diceRoll": 1
+                },
+                {
+                    "id": 64,
+                    "description": "I put too much trust in those who wield power within my temple’s hierarchy.",
+                    "diceRoll": 2
+                },
+                {
+                    "id": 65,
+                    "description": "My piety sometimes leads me to blindly trust those that profess faith in my god.",
+                    "diceRoll": 3
+                },
+                {
+                    "id": 66,
+                    "description": "I am inflexible in my thinking.",
+                    "diceRoll": 4
+                },
+                {
+                    "id": 67,
+                    "description": "I am suspicious of strangers and expect the worst of them.",
+                    "diceRoll": 5
+                },
+                {
+                    "id": 68,
+                    "description": "Once I pick a goal, I become obsessed with it to the detriment of everything else in my life.",
+                    "diceRoll": 6
+                }
+            ],
+            "isHomebrew": false,
+            "sources": [
+                {
+                    "sourceId": 1,
+                    "pageNumber": null,
+                    "sourceType": 1
+                }
+            ],
+            "spellListIds": [],
+            "featList": null
+        },
+        "definitionId": null,
+        "customBackground": {
+            "id": 109499948,
+            "entityTypeId": 1581111423,
+            "name": null,
+            "description": null,
+            "featuresBackground": null,
+            "characteristicsBackground": null,
+            "featuresBackgroundDefinitionId": null,
+            "characteristicsBackgroundDefinitionId": null,
+            "backgroundType": null
+        }
+    },
+    "race": {
+        "isSubRace": false,
+        "baseRaceName": "Half-Elf",
+        "entityRaceId": 20,
+        "entityRaceTypeId": 1743923279,
+        "definitionKey": "1743923279:20",
+        "fullName": "Half-Elf",
+        "baseRaceId": 20,
+        "baseRaceTypeId": 1743923279,
+        "description": "<p>Half-elves combine what some say are the best qualities of their elf and human parents.</p>\r\n<p class=\"characters-statblock\" style=\"font-family: Roboto Condensed;\"><strong>Racial Traits</strong><br />+2 Charisma, +1 to Two Other Ability Scores, Darkvision, Fey Ancestry, Skill Versatility</p>",
+        "avatarUrl": "https://www.dndbeyond.com/avatars/6/480/636274618102482054.png?width=350&height=350&fit=bounds&quality=95&auto=webp",
+        "largeAvatarUrl": "https://www.dndbeyond.com/avatars/6/481/636274618102950794.png?width=1000&height=1000&fit=bounds&quality=95&auto=webp",
+        "portraitAvatarUrl": "https://www.dndbeyond.com/avatars/9/381/636327459940259125.jpeg?width=1000&height=1000&fit=bounds&quality=95&auto=webp",
+        "moreDetailsUrl": "/races/20-half-elf",
+        "isHomebrew": false,
+        "isLegacy": false,
+        "groupIds": [
+            10
+        ],
+        "type": 1,
+        "supportsSubrace": null,
+        "subRaceShortName": null,
+        "baseName": "Half-Elf",
+        "racialTraits": [
+            {
+                "definition": {
+                    "id": 48,
+                    "definitionKey": "racial-trait:48",
+                    "entityTypeId": 1960452172,
+                    "displayOrder": 6,
+                    "name": "Darkvision",
+                    "description": "<p>Thanks to your elf blood, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can’t discern color in darkness, only shades of gray.</p>",
+                    "snippet": "You can see in darkness (shades of gray) up to 60 ft.",
+                    "hideInBuilder": false,
+                    "hideInSheet": false,
+                    "activation": null,
+                    "sourceId": 1,
+                    "sourcePageNumber": 39,
+                    "creatureRules": [],
+                    "spellListIds": [],
+                    "featureType": 1,
+                    "sources": [
+                        {
+                            "sourceId": 1,
+                            "pageNumber": 39,
+                            "sourceType": 1
+                        }
+                    ],
+                    "affectedFeatureDefinitionKeys": [],
+                    "isCalledOut": true,
+                    "entityType": "racial-trait",
+                    "entityID": "48",
+                    "entityRaceId": 20,
+                    "entityRaceTypeId": 1743923279,
+                    "displayConfiguration": {
+                        "RACIALTRAIT": 1,
+                        "ABILITYSCORE": 0,
+                        "LANGUAGE": 0,
+                        "CLASSFEATURE": 0
+                    },
+                    "requiredLevel": null
+                }
+            },
+            {
+                "definition": {
+                    "id": 49,
+                    "definitionKey": "racial-trait:49",
+                    "entityTypeId": 1960452172,
+                    "displayOrder": 7,
+                    "name": "Fey Ancestry",
+                    "description": "<p>You have advantage on saving throws against being charmed, and magic can’t put you to sleep.</p>",
+                    "snippet": "You have advantage on saving throws against being charmed, and magic can’t put you to sleep.",
+                    "hideInBuilder": false,
+                    "hideInSheet": false,
+                    "activation": null,
+                    "sourceId": 1,
+                    "sourcePageNumber": 39,
+                    "creatureRules": [],
+                    "spellListIds": [],
+                    "featureType": 1,
+                    "sources": [
+                        {
+                            "sourceId": 1,
+                            "pageNumber": 39,
+                            "sourceType": 1
+                        }
+                    ],
+                    "affectedFeatureDefinitionKeys": [],
+                    "isCalledOut": true,
+                    "entityType": "racial-trait",
+                    "entityID": "49",
+                    "entityRaceId": 20,
+                    "entityRaceTypeId": 1743923279,
+                    "displayConfiguration": {
+                        "RACIALTRAIT": 1,
+                        "ABILITYSCORE": 0,
+                        "LANGUAGE": 0,
+                        "CLASSFEATURE": 0
+                    },
+                    "requiredLevel": null
+                }
+            },
+            {
+                "definition": {
+                    "id": 50,
+                    "definitionKey": "racial-trait:50",
+                    "entityTypeId": 1960452172,
+                    "displayOrder": 8,
+                    "name": "Skill Versatility",
+                    "description": "<p>You gain proficiency in two skills of your choice.</p>",
+                    "snippet": "You gain proficiency in two skills of your choice.",
+                    "hideInBuilder": false,
+                    "hideInSheet": false,
+                    "activation": null,
+                    "sourceId": 1,
+                    "sourcePageNumber": 39,
+                    "creatureRules": [],
+                    "spellListIds": [],
+                    "featureType": 1,
+                    "sources": [
+                        {
+                            "sourceId": 1,
+                            "pageNumber": 39,
+                            "sourceType": 1
+                        }
+                    ],
+                    "affectedFeatureDefinitionKeys": [],
+                    "isCalledOut": true,
+                    "entityType": "racial-trait",
+                    "entityID": "50",
+                    "entityRaceId": 20,
+                    "entityRaceTypeId": 1743923279,
+                    "displayConfiguration": {
+                        "RACIALTRAIT": 1,
+                        "ABILITYSCORE": 0,
+                        "LANGUAGE": 0,
+                        "CLASSFEATURE": 0
+                    },
+                    "requiredLevel": null
+                }
+            },
+            {
+                "definition": {
+                    "id": 93,
+                    "definitionKey": "racial-trait:93",
+                    "entityTypeId": 1960452172,
+                    "displayOrder": 1,
+                    "name": "Ability Score Increase",
+                    "description": "<p>Your Charisma score increases by 2, and two other ability scores of your choice increase by 1.</p>",
+                    "snippet": "",
+                    "hideInBuilder": false,
+                    "hideInSheet": true,
+                    "activation": null,
+                    "sourceId": 1,
+                    "sourcePageNumber": 39,
+                    "creatureRules": [],
+                    "spellListIds": [],
+                    "featureType": 1,
+                    "sources": [
+                        {
+                            "sourceId": 1,
+                            "pageNumber": 39,
+                            "sourceType": 1
+                        }
+                    ],
+                    "affectedFeatureDefinitionKeys": [],
+                    "isCalledOut": false,
+                    "entityType": "racial-trait",
+                    "entityID": "93",
+                    "entityRaceId": 20,
+                    "entityRaceTypeId": 1743923279,
+                    "displayConfiguration": {
+                        "RACIALTRAIT": 1,
+                        "ABILITYSCORE": 1,
+                        "LANGUAGE": 0,
+                        "CLASSFEATURE": 0
+                    },
+                    "requiredLevel": null
+                }
+            },
+            {
+                "definition": {
+                    "id": 94,
+                    "definitionKey": "racial-trait:94",
+                    "entityTypeId": 1960452172,
+                    "displayOrder": 9,
+                    "name": "Languages",
+                    "description": "<p>You can speak, read, and write Common, Elvish, and one extra language of your choice.</p>",
+                    "snippet": null,
+                    "hideInBuilder": false,
+                    "hideInSheet": true,
+                    "activation": null,
+                    "sourceId": 1,
+                    "sourcePageNumber": 39,
+                    "creatureRules": [],
+                    "spellListIds": [],
+                    "featureType": 1,
+                    "sources": [
+                        {
+                            "sourceId": 1,
+                            "pageNumber": 39,
+                            "sourceType": 1
+                        }
+                    ],
+                    "affectedFeatureDefinitionKeys": [],
+                    "isCalledOut": false,
+                    "entityType": "racial-trait",
+                    "entityID": "94",
+                    "entityRaceId": 20,
+                    "entityRaceTypeId": 1743923279,
+                    "displayConfiguration": {
+                        "RACIALTRAIT": 1,
+                        "LANGUAGE": 1,
+                        "ABILITYSCORE": 0,
+                        "CLASSFEATURE": 0
+                    },
+                    "requiredLevel": null
+                }
+            },
+            {
+                "definition": {
+                    "id": 138,
+                    "definitionKey": "racial-trait:138",
+                    "entityTypeId": 1960452172,
+                    "displayOrder": 2,
+                    "name": "Age",
+                    "description": "<p>Half-elves mature at the same rate humans do and reach adulthood around the age of 20. They live much longer than humans, however, often exceeding 180 years.</p>",
+                    "snippet": null,
+                    "hideInBuilder": true,
+                    "hideInSheet": true,
+                    "activation": null,
+                    "sourceId": 1,
+                    "sourcePageNumber": 39,
+                    "creatureRules": [],
+                    "spellListIds": [],
+                    "featureType": 1,
+                    "sources": [
+                        {
+                            "sourceId": 1,
+                            "pageNumber": 39,
+                            "sourceType": 1
+                        }
+                    ],
+                    "affectedFeatureDefinitionKeys": [],
+                    "isCalledOut": false,
+                    "entityType": "racial-trait",
+                    "entityID": "138",
+                    "entityRaceId": 20,
+                    "entityRaceTypeId": 1743923279,
+                    "displayConfiguration": {
+                        "RACIALTRAIT": 1,
+                        "ABILITYSCORE": 0,
+                        "LANGUAGE": 0,
+                        "CLASSFEATURE": 0
+                    },
+                    "requiredLevel": null
+                }
+            },
+            {
+                "definition": {
+                    "id": 140,
+                    "definitionKey": "racial-trait:140",
+                    "entityTypeId": 1960452172,
+                    "displayOrder": 4,
+                    "name": "Size",
+                    "description": "<p>Half-elves are about the same size as humans, ranging from 5 to 6 feet tall. Your size is Medium.</p>",
+                    "snippet": null,
+                    "hideInBuilder": true,
+                    "hideInSheet": true,
+                    "activation": null,
+                    "sourceId": 1,
+                    "sourcePageNumber": 39,
+                    "creatureRules": [],
+                    "spellListIds": [],
+                    "featureType": 1,
+                    "sources": [
+                        {
+                            "sourceId": 1,
+                            "pageNumber": 39,
+                            "sourceType": 1
+                        }
+                    ],
+                    "affectedFeatureDefinitionKeys": [],
+                    "isCalledOut": false,
+                    "entityType": "racial-trait",
+                    "entityID": "140",
+                    "entityRaceId": 20,
+                    "entityRaceTypeId": 1743923279,
+                    "displayConfiguration": {
+                        "RACIALTRAIT": 1,
+                        "ABILITYSCORE": 0,
+                        "LANGUAGE": 0,
+                        "CLASSFEATURE": 0
+                    },
+                    "requiredLevel": null
+                }
+            },
+            {
+                "definition": {
+                    "id": 141,
+                    "definitionKey": "racial-trait:141",
+                    "entityTypeId": 1960452172,
+                    "displayOrder": 5,
+                    "name": "Speed",
+                    "description": "<p>Your base walking speed is 30 feet.</p>",
+                    "snippet": null,
+                    "hideInBuilder": true,
+                    "hideInSheet": true,
+                    "activation": null,
+                    "sourceId": 1,
+                    "sourcePageNumber": 39,
+                    "creatureRules": [],
+                    "spellListIds": [],
+                    "featureType": 1,
+                    "sources": [
+                        {
+                            "sourceId": 1,
+                            "pageNumber": 39,
+                            "sourceType": 1
+                        }
+                    ],
+                    "affectedFeatureDefinitionKeys": [],
+                    "isCalledOut": false,
+                    "entityType": "racial-trait",
+                    "entityID": "141",
+                    "entityRaceId": 20,
+                    "entityRaceTypeId": 1743923279,
+                    "displayConfiguration": {
+                        "RACIALTRAIT": 1,
+                        "ABILITYSCORE": 0,
+                        "LANGUAGE": 0,
+                        "CLASSFEATURE": 0
+                    },
+                    "requiredLevel": null
+                }
+            }
+        ],
+        "weightSpeeds": {
+            "normal": {
+                "walk": 30,
+                "fly": 0,
+                "burrow": 0,
+                "swim": 0,
+                "climb": 0
+            },
+            "encumbered": null,
+            "heavilyEncumbered": null,
+            "pushDragLift": null,
+            "override": null
+        },
+        "featIds": [],
+        "size": null,
+        "sizeId": 4,
+        "sources": [
+            {
+                "sourceId": 1,
+                "pageNumber": null,
+                "sourceType": 2
+            },
+            {
+                "sourceId": 2,
+                "pageNumber": 38,
+                "sourceType": 1
+            }
+        ]
+    },
+    "raceDefinitionId": null,
+    "raceDefinitionTypeId": null,
+    "notes": {
+        "allies": null,
+        "personalPossessions": "5 sticks of incense",
+        "otherHoldings": null,
+        "organizations": null,
+        "enemies": null,
+        "backstory": null,
+        "otherNotes": null
+    },
+    "traits": {
+        "personalityTraits": "I idolize a particular hero of my faith, and constantly refer to that person’s deeds and example.",
+        "ideals": "Tradition. The ancient traditions of worship and sacrifice must be preserved and upheld. (Lawful)",
+        "bonds": "I seek to preserve a sacred text that my enemies consider heretical and seek to destroy.",
+        "flaws": "I judge others harshly, and myself even more severely.",
+        "appearance": null
+    },
+    "preferences": {
+        "useHomebrewContent": true,
+        "progressionType": 1,
+        "encumbranceType": 1,
+        "ignoreCoinWeight": true,
+        "hitPointType": 1,
+        "showUnarmedStrike": true,
+        "showScaledSpells": true,
+        "primarySense": 5,
+        "primaryMovement": 1,
+        "privacyType": 3,
+        "sharingType": 2,
+        "abilityScoreDisplayType": 2,
+        "enforceFeatRules": true,
+        "enforceMulticlassRules": true,
+        "enableOptionalClassFeatures": false,
+        "enableOptionalOrigins": false,
+        "enableDarkMode": false,
+        "enableContainerCurrency": false
+    },
+    "configuration": {
+        "startingEquipmentType": 3,
+        "abilityScoreType": 1,
+        "showHelpText": false
+    },
+    "lifestyle": null,
+    "inventory": [
+        {
+            "id": 1231642738,
+            "entityTypeId": 1439493548,
+            "definition": {
+                "id": 38,
+                "baseTypeId": 2103445194,
+                "entityTypeId": 2103445194,
+                "definitionKey": "2103445194:38",
+                "canEquip": false,
+                "magic": false,
+                "name": "Clothes, Common",
+                "snippet": null,
+                "weight": 3,
+                "weightMultiplier": 1,
+                "capacity": null,
+                "capacityWeight": 0,
+                "type": "Gear",
+                "description": "<p>This set of clothes could consist of a loose shirt and baggy breeches, or a loose shirt and skirt or overdress. Cloth wrappings are used for shoes.</p>",
+                "canAttune": false,
+                "attunementDescription": null,
+                "rarity": "Common",
+                "isHomebrew": false,
+                "version": null,
+                "sourceId": null,
+                "sourcePageNumber": null,
+                "stackable": true,
+                "bundleSize": 1,
+                "avatarUrl": null,
+                "largeAvatarUrl": null,
+                "filterType": "Other Gear",
+                "cost": 0.5,
+                "isPack": false,
+                "tags": [
+                    "Social",
+                    "Outerwear"
+                ],
+                "grantedModifiers": [],
+                "subType": "Adventuring Gear",
+                "isConsumable": false,
+                "weaponBehaviors": [],
+                "baseItemId": null,
+                "baseArmorName": null,
+                "strengthRequirement": null,
+                "armorClass": null,
+                "stealthCheck": null,
+                "damage": null,
+                "damageType": null,
+                "fixedDamage": null,
+                "properties": null,
+                "attackType": null,
+                "categoryId": null,
+                "range": null,
+                "longRange": null,
+                "isMonkWeapon": false,
+                "levelInfusionGranted": null,
+                "sources": [
+                    {
+                        "sourceId": 1,
+                        "pageNumber": null,
+                        "sourceType": 2
+                    },
+                    {
+                        "sourceId": 2,
+                        "pageNumber": null,
+                        "sourceType": 1
+                    }
+                ],
+                "armorTypeId": null,
+                "gearTypeId": 1,
+                "groupedId": null,
+                "canBeAddedToInventory": true,
+                "isContainer": false,
+                "isCustomItem": false
+            },
+            "definitionId": 0,
+            "definitionTypeId": 0,
+            "displayAsAttack": null,
+            "quantity": 1,
+            "isAttuned": false,
+            "equipped": false,
+            "equippedEntityTypeId": null,
+            "equippedEntityId": null,
+            "chargesUsed": 0,
+            "limitedUse": null,
+            "containerEntityId": 109499948,
+            "containerEntityTypeId": 1581111423,
+            "containerDefinitionKey": "1581111423:109499948",
+            "currency": null
+        },
+        {
+            "id": 1231642737,
+            "entityTypeId": 1439493548,
+            "definition": {
+                "id": 210,
+                "baseTypeId": 2103445194,
+                "entityTypeId": 2103445194,
+                "definitionKey": "2103445194:210",
+                "canEquip": false,
+                "magic": false,
+                "name": "Vestments",
+                "snippet": null,
+                "weight": 0,
+                "weightMultiplier": 1,
+                "capacity": "",
+                "capacityWeight": 0,
+                "type": "Gear",
+                "description": "<p>Religious clothing, typically found in a priest's pack.</p>",
+                "canAttune": false,
+                "attunementDescription": null,
+                "rarity": "Common",
+                "isHomebrew": false,
+                "version": null,
+                "sourceId": null,
+                "sourcePageNumber": null,
+                "stackable": true,
+                "bundleSize": 1,
+                "avatarUrl": null,
+                "largeAvatarUrl": null,
+                "filterType": "Other Gear",
+                "cost": 0,
+                "isPack": false,
+                "tags": [
+                    "Social",
+                    "Utility"
+                ],
+                "grantedModifiers": [],
+                "subType": "Adventuring Gear",
+                "isConsumable": false,
+                "weaponBehaviors": [],
+                "baseItemId": null,
+                "baseArmorName": null,
+                "strengthRequirement": null,
+                "armorClass": null,
+                "stealthCheck": null,
+                "damage": null,
+                "damageType": null,
+                "fixedDamage": null,
+                "properties": null,
+                "attackType": null,
+                "categoryId": null,
+                "range": null,
+                "longRange": null,
+                "isMonkWeapon": false,
+                "levelInfusionGranted": null,
+                "sources": [
+                    {
+                        "sourceId": 1,
+                        "pageNumber": null,
+                        "sourceType": 2
+                    },
+                    {
+                        "sourceId": 2,
+                        "pageNumber": null,
+                        "sourceType": 1
+                    }
+                ],
+                "armorTypeId": null,
+                "gearTypeId": 1,
+                "groupedId": null,
+                "canBeAddedToInventory": true,
+                "isContainer": false,
+                "isCustomItem": false
+            },
+            "definitionId": 0,
+            "definitionTypeId": 0,
+            "displayAsAttack": null,
+            "quantity": 1,
+            "isAttuned": false,
+            "equipped": false,
+            "equippedEntityTypeId": null,
+            "equippedEntityId": null,
+            "chargesUsed": 0,
+            "limitedUse": null,
+            "containerEntityId": 109499948,
+            "containerEntityTypeId": 1581111423,
+            "containerDefinitionKey": "1581111423:109499948",
+            "currency": null
+        }
+    ],
+    "currencies": {
+        "cp": 0,
+        "sp": 0,
+        "gp": 15,
+        "ep": 0,
+        "pp": 0
+    },
+    "classes": [
+        {
+            "id": 147563817,
+            "entityTypeId": 1446578651,
+            "level": 1,
+            "isStartingClass": true,
+            "hitDiceUsed": 0,
+            "definitionId": 0,
+            "subclassDefinitionId": null,
+            "definition": {
+                "id": 10,
+                "definitionKey": "789467139:10",
+                "name": "Fighter",
+                "description": "<p>A master of martial combat, skilled with a variety of weapons and armor</p>\r\n<p class=\"characters-statblock\" style=\"font-family: Roboto Condensed; font-size: 14px;\"><strong>Hit Die:</strong> d10<br /><strong>Primary Ability:</strong> Strength or Dexterity<br /><strong>Saves:</strong> Strength &amp; Constitution</p>",
+                "equipmentDescription": "<p class=\"Core-Styles_Core-Body-Last--to-apply-extra-space-\">You start with the following equipment, in addition to the equipment granted by your background:</p>\r\n<ul>\r\n<li class=\"Core-Styles_Core-Bulleted\">(<span class=\"Serif-Character-Style_Italic-Serif\">a</span>) chain mail or (<span class=\"Serif-Character-Style_Italic-Serif\">b</span>) leather armor, longbow, and 20 arrows</li>\r\n<li class=\"Core-Styles_Core-Bulleted\">(<span class=\"Serif-Character-Style_Italic-Serif\">a</span>) a martial weapon and a shield or (<span class=\"Serif-Character-Style_Italic-Serif\">b</span>) two martial weapons</li>\r\n<li class=\"Core-Styles_Core-Bulleted\">(<span class=\"Serif-Character-Style_Italic-Serif\">a</span>) a light crossbow and 20 bolts or (<span class=\"Serif-Character-Style_Italic-Serif\">b</span>) two handaxes</li>\r\n<li class=\"Core-Styles_Core-Bulleted\">(<span class=\"Serif-Character-Style_Italic-Serif\">a</span>) a dungeoneer’s pack or (<span class=\"Serif-Character-Style_Italic-Serif\">b</span>) an explorer’s pack</li>\r\n</ul>",
+                "parentClassId": null,
+                "avatarUrl": "https://www.dndbeyond.com/avatars/6/358/636272697873728704.png?width=350&height=350&fit=bounds&quality=95&auto=webp",
+                "largeAvatarUrl": "https://www.dndbeyond.com/avatars/6/359/636272697874197438.png?width=1000&height=1000&fit=bounds&quality=95&auto=webp",
+                "portraitAvatarUrl": "https://www.dndbeyond.com/avatars/10/4/636336417268495752.jpeg?width=1000&height=1000&fit=bounds&quality=95&auto=webp",
+                "moreDetailsUrl": "/characters/classes/fighter",
+                "spellCastingAbilityId": null,
+                "sources": [
+                    {
+                        "sourceId": 1,
+                        "pageNumber": 70,
+                        "sourceType": 1
+                    }
+                ],
+                "classFeatures": [
+                    {
+                        "id": 191,
+                        "name": "Fighting Style",
+                        "prerequisite": null,
+                        "description": "<p>You adopt a particular style of fighting as your specialty. Choose one of the following options. You can’t take a Fighting Style option more than once, even if you later get to choose again.</p>",
+                        "requiredLevel": 1,
+                        "displayOrder": 3
+                    },
+                    {
+                        "id": 192,
+                        "name": "Second Wind",
+                        "prerequisite": null,
+                        "description": "<p>You have a limited well of stamina that you can draw on to protect yourself from harm. On your turn, you can use a bonus action to regain hit points equal to 1d10 + your fighter level. Once you use this feature, you must finish a short or long rest before you can use it again.</p>",
+                        "requiredLevel": 1,
+                        "displayOrder": 4
+                    },
+                    {
+                        "id": 193,
+                        "name": "Action Surge",
+                        "prerequisite": null,
+                        "description": "<p>Starting at 2nd level, you can push yourself beyond your normal limits for a moment. On your turn, you can take one additional action.</p>\r\n<p>Once you use this feature, you must finish a short or long rest before you can use it again. Starting at 17th level, you can use it twice before a rest, but only once on the same turn.</p>",
+                        "requiredLevel": 2,
+                        "displayOrder": 5
+                    },
+                    {
+                        "id": 194,
+                        "name": "Martial Archetype",
+                        "prerequisite": null,
+                        "description": "<p>At 3rd level, you choose an archetype that you strive to emulate in your combat styles and techniques. Choose Champion, Battle Master, or Eldritch Knight, all detailed at the end of the class description. The archetype you choose grants you features at 3rd level and again at 7th, 10th, 15th, and 18th level.</p>",
+                        "requiredLevel": 3,
+                        "displayOrder": 6
+                    },
+                    {
+                        "id": 195,
+                        "name": "Ability Score Improvement",
+                        "prerequisite": null,
+                        "description": "<p>When you reach 4th level, and again at 6th, 8th, 12th, 14th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can’t increase an ability score above 20 using this feature.</p>\r\n<p>Using the optional feats rule, you can forgo taking this feature to take a feat of your choice instead.</p>",
+                        "requiredLevel": 4,
+                        "displayOrder": 7
+                    },
+                    {
+                        "id": 196,
+                        "name": "Extra Attack",
+                        "prerequisite": null,
+                        "description": "<p>Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.</p>\r\n<p>The number of attacks increases to three when you reach 11th level in this class and to four when you reach 20th level in this class.</p>",
+                        "requiredLevel": 5,
+                        "displayOrder": 8
+                    },
+                    {
+                        "id": 197,
+                        "name": "Indomitable",
+                        "prerequisite": null,
+                        "description": "<p>Beginning at 9th level, you can reroll a saving throw that you fail. If you do so, you must use the new roll, and you can’t use this feature again until you finish a long rest.</p>\r\n<p>You can use this feature twice between long rests starting at 13th level and three times between long rests starting at 17th level.</p>",
+                        "requiredLevel": 9,
+                        "displayOrder": 11
+                    },
+                    {
+                        "id": 199,
+                        "name": "Ability Score Improvement",
+                        "prerequisite": null,
+                        "description": "<p>When you reach 6th level, and again at 8th, 12th, 14th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can’t increase an ability score above 20 using this feature.</p>\r\n<p>Using the optional feats rule, you can forgo taking this feature to take a feat of your choice instead.</p>",
+                        "requiredLevel": 6,
+                        "displayOrder": 9
+                    },
+                    {
+                        "id": 200,
+                        "name": "Ability Score Improvement",
+                        "prerequisite": null,
+                        "description": "<p>When you reach 8th level, and again at 12th, 14th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can’t increase an ability score above 20 using this feature.</p>\r\n<p>Using the optional feats rule, you can forgo taking this feature to take a feat of your choice instead.</p>",
+                        "requiredLevel": 8,
+                        "displayOrder": 10
+                    },
+                    {
+                        "id": 201,
+                        "name": "Ability Score Improvement",
+                        "prerequisite": null,
+                        "description": "<p>When you reach 12th level, and again at 14th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can’t increase an ability score above 20 using this feature.</p>\r\n<p>Using the optional feats rule, you can forgo taking this feature to take a feat of your choice instead.</p>",
+                        "requiredLevel": 12,
+                        "displayOrder": 13
+                    },
+                    {
+                        "id": 202,
+                        "name": "Ability Score Improvement",
+                        "prerequisite": null,
+                        "description": "<p>When you reach 14th level, and again at 16th and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can’t increase an ability score above 20 using this feature.</p>\r\n<p>Using the optional feats rule, you can forgo taking this feature to take a feat of your choice instead.</p>",
+                        "requiredLevel": 14,
+                        "displayOrder": 14
+                    },
+                    {
+                        "id": 203,
+                        "name": "Ability Score Improvement",
+                        "prerequisite": null,
+                        "description": "<p>When you reach 16th level, and again at 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can’t increase an ability score above 20 using this feature.</p>\r\n<p>Using the optional feats rule, you can forgo taking this feature to take a feat of your choice instead.</p>",
+                        "requiredLevel": 16,
+                        "displayOrder": 15
+                    },
+                    {
+                        "id": 204,
+                        "name": "Ability Score Improvement",
+                        "prerequisite": null,
+                        "description": "<p>When you reach 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can’t increase an ability score above 20 using this feature.</p>\r\n<p>Using the optional feats rule, you can forgo taking this feature to take a feat of your choice instead.</p>",
+                        "requiredLevel": 19,
+                        "displayOrder": 16
+                    },
+                    {
+                        "id": 205,
+                        "name": "Extra Attack",
+                        "prerequisite": null,
+                        "description": "<p>Beginning at 11th level, you can attack three times, instead of twice, whenever you take the Attack action on your turn.</p>\r\n<p>The number of attacks increases to four when you reach 20th level in this class.</p>",
+                        "requiredLevel": 11,
+                        "displayOrder": 12
+                    },
+                    {
+                        "id": 206,
+                        "name": "Extra Attack",
+                        "prerequisite": null,
+                        "description": "<p>At 20th level, you can attack four times, instead of three, whenever you take the Attack action on your turn.</p>",
+                        "requiredLevel": 20,
+                        "displayOrder": 17
+                    },
+                    {
+                        "id": 463,
+                        "name": "Proficiencies",
+                        "prerequisite": null,
+                        "description": "<p><strong><span class=\"Serif-Character-Style_Bold-Serif\">Armor: </span></strong>All armor, shields<br /><strong><span class=\"Serif-Character-Style_Bold-Serif\">Weapons: </span></strong>Simple weapons, martial weapons<br /><strong><span class=\"Serif-Character-Style_Bold-Serif\">Tools: </span></strong>None<br /><strong><span class=\"Serif-Character-Style_Bold-Serif\">Saving Throws: </span></strong>Strength, Constitution<br /><strong><span class=\"Serif-Character-Style_Bold-Serif\">Skills: </span></strong>Choose two skills from Acrobatics, Animal Handling, Athletics, History, Insight, Intimidation, Perception, and Survival</p>",
+                        "requiredLevel": 1,
+                        "displayOrder": 2
+                    },
+                    {
+                        "id": 535,
+                        "name": "Hit Points",
+                        "prerequisite": null,
+                        "description": "<p><strong><span class=\"Serif-Character-Style_Bold-Serif\">Hit Dice: </span></strong>1d10 per fighter level<br /><strong><span class=\"Serif-Character-Style_Bold-Serif\">Hit Points at 1st Level: </span></strong>10 + your Constitution modifier<br /><strong><span class=\"Serif-Character-Style_Bold-Serif\">Hit Points at Higher Levels: </span></strong>1d10 (or 6) + your Constitution modifier per fighter level after 1st</p>",
+                        "requiredLevel": 1,
+                        "displayOrder": 1
+                    }
+                ],
+                "hitDice": 10,
+                "wealthDice": {
+                    "diceCount": 5,
+                    "diceValue": 4,
+                    "diceMultiplier": 10,
+                    "fixedValue": null,
+                    "diceString": "5d4"
+                },
+                "canCastSpells": false,
+                "knowsAllSpells": null,
+                "spellPrepareType": null,
+                "spellContainerName": null,
+                "sourcePageNumber": 70,
+                "subclassDefinition": null,
+                "isHomebrew": false,
+                "primaryAbilities": [
+                    1,
+                    2
+                ],
+                "spellRules": {
+                    "multiClassSpellSlotDivisor": 3,
+                    "isRitualSpellCaster": false,
+                    "levelCantripsKnownMaxes": [
+                        0,
+                        0,
+                        0,
+                        2,
+                        2,
+                        2,
+                        2,
+                        2,
+                        2,
+                        2,
+                        3,
+                        3,
+                        3,
+                        3,
+                        3,
+                        3,
+                        3,
+                        3,
+                        3,
+                        3,
+                        3
+                    ],
+                    "levelSpellKnownMaxes": [
+                        0,
+                        0,
+                        0,
+                        3,
+                        4,
+                        4,
+                        4,
+                        5,
+                        6,
+                        6,
+                        7,
+                        8,
+                        8,
+                        9,
+                        10,
+                        10,
+                        11,
+                        11,
+                        11,
+                        12,
+                        13
+                    ],
+                    "levelSpellSlots": [
+                        [
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        [
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        [
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        [
+                            2,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        [
+                            3,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        [
+                            3,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        [
+                            3,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        [
+                            4,
+                            2,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        [
+                            4,
+                            2,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        [
+                            4,
+                            2,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        [
+                            4,
+                            3,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        [
+                            4,
+                            3,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        [
+                            4,
+                            3,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        [
+                            4,
+                            3,
+                            2,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        [
+                            4,
+                            3,
+                            2,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        [
+                            4,
+                            3,
+                            2,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        [
+                            4,
+                            3,
+                            3,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        [
+                            4,
+                            3,
+                            3,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        [
+                            4,
+                            3,
+                            3,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        [
+                            4,
+                            3,
+                            3,
+                            1,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        [
+                            4,
+                            3,
+                            3,
+                            1,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ]
+                    ],
+                    "multiClassSpellSlotRounding": 1
+                },
+                "prerequisites": [
+                    {
+                        "description": "Strength 13",
+                        "prerequisiteMappings": [
+                            {
+                                "id": 10367,
+                                "entityId": 1,
+                                "entityTypeId": 1472902489,
+                                "type": "ability-score",
+                                "subType": "strength",
+                                "value": 13,
+                                "friendlyTypeName": "Ability Score",
+                                "friendlySubTypeName": "Strength"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "or Dexterity 13",
+                        "prerequisiteMappings": [
+                            {
+                                "id": 10368,
+                                "entityId": 2,
+                                "entityTypeId": 1472902489,
+                                "type": "ability-score",
+                                "subType": "dexterity",
+                                "value": 13,
+                                "friendlyTypeName": "Ability Score",
+                                "friendlySubTypeName": "Dexterity"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "subclassDefinition": null,
+            "classFeatures": [
+                {
+                    "definition": {
+                        "id": 191,
+                        "definitionKey": "class-feature:191",
+                        "entityTypeId": 12168134,
+                        "displayOrder": 3,
+                        "name": "Fighting Style",
+                        "description": "<p>You adopt a particular style of fighting as your specialty. Choose one of the following options. You can’t take a Fighting Style option more than once, even if you later get to choose again.</p>",
+                        "snippet": "You adopt a fighting style specialty.",
+                        "activation": null,
+                        "multiClassDescription": "",
+                        "requiredLevel": 1,
+                        "isSubClassFeature": false,
+                        "limitedUse": [],
+                        "hideInBuilder": false,
+                        "hideInSheet": false,
+                        "sourceId": 2,
+                        "sourcePageNumber": 72,
+                        "creatureRules": [],
+                        "levelScales": [],
+                        "infusionRules": [],
+                        "spellListIds": [],
+                        "classId": 10,
+                        "featureType": 1,
+                        "sources": [
+                            {
+                                "sourceId": 2,
+                                "pageNumber": 72,
+                                "sourceType": 1
+                            }
+                        ],
+                        "affectedFeatureDefinitionKeys": [],
+                        "entityType": "class-feature",
+                        "entityID": "191"
+                    },
+                    "levelScale": null
+                },
+                {
+                    "definition": {
+                        "id": 192,
+                        "definitionKey": "class-feature:192",
+                        "entityTypeId": 12168134,
+                        "displayOrder": 4,
+                        "name": "Second Wind",
+                        "description": "<p>You have a limited well of stamina that you can draw on to protect yourself from harm. On your turn, you can use a bonus action to regain hit points equal to 1d10 + your fighter level. Once you use this feature, you must finish a short or long rest before you can use it again.</p>",
+                        "snippet": "Once per short rest, you can use a bonus action to regain 1d10 + {{classlevel}} HP.",
+                        "activation": null,
+                        "multiClassDescription": "",
+                        "requiredLevel": 1,
+                        "isSubClassFeature": false,
+                        "limitedUse": [
+                            {
+                                "level": null,
+                                "uses": 1
+                            }
+                        ],
+                        "hideInBuilder": false,
+                        "hideInSheet": false,
+                        "sourceId": 2,
+                        "sourcePageNumber": 72,
+                        "creatureRules": [],
+                        "levelScales": [],
+                        "infusionRules": [],
+                        "spellListIds": [],
+                        "classId": 10,
+                        "featureType": 1,
+                        "sources": [
+                            {
+                                "sourceId": 2,
+                                "pageNumber": 72,
+                                "sourceType": 1
+                            }
+                        ],
+                        "affectedFeatureDefinitionKeys": [],
+                        "entityType": "class-feature",
+                        "entityID": "192"
+                    },
+                    "levelScale": null
+                },
+                {
+                    "definition": {
+                        "id": 193,
+                        "definitionKey": "class-feature:193",
+                        "entityTypeId": 12168134,
+                        "displayOrder": 5,
+                        "name": "Action Surge",
+                        "description": "<p>Starting at 2nd level, you can push yourself beyond your normal limits for a moment. On your turn, you can take one additional action.</p>\r\n<p>Once you use this feature, you must finish a short or long rest before you can use it again. Starting at 17th level, you can use it twice before a rest, but only once on the same turn.</p>",
+                        "snippet": "You can take one additional action on your turn. This can be used {{scalevalue}} times per short rest.",
+                        "activation": null,
+                        "multiClassDescription": "",
+                        "requiredLevel": 2,
+                        "isSubClassFeature": false,
+                        "limitedUse": [
+                            {
+                                "level": null,
+                                "uses": 1
+                            }
+                        ],
+                        "hideInBuilder": false,
+                        "hideInSheet": false,
+                        "sourceId": 2,
+                        "sourcePageNumber": 72,
+                        "creatureRules": [],
+                        "levelScales": [
+                            {
+                                "id": 62784,
+                                "level": 2,
+                                "description": "one use per short rest",
+                                "dice": {
+                                    "diceCount": null,
+                                    "diceValue": null,
+                                    "diceMultiplier": null,
+                                    "fixedValue": null,
+                                    "diceString": null
+                                },
+                                "fixedValue": 1
+                            },
+                            {
+                                "id": 62785,
+                                "level": 17,
+                                "description": "two uses per short rest",
+                                "dice": {
+                                    "diceCount": null,
+                                    "diceValue": null,
+                                    "diceMultiplier": null,
+                                    "fixedValue": null,
+                                    "diceString": null
+                                },
+                                "fixedValue": 2
+                            }
+                        ],
+                        "infusionRules": [],
+                        "spellListIds": [],
+                        "classId": 10,
+                        "featureType": 1,
+                        "sources": [
+                            {
+                                "sourceId": 2,
+                                "pageNumber": 72,
+                                "sourceType": 1
+                            }
+                        ],
+                        "affectedFeatureDefinitionKeys": [],
+                        "entityType": "class-feature",
+                        "entityID": "193"
+                    },
+                    "levelScale": null
+                },
+                {
+                    "definition": {
+                        "id": 194,
+                        "definitionKey": "class-feature:194",
+                        "entityTypeId": 12168134,
+                        "displayOrder": 6,
+                        "name": "Martial Archetype",
+                        "description": "<p>At 3rd level, you choose an archetype that you strive to emulate in your combat styles and techniques. Choose Champion, Battle Master, or Eldritch Knight, all detailed at the end of the class description. The archetype you choose grants you features at 3rd level and again at 7th, 10th, 15th, and 18th level.</p>",
+                        "snippet": null,
+                        "activation": null,
+                        "multiClassDescription": "",
+                        "requiredLevel": 3,
+                        "isSubClassFeature": false,
+                        "limitedUse": [],
+                        "hideInBuilder": false,
+                        "hideInSheet": false,
+                        "sourceId": 2,
+                        "sourcePageNumber": 72,
+                        "creatureRules": [],
+                        "levelScales": [],
+                        "infusionRules": [],
+                        "spellListIds": [],
+                        "classId": 10,
+                        "featureType": 1,
+                        "sources": [
+                            {
+                                "sourceId": 2,
+                                "pageNumber": 72,
+                                "sourceType": 1
+                            }
+                        ],
+                        "affectedFeatureDefinitionKeys": [],
+                        "entityType": "class-feature",
+                        "entityID": "194"
+                    },
+                    "levelScale": null
+                },
+                {
+                    "definition": {
+                        "id": 195,
+                        "definitionKey": "class-feature:195",
+                        "entityTypeId": 12168134,
+                        "displayOrder": 7,
+                        "name": "Ability Score Improvement",
+                        "description": "<p>When you reach 4th level, and again at 6th, 8th, 12th, 14th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can’t increase an ability score above 20 using this feature.</p>\r\n<p>Using the optional feats rule, you can forgo taking this feature to take a feat of your choice instead.</p>",
+                        "snippet": "",
+                        "activation": null,
+                        "multiClassDescription": "",
+                        "requiredLevel": 4,
+                        "isSubClassFeature": false,
+                        "limitedUse": [],
+                        "hideInBuilder": false,
+                        "hideInSheet": false,
+                        "sourceId": 2,
+                        "sourcePageNumber": 72,
+                        "creatureRules": [],
+                        "levelScales": [],
+                        "infusionRules": [],
+                        "spellListIds": [],
+                        "classId": 10,
+                        "featureType": 1,
+                        "sources": [
+                            {
+                                "sourceId": 2,
+                                "pageNumber": 72,
+                                "sourceType": 1
+                            }
+                        ],
+                        "affectedFeatureDefinitionKeys": [],
+                        "entityType": "class-feature",
+                        "entityID": "195"
+                    },
+                    "levelScale": null
+                },
+                {
+                    "definition": {
+                        "id": 196,
+                        "definitionKey": "class-feature:196",
+                        "entityTypeId": 12168134,
+                        "displayOrder": 8,
+                        "name": "Extra Attack",
+                        "description": "<p>Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.</p>\r\n<p>The number of attacks increases to three when you reach 11th level in this class and to four when you reach 20th level in this class.</p>",
+                        "snippet": "You can attack twice whenever you take the Attack action on your turn.",
+                        "activation": null,
+                        "multiClassDescription": "<p><em>This feature could be affected by multiclassing</em>. See the <a title=\"Multiclassing - Class Features\" href=\"https://www.dndbeyond.com/compendium/rules/basic-rules/customization-options#ClassFeatures\">Multiclassing</a> rules for more information.</p>\r\n<p>Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.</p>\r\n<p>The number of attacks increases to three when you reach 11th level in this class and to four when you reach 20th level in this class.</p>",
+                        "requiredLevel": 5,
+                        "isSubClassFeature": false,
+                        "limitedUse": [
+                            {
+                                "level": null,
+                                "uses": 1
+                            }
+                        ],
+                        "hideInBuilder": false,
+                        "hideInSheet": false,
+                        "sourceId": 2,
+                        "sourcePageNumber": 72,
+                        "creatureRules": [],
+                        "levelScales": [],
+                        "infusionRules": [],
+                        "spellListIds": [],
+                        "classId": 10,
+                        "featureType": 1,
+                        "sources": [
+                            {
+                                "sourceId": 2,
+                                "pageNumber": 72,
+                                "sourceType": 1
+                            }
+                        ],
+                        "affectedFeatureDefinitionKeys": [],
+                        "entityType": "class-feature",
+                        "entityID": "196"
+                    },
+                    "levelScale": null
+                },
+                {
+                    "definition": {
+                        "id": 197,
+                        "definitionKey": "class-feature:197",
+                        "entityTypeId": 12168134,
+                        "displayOrder": 11,
+                        "name": "Indomitable",
+                        "description": "<p>Beginning at 9th level, you can reroll a saving throw that you fail. If you do so, you must use the new roll, and you can’t use this feature again until you finish a long rest.</p>\r\n<p>You can use this feature twice between long rests starting at 13th level and three times between long rests starting at 17th level.</p>",
+                        "snippet": "You can reroll a saving throw that you fail - you must use the new roll. You can use this {{scalevalue}} times per long rest.",
+                        "activation": null,
+                        "multiClassDescription": "",
+                        "requiredLevel": 9,
+                        "isSubClassFeature": false,
+                        "limitedUse": [
+                            {
+                                "level": null,
+                                "uses": 1
+                            }
+                        ],
+                        "hideInBuilder": false,
+                        "hideInSheet": false,
+                        "sourceId": 2,
+                        "sourcePageNumber": 72,
+                        "creatureRules": [],
+                        "levelScales": [
+                            {
+                                "id": 62786,
+                                "level": 9,
+                                "description": "one use per long rest",
+                                "dice": {
+                                    "diceCount": null,
+                                    "diceValue": null,
+                                    "diceMultiplier": null,
+                                    "fixedValue": null,
+                                    "diceString": null
+                                },
+                                "fixedValue": 1
+                            },
+                            {
+                                "id": 62787,
+                                "level": 13,
+                                "description": "two uses per long rest",
+                                "dice": {
+                                    "diceCount": null,
+                                    "diceValue": null,
+                                    "diceMultiplier": null,
+                                    "fixedValue": null,
+                                    "diceString": null
+                                },
+                                "fixedValue": 2
+                            },
+                            {
+                                "id": 62788,
+                                "level": 17,
+                                "description": "three uses per long rest",
+                                "dice": {
+                                    "diceCount": null,
+                                    "diceValue": null,
+                                    "diceMultiplier": null,
+                                    "fixedValue": null,
+                                    "diceString": null
+                                },
+                                "fixedValue": 3
+                            }
+                        ],
+                        "infusionRules": [],
+                        "spellListIds": [],
+                        "classId": 10,
+                        "featureType": 1,
+                        "sources": [
+                            {
+                                "sourceId": 2,
+                                "pageNumber": 72,
+                                "sourceType": 1
+                            }
+                        ],
+                        "affectedFeatureDefinitionKeys": [],
+                        "entityType": "class-feature",
+                        "entityID": "197"
+                    },
+                    "levelScale": null
+                },
+                {
+                    "definition": {
+                        "id": 199,
+                        "definitionKey": "class-feature:199",
+                        "entityTypeId": 12168134,
+                        "displayOrder": 9,
+                        "name": "Ability Score Improvement",
+                        "description": "<p>When you reach 6th level, and again at 8th, 12th, 14th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can’t increase an ability score above 20 using this feature.</p>\r\n<p>Using the optional feats rule, you can forgo taking this feature to take a feat of your choice instead.</p>",
+                        "snippet": "",
+                        "activation": null,
+                        "multiClassDescription": "",
+                        "requiredLevel": 6,
+                        "isSubClassFeature": false,
+                        "limitedUse": [],
+                        "hideInBuilder": false,
+                        "hideInSheet": false,
+                        "sourceId": 2,
+                        "sourcePageNumber": 72,
+                        "creatureRules": [],
+                        "levelScales": [],
+                        "infusionRules": [],
+                        "spellListIds": [],
+                        "classId": 10,
+                        "featureType": 1,
+                        "sources": [
+                            {
+                                "sourceId": 2,
+                                "pageNumber": 72,
+                                "sourceType": 1
+                            }
+                        ],
+                        "affectedFeatureDefinitionKeys": [],
+                        "entityType": "class-feature",
+                        "entityID": "199"
+                    },
+                    "levelScale": null
+                },
+                {
+                    "definition": {
+                        "id": 200,
+                        "definitionKey": "class-feature:200",
+                        "entityTypeId": 12168134,
+                        "displayOrder": 10,
+                        "name": "Ability Score Improvement",
+                        "description": "<p>When you reach 8th level, and again at 12th, 14th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can’t increase an ability score above 20 using this feature.</p>\r\n<p>Using the optional feats rule, you can forgo taking this feature to take a feat of your choice instead.</p>",
+                        "snippet": "",
+                        "activation": null,
+                        "multiClassDescription": "",
+                        "requiredLevel": 8,
+                        "isSubClassFeature": false,
+                        "limitedUse": [],
+                        "hideInBuilder": false,
+                        "hideInSheet": false,
+                        "sourceId": 2,
+                        "sourcePageNumber": 72,
+                        "creatureRules": [],
+                        "levelScales": [],
+                        "infusionRules": [],
+                        "spellListIds": [],
+                        "classId": 10,
+                        "featureType": 1,
+                        "sources": [
+                            {
+                                "sourceId": 2,
+                                "pageNumber": 72,
+                                "sourceType": 1
+                            }
+                        ],
+                        "affectedFeatureDefinitionKeys": [],
+                        "entityType": "class-feature",
+                        "entityID": "200"
+                    },
+                    "levelScale": null
+                },
+                {
+                    "definition": {
+                        "id": 201,
+                        "definitionKey": "class-feature:201",
+                        "entityTypeId": 12168134,
+                        "displayOrder": 13,
+                        "name": "Ability Score Improvement",
+                        "description": "<p>When you reach 12th level, and again at 14th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can’t increase an ability score above 20 using this feature.</p>\r\n<p>Using the optional feats rule, you can forgo taking this feature to take a feat of your choice instead.</p>",
+                        "snippet": "",
+                        "activation": null,
+                        "multiClassDescription": "",
+                        "requiredLevel": 12,
+                        "isSubClassFeature": false,
+                        "limitedUse": [],
+                        "hideInBuilder": false,
+                        "hideInSheet": false,
+                        "sourceId": 2,
+                        "sourcePageNumber": 72,
+                        "creatureRules": [],
+                        "levelScales": [],
+                        "infusionRules": [],
+                        "spellListIds": [],
+                        "classId": 10,
+                        "featureType": 1,
+                        "sources": [
+                            {
+                                "sourceId": 2,
+                                "pageNumber": 72,
+                                "sourceType": 1
+                            }
+                        ],
+                        "affectedFeatureDefinitionKeys": [],
+                        "entityType": "class-feature",
+                        "entityID": "201"
+                    },
+                    "levelScale": null
+                },
+                {
+                    "definition": {
+                        "id": 202,
+                        "definitionKey": "class-feature:202",
+                        "entityTypeId": 12168134,
+                        "displayOrder": 14,
+                        "name": "Ability Score Improvement",
+                        "description": "<p>When you reach 14th level, and again at 16th and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can’t increase an ability score above 20 using this feature.</p>\r\n<p>Using the optional feats rule, you can forgo taking this feature to take a feat of your choice instead.</p>",
+                        "snippet": "",
+                        "activation": null,
+                        "multiClassDescription": "",
+                        "requiredLevel": 14,
+                        "isSubClassFeature": false,
+                        "limitedUse": [],
+                        "hideInBuilder": false,
+                        "hideInSheet": false,
+                        "sourceId": 2,
+                        "sourcePageNumber": 72,
+                        "creatureRules": [],
+                        "levelScales": [],
+                        "infusionRules": [],
+                        "spellListIds": [],
+                        "classId": 10,
+                        "featureType": 1,
+                        "sources": [
+                            {
+                                "sourceId": 2,
+                                "pageNumber": 72,
+                                "sourceType": 1
+                            }
+                        ],
+                        "affectedFeatureDefinitionKeys": [],
+                        "entityType": "class-feature",
+                        "entityID": "202"
+                    },
+                    "levelScale": null
+                },
+                {
+                    "definition": {
+                        "id": 203,
+                        "definitionKey": "class-feature:203",
+                        "entityTypeId": 12168134,
+                        "displayOrder": 15,
+                        "name": "Ability Score Improvement",
+                        "description": "<p>When you reach 16th level, and again at 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can’t increase an ability score above 20 using this feature.</p>\r\n<p>Using the optional feats rule, you can forgo taking this feature to take a feat of your choice instead.</p>",
+                        "snippet": "",
+                        "activation": null,
+                        "multiClassDescription": "",
+                        "requiredLevel": 16,
+                        "isSubClassFeature": false,
+                        "limitedUse": [],
+                        "hideInBuilder": false,
+                        "hideInSheet": false,
+                        "sourceId": 2,
+                        "sourcePageNumber": 72,
+                        "creatureRules": [],
+                        "levelScales": [],
+                        "infusionRules": [],
+                        "spellListIds": [],
+                        "classId": 10,
+                        "featureType": 1,
+                        "sources": [
+                            {
+                                "sourceId": 2,
+                                "pageNumber": 72,
+                                "sourceType": 1
+                            }
+                        ],
+                        "affectedFeatureDefinitionKeys": [],
+                        "entityType": "class-feature",
+                        "entityID": "203"
+                    },
+                    "levelScale": null
+                },
+                {
+                    "definition": {
+                        "id": 204,
+                        "definitionKey": "class-feature:204",
+                        "entityTypeId": 12168134,
+                        "displayOrder": 16,
+                        "name": "Ability Score Improvement",
+                        "description": "<p>When you reach 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can’t increase an ability score above 20 using this feature.</p>\r\n<p>Using the optional feats rule, you can forgo taking this feature to take a feat of your choice instead.</p>",
+                        "snippet": "",
+                        "activation": null,
+                        "multiClassDescription": "",
+                        "requiredLevel": 19,
+                        "isSubClassFeature": false,
+                        "limitedUse": [],
+                        "hideInBuilder": false,
+                        "hideInSheet": false,
+                        "sourceId": 2,
+                        "sourcePageNumber": 72,
+                        "creatureRules": [],
+                        "levelScales": [],
+                        "infusionRules": [],
+                        "spellListIds": [],
+                        "classId": 10,
+                        "featureType": 1,
+                        "sources": [
+                            {
+                                "sourceId": 2,
+                                "pageNumber": 72,
+                                "sourceType": 1
+                            }
+                        ],
+                        "affectedFeatureDefinitionKeys": [],
+                        "entityType": "class-feature",
+                        "entityID": "204"
+                    },
+                    "levelScale": null
+                },
+                {
+                    "definition": {
+                        "id": 205,
+                        "definitionKey": "class-feature:205",
+                        "entityTypeId": 12168134,
+                        "displayOrder": 12,
+                        "name": "Extra Attack",
+                        "description": "<p>Beginning at 11th level, you can attack three times, instead of twice, whenever you take the Attack action on your turn.</p>\r\n<p>The number of attacks increases to four when you reach 20th level in this class.</p>",
+                        "snippet": "You can attack three times whenever you take the Attack action on your turn.",
+                        "activation": null,
+                        "multiClassDescription": "<p><em>This feature could be affected by multiclassing</em>. See the <a title=\"Multiclassing - Class Features\" href=\"https://www.dndbeyond.com/compendium/rules/basic-rules/customization-options#ClassFeatures\">Multiclassing</a> rules for more information.</p>",
+                        "requiredLevel": 11,
+                        "isSubClassFeature": false,
+                        "limitedUse": [
+                            {
+                                "level": null,
+                                "uses": 1
+                            }
+                        ],
+                        "hideInBuilder": false,
+                        "hideInSheet": false,
+                        "sourceId": 2,
+                        "sourcePageNumber": 72,
+                        "creatureRules": [],
+                        "levelScales": [],
+                        "infusionRules": [],
+                        "spellListIds": [],
+                        "classId": 10,
+                        "featureType": 1,
+                        "sources": [
+                            {
+                                "sourceId": 2,
+                                "pageNumber": 72,
+                                "sourceType": 1
+                            }
+                        ],
+                        "affectedFeatureDefinitionKeys": [],
+                        "entityType": "class-feature",
+                        "entityID": "205"
+                    },
+                    "levelScale": null
+                },
+                {
+                    "definition": {
+                        "id": 206,
+                        "definitionKey": "class-feature:206",
+                        "entityTypeId": 12168134,
+                        "displayOrder": 17,
+                        "name": "Extra Attack",
+                        "description": "<p>At 20th level, you can attack four times, instead of three, whenever you take the Attack action on your turn.</p>",
+                        "snippet": "You can attack four times whenever you take the Attack action on your turn.",
+                        "activation": null,
+                        "multiClassDescription": "<p><em>This feature could be affected by multiclassing</em>. See the <a title=\"Multiclassing - Class Features\" href=\"https://www.dndbeyond.com/compendium/rules/basic-rules/customization-options#ClassFeatures\">Multiclassing</a> rules for more information.</p>",
+                        "requiredLevel": 20,
+                        "isSubClassFeature": false,
+                        "limitedUse": [
+                            {
+                                "level": null,
+                                "uses": 1
+                            }
+                        ],
+                        "hideInBuilder": false,
+                        "hideInSheet": false,
+                        "sourceId": 2,
+                        "sourcePageNumber": 72,
+                        "creatureRules": [],
+                        "levelScales": [],
+                        "infusionRules": [],
+                        "spellListIds": [],
+                        "classId": 10,
+                        "featureType": 1,
+                        "sources": [
+                            {
+                                "sourceId": 2,
+                                "pageNumber": 72,
+                                "sourceType": 1
+                            }
+                        ],
+                        "affectedFeatureDefinitionKeys": [],
+                        "entityType": "class-feature",
+                        "entityID": "206"
+                    },
+                    "levelScale": null
+                },
+                {
+                    "definition": {
+                        "id": 463,
+                        "definitionKey": "class-feature:463",
+                        "entityTypeId": 12168134,
+                        "displayOrder": 2,
+                        "name": "Proficiencies",
+                        "description": "<p><strong><span class=\"Serif-Character-Style_Bold-Serif\">Armor: </span></strong>All armor, shields<br /><strong><span class=\"Serif-Character-Style_Bold-Serif\">Weapons: </span></strong>Simple weapons, martial weapons<br /><strong><span class=\"Serif-Character-Style_Bold-Serif\">Tools: </span></strong>None<br /><strong><span class=\"Serif-Character-Style_Bold-Serif\">Saving Throws: </span></strong>Strength, Constitution<br /><strong><span class=\"Serif-Character-Style_Bold-Serif\">Skills: </span></strong>Choose two skills from Acrobatics, Animal Handling, Athletics, History, Insight, Intimidation, Perception, and Survival</p>",
+                        "snippet": "",
+                        "activation": null,
+                        "multiClassDescription": "<p><strong><span class=\"Serif-Character-Style_Bold-Serif\">Armor: </span></strong><span class=\"Serif-Character-Style_Bold-Serif\">Light armor, medium&nbsp;</span>armor, shields<br /><strong><span class=\"Serif-Character-Style_Bold-Serif\">Weapons: </span></strong>Simple weapons, martial weapons</p>",
+                        "requiredLevel": 1,
+                        "isSubClassFeature": false,
+                        "limitedUse": [],
+                        "hideInBuilder": false,
+                        "hideInSheet": false,
+                        "sourceId": 2,
+                        "sourcePageNumber": 71,
+                        "creatureRules": [],
+                        "levelScales": [],
+                        "infusionRules": [],
+                        "spellListIds": [],
+                        "classId": 10,
+                        "featureType": 1,
+                        "sources": [
+                            {
+                                "sourceId": 2,
+                                "pageNumber": 71,
+                                "sourceType": 1
+                            }
+                        ],
+                        "affectedFeatureDefinitionKeys": [],
+                        "entityType": "class-feature",
+                        "entityID": "463"
+                    },
+                    "levelScale": null
+                },
+                {
+                    "definition": {
+                        "id": 535,
+                        "definitionKey": "class-feature:535",
+                        "entityTypeId": 12168134,
+                        "displayOrder": 1,
+                        "name": "Hit Points",
+                        "description": "<p><strong><span class=\"Serif-Character-Style_Bold-Serif\">Hit Dice: </span></strong>1d10 per fighter level<br /><strong><span class=\"Serif-Character-Style_Bold-Serif\">Hit Points at 1st Level: </span></strong>10 + your Constitution modifier<br /><strong><span class=\"Serif-Character-Style_Bold-Serif\">Hit Points at Higher Levels: </span></strong>1d10 (or 6) + your Constitution modifier per fighter level after 1st</p>",
+                        "snippet": "",
+                        "activation": null,
+                        "multiClassDescription": "",
+                        "requiredLevel": 1,
+                        "isSubClassFeature": false,
+                        "limitedUse": [],
+                        "hideInBuilder": false,
+                        "hideInSheet": false,
+                        "sourceId": 2,
+                        "sourcePageNumber": 71,
+                        "creatureRules": [],
+                        "levelScales": [],
+                        "infusionRules": [],
+                        "spellListIds": [],
+                        "classId": 10,
+                        "featureType": 1,
+                        "sources": [
+                            {
+                                "sourceId": 2,
+                                "pageNumber": 71,
+                                "sourceType": 1
+                            }
+                        ],
+                        "affectedFeatureDefinitionKeys": [],
+                        "entityType": "class-feature",
+                        "entityID": "535"
+                    },
+                    "levelScale": null
+                }
+            ]
+        }
+    ],
+    "feats": [],
+    "features": null,
+    "customDefenseAdjustments": [],
+    "customSenses": [],
+    "customSpeeds": [],
+    "customProficiencies": [],
+    "customActions": [],
+    "characterValues": [],
+    "conditions": [],
+    "deathSaves": {
+        "failCount": null,
+        "successCount": null,
+        "isStabilized": false
+    },
+    "adjustmentXp": null,
+    "spellSlots": [
+        {
+            "level": 1,
+            "used": 0,
+            "available": 0
+        },
+        {
+            "level": 2,
+            "used": 0,
+            "available": 0
+        },
+        {
+            "level": 3,
+            "used": 0,
+            "available": 0
+        },
+        {
+            "level": 4,
+            "used": 0,
+            "available": 0
+        },
+        {
+            "level": 5,
+            "used": 0,
+            "available": 0
+        },
+        {
+            "level": 6,
+            "used": 0,
+            "available": 0
+        },
+        {
+            "level": 7,
+            "used": 0,
+            "available": 0
+        },
+        {
+            "level": 8,
+            "used": 0,
+            "available": 0
+        },
+        {
+            "level": 9,
+            "used": 0,
+            "available": 0
+        }
+    ],
+    "pactMagic": [
+        {
+            "level": 1,
+            "used": 0,
+            "available": 0
+        },
+        {
+            "level": 2,
+            "used": 0,
+            "available": 0
+        },
+        {
+            "level": 3,
+            "used": 0,
+            "available": 0
+        },
+        {
+            "level": 4,
+            "used": 0,
+            "available": 0
+        },
+        {
+            "level": 5,
+            "used": 0,
+            "available": 0
+        }
+    ],
+    "activeSourceCategories": [
+        1,
+        7,
+        8,
+        14
+    ],
+    "spells": {
+        "race": [],
+        "class": [],
+        "background": null,
+        "item": [],
+        "feat": []
+    },
+    "options": {
+        "race": [],
+        "class": [
+            {
+                "componentId": 191,
+                "componentTypeId": 12168134,
+                "definition": {
+                    "id": 3,
+                    "entityTypeId": 258900837,
+                    "name": "Dueling",
+                    "description": "<p>When you are wielding a melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon.</p>",
+                    "snippet": "When you are wielding a melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon.",
+                    "activation": null,
+                    "sourceId": 2,
+                    "sourcePageNumber": null,
+                    "creatureRules": [],
+                    "spellListIds": []
+                }
+            }
+        ],
+        "background": null,
+        "item": null,
+        "feat": []
+    },
+    "choices": {
+        "race": [
+            {
+                "componentId": 50,
+                "componentTypeId": 1960452172,
+                "id": "2-1466",
+                "parentChoiceId": null,
+                "type": 2,
+                "subType": 1,
+                "optionValue": 3792,
+                "label": "Choose a Skill",
+                "isOptional": false,
+                "isInfinite": false,
+                "defaultSubtypes": [],
+                "displayOrder": null,
+                "options": [],
+                "optionIds": [
+                    3783,
+                    3784,
+                    3785,
+                    3786,
+                    3787,
+                    3788,
+                    3789,
+                    3790,
+                    3791,
+                    3792,
+                    3793,
+                    3794,
+                    3795,
+                    3796,
+                    3797,
+                    3798,
+                    3799,
+                    3800
+                ]
+            },
+            {
+                "componentId": 50,
+                "componentTypeId": 1960452172,
+                "id": "2-1467",
+                "parentChoiceId": null,
+                "type": 2,
+                "subType": 1,
+                "optionValue": 3783,
+                "label": "Choose a Skill",
+                "isOptional": false,
+                "isInfinite": false,
+                "defaultSubtypes": [],
+                "displayOrder": null,
+                "options": [],
+                "optionIds": [
+                    3783,
+                    3784,
+                    3785,
+                    3786,
+                    3787,
+                    3788,
+                    3789,
+                    3790,
+                    3791,
+                    3792,
+                    3793,
+                    3794,
+                    3795,
+                    3796,
+                    3797,
+                    3798,
+                    3799,
+                    3800
+                ]
+            },
+            {
+                "componentId": 93,
+                "componentTypeId": 1960452172,
+                "id": "2-1638",
+                "parentChoiceId": null,
+                "type": 2,
+                "subType": 5,
+                "optionValue": 3522,
+                "label": "Choose an Ability Score",
+                "isOptional": false,
+                "isInfinite": false,
+                "defaultSubtypes": [],
+                "displayOrder": null,
+                "options": [],
+                "optionIds": [
+                    3520,
+                    3521,
+                    3522,
+                    3524
+                ]
+            },
+            {
+                "componentId": 93,
+                "componentTypeId": 1960452172,
+                "id": "2-1639",
+                "parentChoiceId": null,
+                "type": 2,
+                "subType": 5,
+                "optionValue": 3523,
+                "label": "Choose an Ability Score",
+                "isOptional": false,
+                "isInfinite": false,
+                "defaultSubtypes": [],
+                "displayOrder": null,
+                "options": [],
+                "optionIds": [
+                    3520,
+                    3521,
+                    3523,
+                    3524
+                ]
+            },
+            {
+                "componentId": 94,
+                "componentTypeId": 1960452172,
+                "id": "2-1642",
+                "parentChoiceId": null,
+                "type": 2,
+                "subType": 3,
+                "optionValue": 5173,
+                "label": "Choose a Language",
+                "isOptional": false,
+                "isInfinite": false,
+                "defaultSubtypes": [],
+                "displayOrder": null,
+                "options": [],
+                "optionIds": [
+                    4050,
+                    4054,
+                    4055,
+                    4056,
+                    4061,
+                    4062,
+                    4063,
+                    4066,
+                    4045,
+                    4049,
+                    4052,
+                    4051,
+                    4065,
+                    4068,
+                    4071,
+                    4074,
+                    5064,
+                    5172,
+                    5109,
+                    5108,
+                    5110,
+                    5111,
+                    5173,
+                    5174,
+                    5199,
+                    5198,
+                    5197,
+                    5206,
+                    5928,
+                    5929,
+                    5954,
+                    5955,
+                    5956,
+                    5957,
+                    5958,
+                    5959,
+                    5960,
+                    5961,
+                    5962,
+                    5963,
+                    5964
+                ]
+            }
+        ],
+        "class": [
+            {
+                "componentId": 191,
+                "componentTypeId": 12168134,
+                "id": "3-0-324656395",
+                "parentChoiceId": null,
+                "type": 3,
+                "subType": null,
+                "optionValue": 3,
+                "label": null,
+                "isOptional": false,
+                "isInfinite": false,
+                "defaultSubtypes": [],
+                "displayOrder": null,
+                "options": [],
+                "optionIds": [
+                    1,
+                    2,
+                    4,
+                    5,
+                    6,
+                    3
+                ]
+            },
+            {
+                "componentId": 194,
+                "componentTypeId": 12168134,
+                "id": "7-194",
+                "parentChoiceId": null,
+                "type": 7,
+                "subType": null,
+                "optionValue": null,
+                "label": null,
+                "isOptional": false,
+                "isInfinite": false,
+                "defaultSubtypes": [],
+                "displayOrder": null,
+                "options": [],
+                "optionIds": []
+            },
+            {
+                "componentId": 463,
+                "componentTypeId": 12168134,
+                "id": "2-1531",
+                "parentChoiceId": null,
+                "type": 2,
+                "subType": 1,
+                "optionValue": 4112,
+                "label": "Choose a Fighter Skill",
+                "isOptional": false,
+                "isInfinite": false,
+                "defaultSubtypes": [],
+                "displayOrder": null,
+                "options": [],
+                "optionIds": [
+                    4111,
+                    4109,
+                    4112,
+                    4110,
+                    4113,
+                    4115,
+                    4116,
+                    4114
+                ]
+            },
+            {
+                "componentId": 463,
+                "componentTypeId": 12168134,
+                "id": "2-1532",
+                "parentChoiceId": null,
+                "type": 2,
+                "subType": 1,
+                "optionValue": 4113,
+                "label": "Choose a Fighter Skill",
+                "isOptional": false,
+                "isInfinite": false,
+                "defaultSubtypes": [],
+                "displayOrder": null,
+                "options": [],
+                "optionIds": [
+                    4111,
+                    4109,
+                    4112,
+                    4110,
+                    4113,
+                    4115,
+                    4116,
+                    4114
+                ]
+            }
+        ],
+        "background": [
+            {
+                "componentId": 7,
+                "componentTypeId": 1669830167,
+                "id": "2-2094",
+                "parentChoiceId": null,
+                "type": 2,
+                "subType": 1,
+                "optionValue": 3789,
+                "label": "Choose a Skill",
+                "isOptional": false,
+                "isInfinite": false,
+                "defaultSubtypes": [
+                    "Insight"
+                ],
+                "displayOrder": null,
+                "options": [],
+                "optionIds": [
+                    3783,
+                    3784,
+                    3785,
+                    3786,
+                    3787,
+                    3788,
+                    3789,
+                    3790,
+                    3791,
+                    3792,
+                    3793,
+                    3794,
+                    3795,
+                    3796,
+                    3797,
+                    3798,
+                    3799,
+                    3800
+                ]
+            },
+            {
+                "componentId": 7,
+                "componentTypeId": 1669830167,
+                "id": "2-2095",
+                "parentChoiceId": null,
+                "type": 2,
+                "subType": 3,
+                "optionValue": 4045,
+                "label": "Choose a Language",
+                "isOptional": false,
+                "isInfinite": false,
+                "defaultSubtypes": [],
+                "displayOrder": null,
+                "options": [],
+                "optionIds": [
+                    4050,
+                    4054,
+                    4055,
+                    4056,
+                    4061,
+                    4062,
+                    4063,
+                    4066,
+                    4045,
+                    4049,
+                    4052,
+                    4051,
+                    4065,
+                    4068,
+                    4071,
+                    4074,
+                    5064,
+                    5172,
+                    5109,
+                    5108,
+                    5110,
+                    5111,
+                    5173,
+                    5174,
+                    5199,
+                    5198,
+                    5197,
+                    5206,
+                    5928,
+                    5929,
+                    5954,
+                    5955,
+                    5956,
+                    5957,
+                    5958,
+                    5959,
+                    5960,
+                    5961,
+                    5962,
+                    5963,
+                    5964
+                ]
+            },
+            {
+                "componentId": 7,
+                "componentTypeId": 1669830167,
+                "id": "2-2096",
+                "parentChoiceId": null,
+                "type": 2,
+                "subType": 3,
+                "optionValue": 4051,
+                "label": "Choose a Language",
+                "isOptional": false,
+                "isInfinite": false,
+                "defaultSubtypes": [],
+                "displayOrder": null,
+                "options": [],
+                "optionIds": [
+                    4050,
+                    4054,
+                    4055,
+                    4056,
+                    4061,
+                    4062,
+                    4063,
+                    4066,
+                    4045,
+                    4049,
+                    4052,
+                    4051,
+                    4065,
+                    4068,
+                    4071,
+                    4074,
+                    5064,
+                    5172,
+                    5109,
+                    5108,
+                    5110,
+                    5111,
+                    5173,
+                    5174,
+                    5199,
+                    5198,
+                    5197,
+                    5206,
+                    5928,
+                    5929,
+                    5954,
+                    5955,
+                    5956,
+                    5957,
+                    5958,
+                    5959,
+                    5960,
+                    5961,
+                    5962,
+                    5963,
+                    5964
+                ]
+            },
+            {
+                "componentId": 7,
+                "componentTypeId": 1669830167,
+                "id": "2-2097",
+                "parentChoiceId": null,
+                "type": 2,
+                "subType": 1,
+                "optionValue": 3791,
+                "label": "Choose a Skill",
+                "isOptional": false,
+                "isInfinite": false,
+                "defaultSubtypes": [
+                    "Religion"
+                ],
+                "displayOrder": null,
+                "options": [],
+                "optionIds": [
+                    3783,
+                    3784,
+                    3785,
+                    3786,
+                    3787,
+                    3788,
+                    3789,
+                    3790,
+                    3791,
+                    3792,
+                    3793,
+                    3794,
+                    3795,
+                    3796,
+                    3797,
+                    3798,
+                    3799,
+                    3800
+                ]
+            }
+        ],
+        "item": null,
+        "feat": [],
+        "choiceDefinitions": [
+            {
+                "id": "1669830167-2",
+                "options": [
+                    {
+                        "id": 3783,
+                        "label": "Athletics",
+                        "description": null
+                    },
+                    {
+                        "id": 3784,
+                        "label": "Acrobatics",
+                        "description": null
+                    },
+                    {
+                        "id": 3785,
+                        "label": "Sleight of Hand",
+                        "description": null
+                    },
+                    {
+                        "id": 3786,
+                        "label": "Stealth",
+                        "description": null
+                    },
+                    {
+                        "id": 3787,
+                        "label": "Arcana",
+                        "description": null
+                    },
+                    {
+                        "id": 3788,
+                        "label": "History",
+                        "description": null
+                    },
+                    {
+                        "id": 3789,
+                        "label": "Investigation",
+                        "description": null
+                    },
+                    {
+                        "id": 3790,
+                        "label": "Nature",
+                        "description": null
+                    },
+                    {
+                        "id": 3791,
+                        "label": "Religion",
+                        "description": null
+                    },
+                    {
+                        "id": 3792,
+                        "label": "Animal Handling",
+                        "description": null
+                    },
+                    {
+                        "id": 3793,
+                        "label": "Insight",
+                        "description": null
+                    },
+                    {
+                        "id": 3794,
+                        "label": "Medicine",
+                        "description": null
+                    },
+                    {
+                        "id": 3795,
+                        "label": "Perception",
+                        "description": null
+                    },
+                    {
+                        "id": 3796,
+                        "label": "Survival",
+                        "description": null
+                    },
+                    {
+                        "id": 3797,
+                        "label": "Deception",
+                        "description": null
+                    },
+                    {
+                        "id": 3798,
+                        "label": "Intimidation",
+                        "description": null
+                    },
+                    {
+                        "id": 3799,
+                        "label": "Performance",
+                        "description": null
+                    },
+                    {
+                        "id": 3800,
+                        "label": "Persuasion",
+                        "description": null
+                    },
+                    {
+                        "id": 4050,
+                        "label": "Common",
+                        "description": null
+                    },
+                    {
+                        "id": 4054,
+                        "label": "Dwarvish",
+                        "description": null
+                    },
+                    {
+                        "id": 4055,
+                        "label": "Elvish",
+                        "description": null
+                    },
+                    {
+                        "id": 4056,
+                        "label": "Giant",
+                        "description": null
+                    },
+                    {
+                        "id": 4061,
+                        "label": "Gnomish",
+                        "description": null
+                    },
+                    {
+                        "id": 4062,
+                        "label": "Goblin",
+                        "description": null
+                    },
+                    {
+                        "id": 4063,
+                        "label": "Halfling",
+                        "description": null
+                    },
+                    {
+                        "id": 4066,
+                        "label": "Orc",
+                        "description": null
+                    },
+                    {
+                        "id": 4045,
+                        "label": "Abyssal",
+                        "description": null
+                    },
+                    {
+                        "id": 4049,
+                        "label": "Celestial",
+                        "description": null
+                    },
+                    {
+                        "id": 4052,
+                        "label": "Draconic",
+                        "description": null
+                    },
+                    {
+                        "id": 4051,
+                        "label": "Deep Speech",
+                        "description": null
+                    },
+                    {
+                        "id": 4065,
+                        "label": "Infernal",
+                        "description": null
+                    },
+                    {
+                        "id": 4068,
+                        "label": "Primordial",
+                        "description": null
+                    },
+                    {
+                        "id": 4071,
+                        "label": "Sylvan",
+                        "description": null
+                    },
+                    {
+                        "id": 4074,
+                        "label": "Undercommon",
+                        "description": null
+                    },
+                    {
+                        "id": 5064,
+                        "label": "Gith",
+                        "description": null
+                    },
+                    {
+                        "id": 5172,
+                        "label": "Quori",
+                        "description": null
+                    },
+                    {
+                        "id": 5109,
+                        "label": "Loxodon",
+                        "description": null
+                    },
+                    {
+                        "id": 5108,
+                        "label": "Minotaur",
+                        "description": null
+                    },
+                    {
+                        "id": 5110,
+                        "label": "Kraul",
+                        "description": null
+                    },
+                    {
+                        "id": 5111,
+                        "label": "Vedalken",
+                        "description": null
+                    },
+                    {
+                        "id": 5173,
+                        "label": "Daelkyr",
+                        "description": null
+                    },
+                    {
+                        "id": 5174,
+                        "label": "Riedran",
+                        "description": null
+                    },
+                    {
+                        "id": 5199,
+                        "label": "Zemnian",
+                        "description": null
+                    },
+                    {
+                        "id": 5198,
+                        "label": "Marquesian",
+                        "description": null
+                    },
+                    {
+                        "id": 5197,
+                        "label": "Naush",
+                        "description": null
+                    },
+                    {
+                        "id": 5206,
+                        "label": "Leonin",
+                        "description": null
+                    },
+                    {
+                        "id": 5928,
+                        "label": "Hadozee",
+                        "description": null
+                    },
+                    {
+                        "id": 5929,
+                        "label": "Thri-kreen",
+                        "description": null
+                    },
+                    {
+                        "id": 5954,
+                        "label": "Solamnic",
+                        "description": null
+                    },
+                    {
+                        "id": 5955,
+                        "label": "Kenderspeak",
+                        "description": null
+                    },
+                    {
+                        "id": 5956,
+                        "label": "Abanasinian",
+                        "description": null
+                    },
+                    {
+                        "id": 5957,
+                        "label": "Ergot",
+                        "description": null
+                    },
+                    {
+                        "id": 5958,
+                        "label": "Kharolian",
+                        "description": null
+                    },
+                    {
+                        "id": 5959,
+                        "label": "Khur",
+                        "description": null
+                    },
+                    {
+                        "id": 5960,
+                        "label": "Nordmaarian",
+                        "description": null
+                    },
+                    {
+                        "id": 5961,
+                        "label": "Istarian",
+                        "description": null
+                    },
+                    {
+                        "id": 5962,
+                        "label": "Kothian",
+                        "description": null
+                    },
+                    {
+                        "id": 5963,
+                        "label": "Nerakese",
+                        "description": null
+                    },
+                    {
+                        "id": 5964,
+                        "label": "Ogre",
+                        "description": null
+                    }
+                ]
+            },
+            {
+                "id": "12168134-3",
+                "options": [
+                    {
+                        "id": 1,
+                        "label": "Archery",
+                        "description": "<p>You gain a +2 bonus to attack rolls you make with ranged weapons.</p>"
+                    },
+                    {
+                        "id": 2,
+                        "label": "Defense",
+                        "description": "<p>While you are wearing armor, you gain a +1 bonus to AC.</p>"
+                    },
+                    {
+                        "id": 4,
+                        "label": "Great Weapon Fighting",
+                        "description": "<p>When you roll a 1 or 2 on a damage die for an attack you make with a melee weapon that you are wielding with two hands, you can reroll the die and must use the new roll, even if the new roll is a 1 or a 2. The weapon must have the two-handed or versatile property for you to gain this benefit.</p>"
+                    },
+                    {
+                        "id": 5,
+                        "label": "Protection",
+                        "description": "<p>When a creature you can see attacks a target other than you that is within 5 feet of you, you can use your reaction to impose disadvantage on the attack roll. You must be wielding a shield.</p>"
+                    },
+                    {
+                        "id": 6,
+                        "label": "Two-Weapon Fighting",
+                        "description": "<p>When you engage in two-weapon fighting, you can add your ability modifier to the damage of the second attack.</p>"
+                    },
+                    {
+                        "id": 3,
+                        "label": "Dueling",
+                        "description": "<p>When you are wielding a melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon.</p>"
+                    }
+                ]
+            },
+            {
+                "id": "12168134-7",
+                "options": []
+            },
+            {
+                "id": "12168134-2",
+                "options": [
+                    {
+                        "id": 4111,
+                        "label": "Athletics",
+                        "description": null
+                    },
+                    {
+                        "id": 4109,
+                        "label": "Acrobatics",
+                        "description": null
+                    },
+                    {
+                        "id": 4112,
+                        "label": "History",
+                        "description": null
+                    },
+                    {
+                        "id": 4110,
+                        "label": "Animal Handling",
+                        "description": null
+                    },
+                    {
+                        "id": 4113,
+                        "label": "Insight",
+                        "description": null
+                    },
+                    {
+                        "id": 4115,
+                        "label": "Perception",
+                        "description": null
+                    },
+                    {
+                        "id": 4116,
+                        "label": "Survival",
+                        "description": null
+                    },
+                    {
+                        "id": 4114,
+                        "label": "Intimidation",
+                        "description": null
+                    }
+                ]
+            },
+            {
+                "id": "1960452172-2",
+                "options": [
+                    {
+                        "id": 3783,
+                        "label": "Athletics",
+                        "description": null
+                    },
+                    {
+                        "id": 3784,
+                        "label": "Acrobatics",
+                        "description": null
+                    },
+                    {
+                        "id": 3785,
+                        "label": "Sleight of Hand",
+                        "description": null
+                    },
+                    {
+                        "id": 3786,
+                        "label": "Stealth",
+                        "description": null
+                    },
+                    {
+                        "id": 3787,
+                        "label": "Arcana",
+                        "description": null
+                    },
+                    {
+                        "id": 3788,
+                        "label": "History",
+                        "description": null
+                    },
+                    {
+                        "id": 3789,
+                        "label": "Investigation",
+                        "description": null
+                    },
+                    {
+                        "id": 3790,
+                        "label": "Nature",
+                        "description": null
+                    },
+                    {
+                        "id": 3791,
+                        "label": "Religion",
+                        "description": null
+                    },
+                    {
+                        "id": 3792,
+                        "label": "Animal Handling",
+                        "description": null
+                    },
+                    {
+                        "id": 3793,
+                        "label": "Insight",
+                        "description": null
+                    },
+                    {
+                        "id": 3794,
+                        "label": "Medicine",
+                        "description": null
+                    },
+                    {
+                        "id": 3795,
+                        "label": "Perception",
+                        "description": null
+                    },
+                    {
+                        "id": 3796,
+                        "label": "Survival",
+                        "description": null
+                    },
+                    {
+                        "id": 3797,
+                        "label": "Deception",
+                        "description": null
+                    },
+                    {
+                        "id": 3798,
+                        "label": "Intimidation",
+                        "description": null
+                    },
+                    {
+                        "id": 3799,
+                        "label": "Performance",
+                        "description": null
+                    },
+                    {
+                        "id": 3800,
+                        "label": "Persuasion",
+                        "description": null
+                    },
+                    {
+                        "id": 3520,
+                        "label": "Strength Score",
+                        "description": null
+                    },
+                    {
+                        "id": 3521,
+                        "label": "Dexterity Score",
+                        "description": null
+                    },
+                    {
+                        "id": 3522,
+                        "label": "Constitution Score",
+                        "description": null
+                    },
+                    {
+                        "id": 3524,
+                        "label": "Wisdom Score",
+                        "description": null
+                    },
+                    {
+                        "id": 3523,
+                        "label": "Intelligence Score",
+                        "description": null
+                    },
+                    {
+                        "id": 4050,
+                        "label": "Common",
+                        "description": null
+                    },
+                    {
+                        "id": 4054,
+                        "label": "Dwarvish",
+                        "description": null
+                    },
+                    {
+                        "id": 4055,
+                        "label": "Elvish",
+                        "description": null
+                    },
+                    {
+                        "id": 4056,
+                        "label": "Giant",
+                        "description": null
+                    },
+                    {
+                        "id": 4061,
+                        "label": "Gnomish",
+                        "description": null
+                    },
+                    {
+                        "id": 4062,
+                        "label": "Goblin",
+                        "description": null
+                    },
+                    {
+                        "id": 4063,
+                        "label": "Halfling",
+                        "description": null
+                    },
+                    {
+                        "id": 4066,
+                        "label": "Orc",
+                        "description": null
+                    },
+                    {
+                        "id": 4045,
+                        "label": "Abyssal",
+                        "description": null
+                    },
+                    {
+                        "id": 4049,
+                        "label": "Celestial",
+                        "description": null
+                    },
+                    {
+                        "id": 4052,
+                        "label": "Draconic",
+                        "description": null
+                    },
+                    {
+                        "id": 4051,
+                        "label": "Deep Speech",
+                        "description": null
+                    },
+                    {
+                        "id": 4065,
+                        "label": "Infernal",
+                        "description": null
+                    },
+                    {
+                        "id": 4068,
+                        "label": "Primordial",
+                        "description": null
+                    },
+                    {
+                        "id": 4071,
+                        "label": "Sylvan",
+                        "description": null
+                    },
+                    {
+                        "id": 4074,
+                        "label": "Undercommon",
+                        "description": null
+                    },
+                    {
+                        "id": 5064,
+                        "label": "Gith",
+                        "description": null
+                    },
+                    {
+                        "id": 5172,
+                        "label": "Quori",
+                        "description": null
+                    },
+                    {
+                        "id": 5109,
+                        "label": "Loxodon",
+                        "description": null
+                    },
+                    {
+                        "id": 5108,
+                        "label": "Minotaur",
+                        "description": null
+                    },
+                    {
+                        "id": 5110,
+                        "label": "Kraul",
+                        "description": null
+                    },
+                    {
+                        "id": 5111,
+                        "label": "Vedalken",
+                        "description": null
+                    },
+                    {
+                        "id": 5173,
+                        "label": "Daelkyr",
+                        "description": null
+                    },
+                    {
+                        "id": 5174,
+                        "label": "Riedran",
+                        "description": null
+                    },
+                    {
+                        "id": 5199,
+                        "label": "Zemnian",
+                        "description": null
+                    },
+                    {
+                        "id": 5198,
+                        "label": "Marquesian",
+                        "description": null
+                    },
+                    {
+                        "id": 5197,
+                        "label": "Naush",
+                        "description": null
+                    },
+                    {
+                        "id": 5206,
+                        "label": "Leonin",
+                        "description": null
+                    },
+                    {
+                        "id": 5928,
+                        "label": "Hadozee",
+                        "description": null
+                    },
+                    {
+                        "id": 5929,
+                        "label": "Thri-kreen",
+                        "description": null
+                    },
+                    {
+                        "id": 5954,
+                        "label": "Solamnic",
+                        "description": null
+                    },
+                    {
+                        "id": 5955,
+                        "label": "Kenderspeak",
+                        "description": null
+                    },
+                    {
+                        "id": 5956,
+                        "label": "Abanasinian",
+                        "description": null
+                    },
+                    {
+                        "id": 5957,
+                        "label": "Ergot",
+                        "description": null
+                    },
+                    {
+                        "id": 5958,
+                        "label": "Kharolian",
+                        "description": null
+                    },
+                    {
+                        "id": 5959,
+                        "label": "Khur",
+                        "description": null
+                    },
+                    {
+                        "id": 5960,
+                        "label": "Nordmaarian",
+                        "description": null
+                    },
+                    {
+                        "id": 5961,
+                        "label": "Istarian",
+                        "description": null
+                    },
+                    {
+                        "id": 5962,
+                        "label": "Kothian",
+                        "description": null
+                    },
+                    {
+                        "id": 5963,
+                        "label": "Nerakese",
+                        "description": null
+                    },
+                    {
+                        "id": 5964,
+                        "label": "Ogre",
+                        "description": null
+                    }
+                ]
+            }
+        ],
+        "definitionKeyNameMap": {}
+    },
+    "actions": {
+        "race": [],
+        "class": [
+            {
+                "componentId": 192,
+                "componentTypeId": 12168134,
+                "id": "1091",
+                "entityTypeId": "222216831",
+                "limitedUse": {
+                    "name": null,
+                    "statModifierUsesId": null,
+                    "resetType": 1,
+                    "numberUsed": 0,
+                    "minNumberConsumed": 1,
+                    "maxNumberConsumed": 1,
+                    "maxUses": 1,
+                    "operator": 1,
+                    "useProficiencyBonus": false,
+                    "proficiencyBonusOperator": 1,
+                    "resetDice": null
+                },
+                "name": "Second Wind",
+                "description": null,
+                "snippet": "Once per short rest, you can use a bonus action to regain 1d10 + {{classlevel}} HP.",
+                "abilityModifierStatId": null,
+                "onMissDescription": null,
+                "saveFailDescription": null,
+                "saveSuccessDescription": null,
+                "saveStatId": null,
+                "fixedSaveDc": null,
+                "attackTypeRange": null,
+                "actionType": 3,
+                "attackSubtype": null,
+                "dice": null,
+                "value": null,
+                "damageTypeId": null,
+                "isMartialArts": false,
+                "isProficient": false,
+                "spellRangeType": null,
+                "displayAsAttack": null,
+                "range": {
+                    "range": null,
+                    "longRange": null,
+                    "aoeType": null,
+                    "aoeSize": null,
+                    "hasAoeSpecialDescription": false,
+                    "minimumRange": null
+                },
+                "activation": {
+                    "activationTime": 1,
+                    "activationType": 3
+                },
+                "numberOfTargets": null,
+                "fixedToHit": null,
+                "ammunition": null
+            }
+        ],
+        "background": null,
+        "item": null,
+        "feat": []
+    },
+    "modifiers": {
+        "race": [
+            {
+                "fixedValue": 60,
+                "id": "1376",
+                "entityId": 2,
+                "entityTypeId": 668550506,
+                "type": "set-base",
+                "subType": "darkvision",
+                "dice": null,
+                "restriction": "",
+                "statId": null,
+                "requiresAttunement": false,
+                "duration": null,
+                "friendlyTypeName": "Set Base",
+                "friendlySubtypeName": "Darkvision",
+                "isGranted": true,
+                "bonusTypes": [],
+                "value": 60,
+                "availableToMulticlass": true,
+                "modifierTypeId": 39,
+                "modifierSubTypeId": 1746,
+                "componentId": 48,
+                "componentTypeId": 1960452172
+            },
+            {
+                "fixedValue": null,
+                "id": "1377",
+                "entityId": null,
+                "entityTypeId": null,
+                "type": "advantage",
+                "subType": "saving-throws",
+                "dice": null,
+                "restriction": "against being charmed, and magic can’t put you to sleep",
+                "statId": null,
+                "requiresAttunement": false,
+                "duration": null,
+                "friendlyTypeName": "Advantage",
+                "friendlySubtypeName": "Saving Throws",
+                "isGranted": true,
+                "bonusTypes": [],
+                "value": null,
+                "availableToMulticlass": true,
+                "modifierTypeId": 3,
+                "modifierSubTypeId": 61,
+                "componentId": 49,
+                "componentTypeId": 1960452172
+            },
+            {
+                "fixedValue": null,
+                "id": "52748608",
+                "entityId": null,
+                "entityTypeId": null,
+                "type": "immunity",
+                "subType": "magical-sleep",
+                "dice": null,
+                "restriction": "",
+                "statId": null,
+                "requiresAttunement": false,
+                "duration": null,
+                "friendlyTypeName": "Immunity",
+                "friendlySubtypeName": "Magical Sleep",
+                "isGranted": true,
+                "bonusTypes": [],
+                "value": null,
+                "availableToMulticlass": true,
+                "modifierTypeId": 6,
+                "modifierSubTypeId": 1838,
+                "componentId": 49,
+                "componentTypeId": 1960452172
+            },
+            {
+                "fixedValue": null,
+                "id": "1466",
+                "entityId": 11,
+                "entityTypeId": 1958004211,
+                "type": "proficiency",
+                "subType": "animal-handling",
+                "dice": null,
+                "restriction": "",
+                "statId": null,
+                "requiresAttunement": false,
+                "duration": null,
+                "friendlyTypeName": "Proficiency",
+                "friendlySubtypeName": "Animal Handling",
+                "isGranted": false,
+                "bonusTypes": [],
+                "value": null,
+                "availableToMulticlass": true,
+                "modifierTypeId": 10,
+                "modifierSubTypeId": 245,
+                "componentId": 50,
+                "componentTypeId": 1960452172
+            },
+            {
+                "fixedValue": null,
+                "id": "1467",
+                "entityId": 2,
+                "entityTypeId": 1958004211,
+                "type": "proficiency",
+                "subType": "athletics",
+                "dice": null,
+                "restriction": "",
+                "statId": null,
+                "requiresAttunement": false,
+                "duration": null,
+                "friendlyTypeName": "Proficiency",
+                "friendlySubtypeName": "Athletics",
+                "isGranted": false,
+                "bonusTypes": [],
+                "value": null,
+                "availableToMulticlass": true,
+                "modifierTypeId": 10,
+                "modifierSubTypeId": 236,
+                "componentId": 50,
+                "componentTypeId": 1960452172
+            },
+            {
+                "fixedValue": 2,
+                "id": "1637",
+                "entityId": 6,
+                "entityTypeId": 1472902489,
+                "type": "bonus",
+                "subType": "charisma-score",
+                "dice": null,
+                "restriction": "",
+                "statId": null,
+                "requiresAttunement": false,
+                "duration": null,
+                "friendlyTypeName": "Bonus",
+                "friendlySubtypeName": "Charisma Score",
+                "isGranted": true,
+                "bonusTypes": [],
+                "value": 2,
+                "availableToMulticlass": true,
+                "modifierTypeId": 1,
+                "modifierSubTypeId": 7,
+                "componentId": 93,
+                "componentTypeId": 1960452172
+            },
+            {
+                "fixedValue": 1,
+                "id": "1638",
+                "entityId": 3,
+                "entityTypeId": 1472902489,
+                "type": "bonus",
+                "subType": "constitution-score",
+                "dice": null,
+                "restriction": "",
+                "statId": null,
+                "requiresAttunement": false,
+                "duration": null,
+                "friendlyTypeName": "Bonus",
+                "friendlySubtypeName": "Constitution Score",
+                "isGranted": false,
+                "bonusTypes": [],
+                "value": 1,
+                "availableToMulticlass": true,
+                "modifierTypeId": 1,
+                "modifierSubTypeId": 4,
+                "componentId": 93,
+                "componentTypeId": 1960452172
+            },
+            {
+                "fixedValue": 1,
+                "id": "1639",
+                "entityId": 4,
+                "entityTypeId": 1472902489,
+                "type": "bonus",
+                "subType": "intelligence-score",
+                "dice": null,
+                "restriction": "",
+                "statId": null,
+                "requiresAttunement": false,
+                "duration": null,
+                "friendlyTypeName": "Bonus",
+                "friendlySubtypeName": "Intelligence Score",
+                "isGranted": false,
+                "bonusTypes": [],
+                "value": 1,
+                "availableToMulticlass": true,
+                "modifierTypeId": 1,
+                "modifierSubTypeId": 5,
+                "componentId": 93,
+                "componentTypeId": 1960452172
+            },
+            {
+                "fixedValue": null,
+                "id": "1640",
+                "entityId": 1,
+                "entityTypeId": 906033267,
+                "type": "language",
+                "subType": "common",
+                "dice": null,
+                "restriction": "",
+                "statId": null,
+                "requiresAttunement": false,
+                "duration": null,
+                "friendlyTypeName": "Language",
+                "friendlySubtypeName": "Common",
+                "isGranted": true,
+                "bonusTypes": [],
+                "value": null,
+                "availableToMulticlass": true,
+                "modifierTypeId": 11,
+                "modifierSubTypeId": 357,
+                "componentId": 94,
+                "componentTypeId": 1960452172
+            },
+            {
+                "fixedValue": null,
+                "id": "1641",
+                "entityId": 3,
+                "entityTypeId": 906033267,
+                "type": "language",
+                "subType": "elvish",
+                "dice": null,
+                "restriction": "",
+                "statId": null,
+                "requiresAttunement": false,
+                "duration": null,
+                "friendlyTypeName": "Language",
+                "friendlySubtypeName": "Elvish",
+                "isGranted": true,
+                "bonusTypes": [],
+                "value": null,
+                "availableToMulticlass": true,
+                "modifierTypeId": 11,
+                "modifierSubTypeId": 359,
+                "componentId": 94,
+                "componentTypeId": 1960452172
+            },
+            {
+                "fixedValue": null,
+                "id": "1642",
+                "entityId": 62,
+                "entityTypeId": 906033267,
+                "type": "language",
+                "subType": "daelkyr",
+                "dice": null,
+                "restriction": "",
+                "statId": null,
+                "requiresAttunement": false,
+                "duration": null,
+                "friendlyTypeName": "Language",
+                "friendlySubtypeName": "Daelkyr",
+                "isGranted": false,
+                "bonusTypes": [],
+                "value": null,
+                "availableToMulticlass": true,
+                "modifierTypeId": 11,
+                "modifierSubTypeId": 1776,
+                "componentId": 94,
+                "componentTypeId": 1960452172
+            }
+        ],
+        "class": [
+            {
+                "fixedValue": null,
+                "id": "1523",
+                "entityId": 1,
+                "entityTypeId": 174869515,
+                "type": "proficiency",
+                "subType": "light-armor",
+                "dice": null,
+                "restriction": "",
+                "statId": null,
+                "requiresAttunement": false,
+                "duration": null,
+                "friendlyTypeName": "Proficiency",
+                "friendlySubtypeName": "Light Armor",
+                "isGranted": true,
+                "bonusTypes": [],
+                "value": null,
+                "availableToMulticlass": true,
+                "modifierTypeId": 10,
+                "modifierSubTypeId": 396,
+                "componentId": 463,
+                "componentTypeId": 12168134
+            },
+            {
+                "fixedValue": null,
+                "id": "1524",
+                "entityId": 2,
+                "entityTypeId": 174869515,
+                "type": "proficiency",
+                "subType": "medium-armor",
+                "dice": null,
+                "restriction": "",
+                "statId": null,
+                "requiresAttunement": false,
+                "duration": null,
+                "friendlyTypeName": "Proficiency",
+                "friendlySubtypeName": "Medium Armor",
+                "isGranted": true,
+                "bonusTypes": [],
+                "value": null,
+                "availableToMulticlass": true,
+                "modifierTypeId": 10,
+                "modifierSubTypeId": 397,
+                "componentId": 463,
+                "componentTypeId": 12168134
+            },
+            {
+                "fixedValue": null,
+                "id": "1525",
+                "entityId": 3,
+                "entityTypeId": 174869515,
+                "type": "proficiency",
+                "subType": "heavy-armor",
+                "dice": null,
+                "restriction": "",
+                "statId": null,
+                "requiresAttunement": false,
+                "duration": null,
+                "friendlyTypeName": "Proficiency",
+                "friendlySubtypeName": "Heavy Armor",
+                "isGranted": true,
+                "bonusTypes": [],
+                "value": null,
+                "availableToMulticlass": false,
+                "modifierTypeId": 10,
+                "modifierSubTypeId": 398,
+                "componentId": 463,
+                "componentTypeId": 12168134
+            },
+            {
+                "fixedValue": null,
+                "id": "1526",
+                "entityId": 4,
+                "entityTypeId": 174869515,
+                "type": "proficiency",
+                "subType": "shields",
+                "dice": null,
+                "restriction": "",
+                "statId": null,
+                "requiresAttunement": false,
+                "duration": null,
+                "friendlyTypeName": "Proficiency",
+                "friendlySubtypeName": "Shields",
+                "isGranted": true,
+                "bonusTypes": [],
+                "value": null,
+                "availableToMulticlass": true,
+                "modifierTypeId": 10,
+                "modifierSubTypeId": 694,
+                "componentId": 463,
+                "componentTypeId": 12168134
+            },
+            {
+                "fixedValue": null,
+                "id": "1527",
+                "entityId": 1,
+                "entityTypeId": 660121713,
+                "type": "proficiency",
+                "subType": "simple-weapons",
+                "dice": null,
+                "restriction": "",
+                "statId": null,
+                "requiresAttunement": false,
+                "duration": null,
+                "friendlyTypeName": "Proficiency",
+                "friendlySubtypeName": "Simple Weapons",
+                "isGranted": true,
+                "bonusTypes": [],
+                "value": null,
+                "availableToMulticlass": true,
+                "modifierTypeId": 10,
+                "modifierSubTypeId": 395,
+                "componentId": 463,
+                "componentTypeId": 12168134
+            },
+            {
+                "fixedValue": null,
+                "id": "1528",
+                "entityId": 2,
+                "entityTypeId": 660121713,
+                "type": "proficiency",
+                "subType": "martial-weapons",
+                "dice": null,
+                "restriction": "",
+                "statId": null,
+                "requiresAttunement": false,
+                "duration": null,
+                "friendlyTypeName": "Proficiency",
+                "friendlySubtypeName": "Martial Weapons",
+                "isGranted": true,
+                "bonusTypes": [],
+                "value": null,
+                "availableToMulticlass": true,
+                "modifierTypeId": 10,
+                "modifierSubTypeId": 394,
+                "componentId": 463,
+                "componentTypeId": 12168134
+            },
+            {
+                "fixedValue": null,
+                "id": "1529",
+                "entityId": null,
+                "entityTypeId": null,
+                "type": "proficiency",
+                "subType": "strength-saving-throws",
+                "dice": null,
+                "restriction": "",
+                "statId": null,
+                "requiresAttunement": false,
+                "duration": null,
+                "friendlyTypeName": "Proficiency",
+                "friendlySubtypeName": "Strength Saving Throws",
+                "isGranted": true,
+                "bonusTypes": [],
+                "value": null,
+                "availableToMulticlass": false,
+                "modifierTypeId": 10,
+                "modifierSubTypeId": 223,
+                "componentId": 463,
+                "componentTypeId": 12168134
+            },
+            {
+                "fixedValue": null,
+                "id": "1530",
+                "entityId": null,
+                "entityTypeId": null,
+                "type": "proficiency",
+                "subType": "constitution-saving-throws",
+                "dice": null,
+                "restriction": "",
+                "statId": null,
+                "requiresAttunement": false,
+                "duration": null,
+                "friendlyTypeName": "Proficiency",
+                "friendlySubtypeName": "Constitution Saving Throws",
+                "isGranted": true,
+                "bonusTypes": [],
+                "value": null,
+                "availableToMulticlass": false,
+                "modifierTypeId": 10,
+                "modifierSubTypeId": 225,
+                "componentId": 463,
+                "componentTypeId": 12168134
+            },
+            {
+                "fixedValue": null,
+                "id": "1531",
+                "entityId": 7,
+                "entityTypeId": 1958004211,
+                "type": "proficiency",
+                "subType": "history",
+                "dice": null,
+                "restriction": "",
+                "statId": null,
+                "requiresAttunement": false,
+                "duration": null,
+                "friendlyTypeName": "Proficiency",
+                "friendlySubtypeName": "History",
+                "isGranted": false,
+                "bonusTypes": [],
+                "value": null,
+                "availableToMulticlass": false,
+                "modifierTypeId": 10,
+                "modifierSubTypeId": 241,
+                "componentId": 463,
+                "componentTypeId": 12168134
+            },
+            {
+                "fixedValue": null,
+                "id": "1532",
+                "entityId": 12,
+                "entityTypeId": 1958004211,
+                "type": "proficiency",
+                "subType": "insight",
+                "dice": null,
+                "restriction": "",
+                "statId": null,
+                "requiresAttunement": false,
+                "duration": null,
+                "friendlyTypeName": "Proficiency",
+                "friendlySubtypeName": "Insight",
+                "isGranted": false,
+                "bonusTypes": [],
+                "value": null,
+                "availableToMulticlass": false,
+                "modifierTypeId": 10,
+                "modifierSubTypeId": 246,
+                "componentId": 463,
+                "componentTypeId": 12168134
+            },
+            {
+                "fixedValue": 2,
+                "id": "5348",
+                "entityId": null,
+                "entityTypeId": null,
+                "type": "damage",
+                "subType": "one-handed-melee-attacks",
+                "dice": null,
+                "restriction": "",
+                "statId": null,
+                "requiresAttunement": false,
+                "duration": null,
+                "friendlyTypeName": "Damage",
+                "friendlySubtypeName": "One-Handed Melee Attacks",
+                "isGranted": true,
+                "bonusTypes": [],
+                "value": 2,
+                "availableToMulticlass": true,
+                "modifierTypeId": 2,
+                "modifierSubTypeId": 810,
+                "componentId": 3,
+                "componentTypeId": 258900837
+            }
+        ],
+        "background": [
+            {
+                "fixedValue": null,
+                "id": "2094",
+                "entityId": 8,
+                "entityTypeId": 1958004211,
+                "type": "proficiency",
+                "subType": "investigation",
+                "dice": null,
+                "restriction": "",
+                "statId": null,
+                "requiresAttunement": false,
+                "duration": null,
+                "friendlyTypeName": "Proficiency",
+                "friendlySubtypeName": "Investigation",
+                "isGranted": false,
+                "bonusTypes": [],
+                "value": null,
+                "availableToMulticlass": true,
+                "modifierTypeId": 10,
+                "modifierSubTypeId": 242,
+                "componentId": 7,
+                "componentTypeId": 1669830167
+            },
+            {
+                "fixedValue": null,
+                "id": "2095",
+                "entityId": 9,
+                "entityTypeId": 906033267,
+                "type": "language",
+                "subType": "abyssal",
+                "dice": null,
+                "restriction": "",
+                "statId": null,
+                "requiresAttunement": false,
+                "duration": null,
+                "friendlyTypeName": "Language",
+                "friendlySubtypeName": "Abyssal",
+                "isGranted": false,
+                "bonusTypes": [],
+                "value": null,
+                "availableToMulticlass": true,
+                "modifierTypeId": 11,
+                "modifierSubTypeId": 365,
+                "componentId": 7,
+                "componentTypeId": 1669830167
+            },
+            {
+                "fixedValue": null,
+                "id": "2096",
+                "entityId": 12,
+                "entityTypeId": 906033267,
+                "type": "language",
+                "subType": "deep-speech",
+                "dice": null,
+                "restriction": "",
+                "statId": null,
+                "requiresAttunement": false,
+                "duration": null,
+                "friendlyTypeName": "Language",
+                "friendlySubtypeName": "Deep Speech",
+                "isGranted": false,
+                "bonusTypes": [],
+                "value": null,
+                "availableToMulticlass": true,
+                "modifierTypeId": 11,
+                "modifierSubTypeId": 368,
+                "componentId": 7,
+                "componentTypeId": 1669830167
+            },
+            {
+                "fixedValue": null,
+                "id": "2097",
+                "entityId": 10,
+                "entityTypeId": 1958004211,
+                "type": "proficiency",
+                "subType": "religion",
+                "dice": null,
+                "restriction": "",
+                "statId": null,
+                "requiresAttunement": false,
+                "duration": null,
+                "friendlyTypeName": "Proficiency",
+                "friendlySubtypeName": "Religion",
+                "isGranted": false,
+                "bonusTypes": [],
+                "value": null,
+                "availableToMulticlass": true,
+                "modifierTypeId": 10,
+                "modifierSubTypeId": 244,
+                "componentId": 7,
+                "componentTypeId": 1669830167
+            }
+        ],
+        "item": [],
+        "feat": [],
+        "condition": []
+    },
+    "classSpells": [
+        {
+            "entityTypeId": 1446578651,
+            "characterClassId": 147563817,
+            "spells": []
+        }
+    ],
+    "customItems": [],
+    "campaign": null,
+    "creatures": [],
+    "optionalOrigins": [],
+    "optionalClassFeatures": [],
+    "dateModified": "2023-09-26T21:27:01.463Z",
+    "providedFrom": "storage",
+    "canEdit": false,
+    "status": 0,
+    "statusSlug": null,
+    "campaignSetting": null
+}

@@ -122,12 +122,43 @@ export enum DdbEntityType {
 
 export interface DdbItem {
     id: number;
+    entityTypeId: number;
     definition: {
+        id: number;
         baseTypeId: DdbEntityType;
+        entityTypeId: DdbEntityType;
+        definitionKey: string;
+        canEquip: boolean;
         magic: boolean;
         rarity: string;
         name: string;
+        isMonkWeapon: boolean;
+        levelInfusionGranted?: number;
+        sources: DdbSource[];
+        isContainer: boolean;
+        canBeAddedToInventory: boolean;
+        groupedId?: number;
+        gearTypeId?: number;
         description: string;
+        snippet?: string;
+        weightMultiplier: number;
+        capacity?: number;
+        capacityWeight: number;
+        sourceId?: number;
+        baseArmorName?: string;
+        stealthCheck?: boolean;
+        strengthRequirement?: number;
+        isPack: boolean;
+        baseItemId: number;
+        isConsumable: boolean;
+        weaponBehaviors: any[];
+        subType: string;
+        sourcePageNumber?: number;
+        bundleSize: number;
+        filterType: string;
+        stackable: boolean;
+        isHomebrew: boolean;
+        version?: string;
         avatarUrl: string;
         largeAvatarUrl: string;
         tags: string[];
@@ -152,7 +183,7 @@ export interface DdbItem {
     quantity: number;
     isAttuned: boolean;
     equipped: boolean;
-    chargesUsed: number;
+    chargesUsed?: number;
 }
 
 export interface DdbModifier {
@@ -181,6 +212,7 @@ interface DdbDie {
 }
 
 interface DdbItemProperty {
+    id: number;
     name: string;
     description: string;
     notes: string;
