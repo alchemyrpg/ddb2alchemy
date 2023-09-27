@@ -1,31 +1,30 @@
+import TurndownService from 'turndown';
+import * as turndownPluginGfm from 'turndown-plugin-gfm';
 import {
+    AlchemyCharacter,
+    AlchemyClass,
+    AlchemyDamage,
+    AlchemyItem,
+    AlchemyMovementMode,
+    AlchemyProficiency,
+    AlchemySkill,
+    AlchemySpell,
+    AlchemySpellSlot,
+    AlchemyStat,
+    AlchemyTextBlockSection,
+} from './alchemy';
+import {
+    DDB_SPEED_EQUALS_RE,
+    DDB_SPEED_IS_RE,
+    DDB_SPELL_ACTIVATION_TYPE,
+    DDB_SPELL_COMPONENT_TYPE,
     DdbArmorType,
-    DdbModifier,
     DdbCharacter,
+    DdbModifier,
     DdbProficiencyType,
     DdbSpell,
     DdbSpellActivationType,
-    DDB_SPEED_IS_RE,
-    DDB_SPEED_EQUALS_RE,
-    DDB_SPELL_ACTIVATION_TYPE,
-    DDB_SPELL_COMPONENT_TYPE,
 } from './ddb';
-import {
-    AlchemyCharacter,
-    AlchemyStat,
-    AlchemyClass,
-    AlchemyProficiency,
-    AlchemyMovementMode,
-    AlchemyTextBlockSection,
-    AlchemySkill,
-    AlchemyItem,
-    AlchemySpellSlot,
-    AlchemySpell,
-    AlchemyDamage,
-    AlchemySpellAtHigherLevel,
-} from './alchemy';
-import TurndownService from 'turndown';
-import * as turndownPluginGfm from 'turndown-plugin-gfm';
 
 // Shared between both platforms
 const STR = 1;
@@ -188,49 +187,121 @@ const CASTER_LEVEL_MULTIPLIER = {
     Ranger: 0.5,
 };
 
+export const DEFAULT_ALCHEMY_CHARACTER: AlchemyCharacter = {
+    abilityScores: [],
+    armorClass: 0,
+    classes: [],
+    currentHp: 0,
+    exp: 0,
+    imageUri: '',
+    initiativeBonus: 0,
+    isNPC: false,
+    isSpellcaster: false,
+    items: [],
+    maxHp: 0,
+    movementModes: [],
+    name: '',
+    proficiencies: [],
+    proficiencyBonus: 0,
+    race: '',
+    skills: [],
+    speed: 0,
+    spellcastingAbility: '',
+    spellFilters: ['Known'],
+    spells: [],
+    spellSlots: [],
+    systemKey: '5e',
+    textBlocks: [],
+};
+
 // HTML to Markdown converter
 const turndownService = new TurndownService();
 turndownService.use(turndownPluginGfm.gfm);
 
+// Provide a typed Helper for ConversionOptions
+export type ConversionOptions = { [K in keyof AlchemyCharacter]?: boolean };
+
+// If "options" undefined or {name: true} then run the converter callback
+const shouldConvert = <
+    TProp extends keyof AlchemyCharacter,
+    TReturn = Pick<AlchemyCharacter, TProp>,
+>(
+    options: ConversionOptions | undefined,
+    property: TProp,
+    converter: () => AlchemyCharacter[TProp],
+): TReturn | {} => {
+    return options === undefined || options[property]
+        ? { [property]: converter() }
+        : {};
+};
+
 // Convert a D&D Beyond character to an Alchemy character
 export const convertCharacter = (
     ddbCharacter: DdbCharacter,
+    options?: ConversionOptions,
 ): AlchemyCharacter => ({
-    abilityScores: convertStatArray(ddbCharacter),
-    ...(ddbCharacter.age && { age: ddbCharacter.age.toString() }),
-    armorClass: getArmorClass(ddbCharacter),
-    copper: ddbCharacter.currencies.cp,
-    classes: convertClasses(ddbCharacter),
-    currentHp: getCurrentHp(ddbCharacter),
-    electrum: ddbCharacter.currencies.ep,
-    exp: ddbCharacter.currentXp,
-    eyes: ddbCharacter.eyes,
-    gold: ddbCharacter.currencies.gp,
-    hair: ddbCharacter.hair,
-    height: ddbCharacter.height,
-    imageUri: ddbCharacter.decorations.avatarUrl,
-    initiativeBonus: getInitiativeBonus(ddbCharacter),
-    isNPC: false,
-    isSpellcaster: isSpellcaster(ddbCharacter),
-    items: convertItems(ddbCharacter),
-    maxHp: getMaxHp(ddbCharacter),
-    movementModes: getMovementModes(ddbCharacter),
-    name: ddbCharacter.name,
-    platinum: ddbCharacter.currencies.pp,
-    proficiencies: convertProficiencies(ddbCharacter),
-    proficiencyBonus: PROFICIENCY_BONUS[getLevel(ddbCharacter)],
-    race: ddbCharacter.race.baseRaceName,
-    silver: ddbCharacter.currencies.sp,
-    skills: getSkills(ddbCharacter),
-    skin: ddbCharacter.skin,
-    speed: getSpeed(ddbCharacter),
-    spellcastingAbility: getSpellcastingAbility(ddbCharacter),
-    spellFilters: ['Known'],
-    spells: convertSpells(ddbCharacter),
-    spellSlots: convertSpellSlots(ddbCharacter),
-    systemKey: '5e',
-    textBlocks: getTextBlocks(ddbCharacter),
-    ...(ddbCharacter.weight && { weight: ddbCharacter.weight.toString() }),
+    ...DEFAULT_ALCHEMY_CHARACTER,
+    ...shouldConvert(options, 'abilityScores', () =>
+        convertStatArray(ddbCharacter),
+    ),
+    ...shouldConvert(options, 'age', () => (ddbCharacter.age ?? '').toString()),
+    ...shouldConvert(options, 'armorClass', () => getArmorClass(ddbCharacter)),
+    ...shouldConvert(options, 'copper', () => ddbCharacter.currencies.cp),
+    ...shouldConvert(options, 'classes', () => convertClasses(ddbCharacter)),
+    ...shouldConvert(options, 'currentHp', () => getCurrentHp(ddbCharacter)),
+    ...shouldConvert(options, 'electrum', () => ddbCharacter.currencies.ep),
+    ...shouldConvert(options, 'exp', () => ddbCharacter.currentXp),
+    ...shouldConvert(options, 'eyes', () => ddbCharacter.eyes),
+    ...shouldConvert(options, 'gold', () => ddbCharacter.currencies.gp),
+    ...shouldConvert(options, 'hair', () => ddbCharacter.hair),
+    ...shouldConvert(options, 'height', () => ddbCharacter.height),
+    ...shouldConvert(
+        options,
+        'imageUri',
+        () => ddbCharacter.decorations.avatarUrl,
+    ),
+    ...shouldConvert(options, 'initiativeBonus', () =>
+        getInitiativeBonus(ddbCharacter),
+    ),
+    ...shouldConvert(options, 'isSpellcaster', () =>
+        isSpellcaster(ddbCharacter),
+    ),
+    ...shouldConvert(options, 'items', () => convertItems(ddbCharacter)),
+    ...shouldConvert(options, 'maxHp', () => getMaxHp(ddbCharacter)),
+    ...shouldConvert(options, 'movementModes', () =>
+        getMovementModes(ddbCharacter),
+    ),
+    ...shouldConvert(options, 'name', () => ddbCharacter.name),
+    ...shouldConvert(options, 'platinum', () => ddbCharacter.currencies.pp),
+    ...shouldConvert(options, 'proficiencies', () =>
+        convertProficiencies(ddbCharacter),
+    ),
+    ...shouldConvert(
+        options,
+        'proficiencyBonus',
+        () => PROFICIENCY_BONUS[getLevel(ddbCharacter)],
+    ),
+    ...shouldConvert(options, 'race', () => ddbCharacter.race.baseRaceName),
+    ...shouldConvert(options, 'silver', () => ddbCharacter.currencies.sp),
+    ...shouldConvert(options, 'skills', () => getSkills(ddbCharacter)),
+    ...shouldConvert(options, 'skin', () => ddbCharacter.skin),
+    ...shouldConvert(options, 'speed', () => getSpeed(ddbCharacter)),
+    ...shouldConvert(options, 'spellcastingAbility', () =>
+        getSpellcastingAbility(ddbCharacter),
+    ),
+    ...shouldConvert(options, 'spellcastingAbility', () =>
+        getSpellcastingAbility(ddbCharacter),
+    ),
+    ...shouldConvert(options, 'spells', () => convertSpells(ddbCharacter)),
+    ...shouldConvert(options, 'spellSlots', () =>
+        convertSpellSlots(ddbCharacter),
+    ),
+    ...shouldConvert(options, 'textBlocks', () => getTextBlocks(ddbCharacter)),
+    ...shouldConvert(
+        options,
+        'weight',
+        () => ddbCharacter.weight ?? ''.toString(),
+    ),
 });
 
 // Convert D&D Beyond style stat arrays to Alchemy style stat arrays
