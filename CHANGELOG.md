@@ -5,6 +5,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.7] - 2023-09-28
+
+### Changed
+
+-   Now using prettier for code formatting. ([#41](https://github.com/alchemyrpg/ddb2alchemy/pull/41))
+-   Added jest config and a few tests for character conversion. ([#42](https://github.com/alchemyrpg/ddb2alchemy/pull/42))
+-   Added types and an extra "options" param to the `convertCharacter` function so that only the properties specified in the options object are converted. This is going to aid in writing tests as now we don't need to run all code paths when testing a specific fragment of the conversion code. ([#46](https://github.com/alchemyrpg/ddb2alchemy/pull/46))
+
+### Fixed
+
+-   Fixed an issue with character avatar conversion. ([#42](https://github.com/alchemyrpg/ddb2alchemy/pull/42))
+-   Fixed an issue with character HP importing incorrectly.
+
 ## [0.1.6] - 2023-04-13
 
 ### Fixed
