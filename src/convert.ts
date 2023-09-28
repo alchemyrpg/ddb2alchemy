@@ -212,6 +212,7 @@ export const DEFAULT_ALCHEMY_CHARACTER: AlchemyCharacter = {
     spellSlots: [],
     systemKey: '5e',
     textBlocks: [],
+    age: '',
 };
 
 // HTML to Markdown converter
@@ -244,7 +245,9 @@ export const convertCharacter = (
     ...shouldConvert(options, 'abilityScores', () =>
         convertStatArray(ddbCharacter),
     ),
-    ...shouldConvert(options, 'age', () => (ddbCharacter.age ?? '').toString()),
+    ...shouldConvert(options, 'age', () =>
+        (ddbCharacter.age ?? DEFAULT_ALCHEMY_CHARACTER.age).toString(),
+    ),
     ...shouldConvert(options, 'armorClass', () => getArmorClass(ddbCharacter)),
     ...shouldConvert(options, 'copper', () => ddbCharacter.currencies.cp),
     ...shouldConvert(options, 'classes', () => convertClasses(ddbCharacter)),
