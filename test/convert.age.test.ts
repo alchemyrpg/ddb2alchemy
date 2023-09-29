@@ -3,7 +3,7 @@ import { DEFAULT_ALCHEMY_CHARACTER, convertCharacter } from '../src';
 import { DdbCharacter } from '../src/ddb';
 import { DeepPartial } from './test-helpers';
 
-describe('Convert DDB current HP to Alchemy current HP', () => {
+describe('Convert DDB age to Alchemy age', () => {
     test.each`
         age     | expected
         ${'10'} | ${'10'}
