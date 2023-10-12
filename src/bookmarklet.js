@@ -5,7 +5,10 @@ const parts = window.location
 if (!parts) return;
 
 // get the character id and character API url
-const API = 'https://character-service.dndbeyond.com/character/v5/character';
+const CHARACTER_API =
+    'https://character-service.dndbeyond.com/character/v5/character';
+const GAME_DATA_API =
+    'https://character-service.dndbeyond.com/character/v5/game-data';
 const characterId = parts[1];
 
 // prompts the user to download a file with the given filename and contents
@@ -23,6 +26,28 @@ const download = (filename, contents) => {
 };
 
 // get the character data and download it as a JSON file named for the character
-fetch(`${API}/${characterId}`)
-    .then((res) => res.json())
-    .then((res) => download(`${res.data.name}.json`, JSON.stringify(res.data)));
+(async () => {
+    const response = await fetch(`${CHARACTER_API}/${characterId}`);
+    const { data: char } = await response.json();
+
+    for (const { level, subclassDefinition } of char.classes) {
+        if (!subclassDefinition) continue;
+
+        const response = await fetch(
+            `${GAME_DATA_API}/always-prepared-spells?classLevel=${level}&classId=${
+                subclassDefinition.id
+            }&campaign=${char.campaign ? char.campaign.id : undefined}`,
+        );
+        const { data: spells } = await response.json();
+
+        if (spells.length !== 0) {
+            char.classSpells.push({
+                entityTypeId: 0,
+                characterClassId: subclassDefinition.id,
+                spells,
+            });
+        }
+    }
+
+    download(`${char.name}.json`, JSON.stringify(char));
+})().catch(console.error);
