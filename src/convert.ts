@@ -300,10 +300,8 @@ export const convertCharacter = (
         convertSpellSlots(ddbCharacter),
     ),
     ...shouldConvert(options, 'textBlocks', () => getTextBlocks(ddbCharacter)),
-    ...shouldConvert(
-        options,
-        'weight',
-        () => ddbCharacter.weight ?? ''.toString(),
+    ...shouldConvert(options, 'weight', () =>
+        ddbCharacter.weight ? ddbCharacter.weight.toString() : '',
     ),
 });
 
@@ -897,31 +895,6 @@ const convertItems = (ddbCharacter: DdbCharacter): AlchemyItem[] => {
         ...(item.definition.cost && { cost: item.definition.cost.toString() }),
     }));
 };
-
-const getSubclassSpells = async (beyondCharacter: DdbCharacter): Promise<DdbSpell[]> => {
-  const subClassSpells: DdbSpell[] = []
-
-  const campaignId = beyondCharacter.campaign
-    ? beyondCharacter.campaign.id
-    : undefined
-
-  for (const { level, subclassDefinition } of beyondCharacter.classes) {
-    if (!subclassDefinition) continue
-
-    try {
-      const query = `?classLevel=${level}&classId=${subclassDefinition.id}${campaignId ? `&campaignId=${campaignId}` : ''}`
-      const resp = await fetch('/get-always-prepped-spells' + query)
-      const spells = await resp.json() as DdbSpell[]
-      
-      subClassSpells.push(...spells)
-    } catch (_error) {
-      console.error(`An error occurred for grabbing subClass spells: ${_error}`)
-    }
-
-  }
-
-  return subClassSpells
-}
 
 // Convert all spells except those granted by items to Alchemy format
 const convertSpells = (ddbCharacter: DdbCharacter): AlchemySpell[] => {
