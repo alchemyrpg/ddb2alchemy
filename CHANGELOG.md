@@ -5,6 +5,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.8] - 2023-10-12
+
+### Fixed
+
+-   Fixed conversion of character weight to a string. ([#53](https://github.com/alchemyrpg/ddb2alchemy/issues/53)).
+
 ## [0.1.7] - 2023-09-28
 
 ### Changed
