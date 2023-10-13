@@ -300,10 +300,8 @@ export const convertCharacter = (
         convertSpellSlots(ddbCharacter),
     ),
     ...shouldConvert(options, 'textBlocks', () => getTextBlocks(ddbCharacter)),
-    ...shouldConvert(
-        options,
-        'weight',
-        () => ddbCharacter.weight ?? ''.toString(),
+    ...shouldConvert(options, 'weight', () =>
+        ddbCharacter.weight ? ddbCharacter.weight.toString() : '',
     ),
 });
 
