@@ -34,6 +34,7 @@ export interface AlchemyCharacter {
     spells: AlchemySpell[];
     textBlocks: AlchemyTextBlockSection[];
     weight?: string;
+    trackers?: AlchemyTracker[];
 }
 
 interface AlchemyStat {
@@ -137,4 +138,27 @@ interface AlchemyTextBlockSection {
 interface AlchemyMovementMode {
     mode: string;
     distance: number;
+}
+
+interface AlchemyTracker {
+    name: string;
+    value: number;
+    max: number;
+    color: string;
+    type: string;
+    category: AlchemyTrackerCategory | string | null;
+    _id?: string;
+    sortOrder?: number;
+    readOnly?: boolean;
+}
+
+export enum AlchemyTrackerCategory {
+    /**
+     * Used to track hit points, temporary hit points, etc.
+     */
+    Health = 'health',
+    /**
+     * Used to track experience points, experience to next level, etc.
+     */
+    Experience = 'experience',
 }
