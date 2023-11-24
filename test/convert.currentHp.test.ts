@@ -1,5 +1,6 @@
 import { beforeEach, describe, expect, test } from '@jest/globals';
 import { convertCharacter } from '../src';
+import { AlchemyTrackerCategory } from '../src/alchemy.d';
 import { DdbCharacter, DdbStatType } from '../src/ddb';
 import { DeepPartial } from './test-helpers';
 
@@ -34,10 +35,14 @@ describe('Convert DDB current HP to Alchemy current HP', () => {
         ddbChar.overrideHitPoints = overrideHitPoints;
 
         const converted = convertCharacter(ddbChar as DdbCharacter, {
-            currentHp: true,
+            trackers: true,
         });
 
-        expect(converted.currentHp).toEqual(overrideHitPoints);
+        expect(
+            converted.trackers?.find(
+                (t) => t.category === AlchemyTrackerCategory.Health,
+            )?.value,
+        ).toEqual(overrideHitPoints);
     });
 
     test.each`
@@ -74,10 +79,14 @@ describe('Convert DDB current HP to Alchemy current HP', () => {
                 con;
 
             const converted = convertCharacter(ddbChar as DdbCharacter, {
-                currentHp: true,
+                trackers: true,
             });
 
-            expect(converted.currentHp).toEqual(expected);
+            expect(
+                converted.trackers?.find(
+                    (t) => t.category === AlchemyTrackerCategory.Health,
+                )?.value,
+            ).toEqual(expected);
         },
     );
 
@@ -91,9 +100,13 @@ describe('Convert DDB current HP to Alchemy current HP', () => {
         ddbChar.classes.push({ level: 1 });
 
         const converted = convertCharacter(ddbChar as DdbCharacter, {
-            currentHp: true,
+            trackers: true,
         });
 
-        expect(converted.currentHp).toEqual(2);
+        expect(
+            converted.trackers?.find(
+                (t) => t.category === AlchemyTrackerCategory.Health,
+            )?.value,
+        ).toEqual(2);
     });
 });
