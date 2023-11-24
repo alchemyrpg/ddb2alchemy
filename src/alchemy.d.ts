@@ -4,9 +4,7 @@ export interface AlchemyCharacter {
     armorClass: number;
     copper?: number;
     classes: AlchemyClass[];
-    currentHp: number;
     electrum?: number;
-    exp: number;
     eyes?: string;
     gold?: number;
     hair?: string;
@@ -16,7 +14,6 @@ export interface AlchemyCharacter {
     items: AlchemyItem[];
     isNPC: boolean;
     isSpellcaster: Boolean;
-    maxHp: number;
     movementModes: AlchemyMovementMode[];
     name: string;
     platinum?: number;
