@@ -144,21 +144,16 @@ interface AlchemyTracker {
     name: string;
     value: number;
     max: number;
-    color: string;
-    type: string;
-    category: AlchemyTrackerCategory | string | null;
-    _id?: string;
+    color:
+        | 'Blue'
+        | 'Green'
+        | 'Orange'
+        | 'Purple'
+        | 'Red'
+        | 'Theme Accent'
+        | 'Yellow';
+    type: 'Bar' | 'Pip';
+    category: 'health' | 'experience' | null;
     sortOrder?: number;
     readOnly?: boolean;
-}
-
-export enum AlchemyTrackerCategory {
-    /**
-     * Used to track hit points, temporary hit points, etc.
-     */
-    Health = 'health',
-    /**
-     * Used to track experience points, experience to next level, etc.
-     */
-    Experience = 'experience',
 }

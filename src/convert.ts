@@ -13,7 +13,6 @@ import {
     AlchemyStat,
     AlchemyTextBlockSection,
     AlchemyTracker,
-    AlchemyTrackerCategory,
 } from './alchemy.d';
 import {
     DDB_SPEED_EQUALS_RE,
@@ -1047,7 +1046,7 @@ const convertTrackers = (ddbCharacter: DdbCharacter): AlchemyTracker[] => {
     return [
         {
             name: 'XP',
-            category: AlchemyTrackerCategory.Experience,
+            category: 'experience',
             color: 'Yellow',
             max: 355000,
             value: ddbCharacter.currentXp,
@@ -1056,7 +1055,7 @@ const convertTrackers = (ddbCharacter: DdbCharacter): AlchemyTracker[] => {
         },
         {
             name: 'HP',
-            category: AlchemyTrackerCategory.Health,
+            category: 'health',
             color: 'Green',
             max: getMaxHp(ddbCharacter),
             value: getCurrentHp(ddbCharacter),

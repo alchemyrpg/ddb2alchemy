@@ -1,6 +1,6 @@
 import { describe, expect, test } from '@jest/globals';
 import { convertCharacter } from '../src';
-import { AlchemyTrackerCategory } from '../src/alchemy.d';
+
 import { DdbCharacter } from '../src/ddb';
 import { DeepPartial } from './test-helpers';
 
@@ -21,7 +21,7 @@ describe('Convert DDB currentXp to Alchemy tracker', () => {
             });
 
             const expTracker = converted.trackers?.find(
-                (t) => t.category === AlchemyTrackerCategory.Experience,
+                (t) => t.category === 'experience',
             );
 
             expect(expTracker.value).toEqual(expected);
