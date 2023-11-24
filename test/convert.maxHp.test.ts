@@ -1,5 +1,6 @@
 import { beforeEach, describe, expect, test } from '@jest/globals';
 import { convertCharacter } from '../src';
+import { AlchemyTrackerCategory } from '../src/alchemy.d';
 import { DdbCharacter, DdbStatType } from '../src/ddb';
 import { DeepPartial } from './test-helpers';
 
@@ -48,10 +49,14 @@ describe('Convert DDB maxHP to Alchemy maxHP', () => {
                 con;
 
             const converted = convertCharacter(ddbChar as DdbCharacter, {
-                maxHp: true,
+                trackers: true,
             });
 
-            expect(converted.maxHp).toEqual(expected);
+            expect(
+                converted.trackers?.find(
+                    (t) => t.category === AlchemyTrackerCategory.Health,
+                )?.max,
+            ).toEqual(expected);
         },
     );
 });
