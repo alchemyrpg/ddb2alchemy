@@ -10,7 +10,7 @@ describe('Convert DDB currentXp to Alchemy tracker', () => {
         ${10}     | ${10}
         ${0}      | ${0}
     `(
-        'returns tracker.current=$expected when currentXp=$currentXp',
+        'returns tracker.value=$expected when currentXp=$currentXp',
         ({ currentXp, expected }) => {
             const ddbChar: DeepPartial<DdbCharacter> = {
                 currentXp,
@@ -20,11 +20,12 @@ describe('Convert DDB currentXp to Alchemy tracker', () => {
                 trackers: true,
             });
 
-            expect(
-                converted.trackers?.find(
-                    (t) => t.category === AlchemyTrackerCategory.Experience,
-                )?.value,
-            ).toEqual(expected);
+            const expTracker = converted.trackers?.find(
+                (t) => t.category === AlchemyTrackerCategory.Experience,
+            );
+
+            expect(expTracker.value).toEqual(expected);
+            expect(expTracker.max).toEqual(355000);
         },
     );
 });
