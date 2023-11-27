@@ -12,7 +12,8 @@ import {
     AlchemySpellSlot,
     AlchemyStat,
     AlchemyTextBlockSection,
-} from './alchemy';
+    AlchemyTracker,
+} from './alchemy.d';
 import {
     DDB_SPEED_EQUALS_RE,
     DDB_SPEED_IS_RE,
@@ -25,6 +26,7 @@ import {
     DdbSpell,
     DdbSpellActivationType,
 } from './ddb';
+import { getExperienceRequiredForNextLevel } from './fifth-edition';
 
 // Shared between both platforms
 const STR = 1;
@@ -191,14 +193,11 @@ export const DEFAULT_ALCHEMY_CHARACTER: AlchemyCharacter = {
     abilityScores: [],
     armorClass: 0,
     classes: [],
-    currentHp: 0,
-    exp: 0,
     imageUri: '',
     initiativeBonus: 0,
     isNPC: false,
     isSpellcaster: false,
     items: [],
-    maxHp: 0,
     movementModes: [],
     name: '',
     proficiencies: [],
@@ -251,9 +250,7 @@ export const convertCharacter = (
     ...shouldConvert(options, 'armorClass', () => getArmorClass(ddbCharacter)),
     ...shouldConvert(options, 'copper', () => ddbCharacter.currencies.cp),
     ...shouldConvert(options, 'classes', () => convertClasses(ddbCharacter)),
-    ...shouldConvert(options, 'currentHp', () => getCurrentHp(ddbCharacter)),
     ...shouldConvert(options, 'electrum', () => ddbCharacter.currencies.ep),
-    ...shouldConvert(options, 'exp', () => ddbCharacter.currentXp),
     ...shouldConvert(options, 'eyes', () => ddbCharacter.eyes),
     ...shouldConvert(options, 'gold', () => ddbCharacter.currencies.gp),
     ...shouldConvert(options, 'hair', () => ddbCharacter.hair),
@@ -270,7 +267,6 @@ export const convertCharacter = (
         isSpellcaster(ddbCharacter),
     ),
     ...shouldConvert(options, 'items', () => convertItems(ddbCharacter)),
-    ...shouldConvert(options, 'maxHp', () => getMaxHp(ddbCharacter)),
     ...shouldConvert(options, 'movementModes', () =>
         getMovementModes(ddbCharacter),
     ),
@@ -303,6 +299,7 @@ export const convertCharacter = (
     ...shouldConvert(options, 'weight', () =>
         ddbCharacter.weight ? ddbCharacter.weight.toString() : '',
     ),
+    ...shouldConvert(options, 'trackers', () => convertTrackers(ddbCharacter)),
 });
 
 // Convert D&D Beyond style stat arrays to Alchemy style stat arrays
@@ -317,7 +314,7 @@ const convertStatArray = (ddbCharacter: DdbCharacter): AlchemyStat[] => {
 const getStatValue = (ddbCharacter: DdbCharacter, statId: number): number => {
     // Start with whatever the base stat is at level 1
     const baseStatValue =
-        ddbCharacter.stats.find((stat) => stat.id === statId)?.value ||
+        ddbCharacter.stats?.find((stat) => stat.id === statId)?.value ||
         BASE_STAT;
 
     // If there are any overrides, use the highest of those instead of the base value
@@ -345,7 +342,7 @@ const getModifiers = (
     ddbCharacter: DdbCharacter,
     options: object,
 ): DdbModifier[] => {
-    return Object.values(ddbCharacter.modifiers)
+    return Object.values(ddbCharacter.modifiers || {})
         .flat()
         .filter((modifier) =>
             Object.keys(options).every((key) => modifier[key] === options[key]),
@@ -354,7 +351,7 @@ const getModifiers = (
 
 // Find all applicable modifiers based on keys/values in `options` and sum them
 const sumModifiers = (ddbCharacter: DdbCharacter, options: object): number => {
-    return getModifiers(ddbCharacter, options).reduce(
+    return getModifiers(ddbCharacter, options)?.reduce(
         (total, modifier) => total + modifier.value,
         0,
     );
@@ -362,7 +359,7 @@ const sumModifiers = (ddbCharacter: DdbCharacter, options: object): number => {
 
 // Find all applicable modifiers based on keys/values in `options` and take the highest
 const maxModifier = (ddbCharacter: DdbCharacter, options: object): number => {
-    return getModifiers(ddbCharacter, options).reduce(
+    return getModifiers(ddbCharacter, options)?.reduce(
         (max, modifier) => Math.max(max, modifier.value),
         0,
     );
@@ -430,7 +427,7 @@ const getArmorClass = (ddbCharacter: DdbCharacter): number => {
 // Calculate the base HP of the character, inclusive of bonus from CON modifier.
 const getBaseHp = (ddbCharacter: DdbCharacter): number => {
     const conBonus = getStatBonus(ddbCharacter, CON);
-    const levels = ddbCharacter.classes.reduce(
+    const levels = ddbCharacter.classes?.reduce(
         (total, c) => total + c.level,
         0,
     );
@@ -1042,3 +1039,29 @@ const convertSpellHigherLevels = (ddbSpell: DdbSpell): AlchemySpellAtHigherLevel
   }
 }
 */
+
+const convertTrackers = (ddbCharacter: DdbCharacter): AlchemyTracker[] => {
+    const totalExp = ddbCharacter.currentXp;
+    const nextLevelExp = getExperienceRequiredForNextLevel(totalExp);
+
+    return [
+        {
+            name: 'XP',
+            category: 'experience',
+            color: 'Yellow',
+            max: nextLevelExp,
+            value: totalExp,
+            type: 'Bar',
+            sortOrder: 0,
+        },
+        {
+            name: 'HP',
+            category: 'health',
+            color: 'Green',
+            max: getMaxHp(ddbCharacter),
+            value: getCurrentHp(ddbCharacter),
+            type: 'Bar',
+            sortOrder: 0,
+        },
+    ];
+};

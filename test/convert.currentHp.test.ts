@@ -34,10 +34,12 @@ describe('Convert DDB current HP to Alchemy current HP', () => {
         ddbChar.overrideHitPoints = overrideHitPoints;
 
         const converted = convertCharacter(ddbChar as DdbCharacter, {
-            currentHp: true,
+            trackers: true,
         });
 
-        expect(converted.currentHp).toEqual(overrideHitPoints);
+        expect(
+            converted.trackers?.find((t) => t.category === 'health')?.value,
+        ).toEqual(overrideHitPoints);
     });
 
     test.each`
@@ -74,10 +76,12 @@ describe('Convert DDB current HP to Alchemy current HP', () => {
                 con;
 
             const converted = convertCharacter(ddbChar as DdbCharacter, {
-                currentHp: true,
+                trackers: true,
             });
 
-            expect(converted.currentHp).toEqual(expected);
+            expect(
+                converted.trackers?.find((t) => t.category === 'health')?.value,
+            ).toEqual(expected);
         },
     );
 
@@ -91,9 +95,11 @@ describe('Convert DDB current HP to Alchemy current HP', () => {
         ddbChar.classes.push({ level: 1 });
 
         const converted = convertCharacter(ddbChar as DdbCharacter, {
-            currentHp: true,
+            trackers: true,
         });
 
-        expect(converted.currentHp).toEqual(2);
+        expect(
+            converted.trackers?.find((t) => t.category === 'health')?.value,
+        ).toEqual(2);
     });
 });

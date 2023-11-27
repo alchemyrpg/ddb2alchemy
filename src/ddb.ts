@@ -49,8 +49,8 @@ export interface DdbCharacter {
         gp: number;
         pp: number;
     };
-    classes: DdbClass[];
-    modifiers: {
+    classes?: DdbClass[];
+    modifiers?: {
         race: DdbModifier[];
         class: DdbModifier[];
         item: DdbModifier[];

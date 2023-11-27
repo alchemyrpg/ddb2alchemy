@@ -4,9 +4,7 @@ export interface AlchemyCharacter {
     armorClass: number;
     copper?: number;
     classes: AlchemyClass[];
-    currentHp: number;
     electrum?: number;
-    exp: number;
     eyes?: string;
     gold?: number;
     hair?: string;
@@ -16,7 +14,6 @@ export interface AlchemyCharacter {
     items: AlchemyItem[];
     isNPC: boolean;
     isSpellcaster: Boolean;
-    maxHp: number;
     movementModes: AlchemyMovementMode[];
     name: string;
     platinum?: number;
@@ -34,6 +31,7 @@ export interface AlchemyCharacter {
     spells: AlchemySpell[];
     textBlocks: AlchemyTextBlockSection[];
     weight?: string;
+    trackers?: AlchemyTracker[];
 }
 
 interface AlchemyStat {
@@ -137,4 +135,22 @@ interface AlchemyTextBlockSection {
 interface AlchemyMovementMode {
     mode: string;
     distance: number;
+}
+
+interface AlchemyTracker {
+    name: string;
+    value: number;
+    max: number;
+    color:
+        | 'Blue'
+        | 'Green'
+        | 'Orange'
+        | 'Purple'
+        | 'Red'
+        | 'Theme Accent'
+        | 'Yellow';
+    type: 'Bar' | 'Pip';
+    category: 'health' | 'experience' | null;
+    sortOrder?: number;
+    readOnly?: boolean;
 }

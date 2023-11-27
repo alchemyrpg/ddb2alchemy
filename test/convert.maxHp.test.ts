@@ -48,10 +48,12 @@ describe('Convert DDB maxHP to Alchemy maxHP', () => {
                 con;
 
             const converted = convertCharacter(ddbChar as DdbCharacter, {
-                maxHp: true,
+                trackers: true,
             });
 
-            expect(converted.maxHp).toEqual(expected);
+            expect(
+                converted.trackers?.find((t) => t.category === 'health')?.max,
+            ).toEqual(expected);
         },
     );
 });
