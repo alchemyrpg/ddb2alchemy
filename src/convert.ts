@@ -26,11 +26,7 @@ import {
     DdbSpell,
     DdbSpellActivationType,
 } from './ddb';
-import {
-    getBaseExperienceForLevel,
-    getExperienceRequiredForNextLevel,
-    getLevelFromExp,
-} from './fifth-edition';
+import { getExperienceRequiredForNextLevel } from './fifth-edition';
 
 // Shared between both platforms
 const STR = 1;
@@ -1046,10 +1042,7 @@ const convertSpellHigherLevels = (ddbSpell: DdbSpell): AlchemySpellAtHigherLevel
 
 const convertTrackers = (ddbCharacter: DdbCharacter): AlchemyTracker[] => {
     const totalExp = ddbCharacter.currentXp;
-    const level = getLevelFromExp(totalExp);
-    const baseExp = getBaseExperienceForLevel(level);
     const nextLevelExp = getExperienceRequiredForNextLevel(totalExp);
-    const expIntoLevel = totalExp - baseExp;
 
     return [
         {
@@ -1057,7 +1050,7 @@ const convertTrackers = (ddbCharacter: DdbCharacter): AlchemyTracker[] => {
             category: 'experience',
             color: 'Yellow',
             max: nextLevelExp,
-            value: expIntoLevel,
+            value: totalExp,
             type: 'Bar',
             sortOrder: 0,
         },
