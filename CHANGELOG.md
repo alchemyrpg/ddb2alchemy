@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
--   Trackers (HP, XP) are now created in ddb2alchemy instead of in Alchemy itself.
+-   Trackers (HP, XP) are now created in ddb2alchemy instead of in Alchemy itself. ([#57](https://github.com/alchemyrpg/ddb2alchemy/pull/57))
 
 ## [0.1.8] - 2023-10-12
 
